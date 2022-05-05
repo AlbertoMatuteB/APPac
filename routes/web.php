@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\BeneficiarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,14 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+
+Route::resource('beneficiario',BeneficiarioController::class);
+Route::resource('register',BeneficiarioController::class);
+
+
+Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiarios']);
+Route::post('/beneficiarios/searchmunicipio', ['as' => 'search-beneficiarios-municipio', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosMunicipio']);
+Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge']);
+
+Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData']);
