@@ -42,7 +42,7 @@
         @if($modo == 'Editar')
             <option value="{{isset($beneficiario) ? $beneficiario->genero: ''}}" selected>{{$beneficiario->genero}}</option>
         @endif
-        <option value="Sin Registrar">Sin Registrar</option>
+        <option value="Sin Registrar">-- Sin Registrar --</option>
         <option value="Masculino">Masculino</option>
         <option value="Femenino">Femenino</option>
     </select>
@@ -64,22 +64,23 @@
         @if($modo == 'Editar')
             <option value="{{isset($beneficiario) ? $beneficiario->diagnostico: ''}}" selected>{{$beneficiario->diagnostico}}</option>
         @endif
-        <option value="PCI">P.C.I.</option>
-        <option value="discapacidadIntelectual">Discapacidad Intelectual</option>
-        <option value="sixdown">Six Down</option>
-        <option value="epilepsia">Epilepsia</option>
-        <option value="hidrocefalia">Hidrocefalia</option>
-        <option value="paraparesiaHipotónica">Paraparesia Hipotónica</option>
-        <option value="cuadriparesiaEspástica">Cuadriparesia Espástica</option>
-        <option value="retrasoGlobalDesarrollo">Retraso Global del Desarrollo</option>
-        <option value="traumatismo">Traumatismo</option>
-        <option value="sxHipotonico">Sx Hipotónico</option>
-        <option value="sxDismorfico">Sx Dismórfico</option>
-        <option value="sxMarfan">Sx Marfan</option>
-        <option value="hemiparesia">Hemiparesia</option>
-        <option value="sxLenox">Sx Lenox</option>
-        <option value="cuadriparesiaHipotpnica">Cuadriparesia Hipotónica</option>
-        <option value="otrto">Otro</option>
+        <option value="Sin Registrar">-- Sin Registrar --</option>
+        <option value="P.C.I.">P.C.I.</option>
+        <option value="Discapacidad Intelectual">Discapacidad Intelectual</option>
+        <option value="Sx Down">Sx Down</option>
+        <option value="Epilepsia">Epilepsia</option>
+        <option value="Hidrocefalia">Hidrocefalia</option>
+        <option value="Paraparesia Hipotónica">Paraparesia Hipotónica</option>
+        <option value="Cuadriparesia Espástica">Cuadriparesia Espástica</option>
+        <option value="Retraso Global del Desarrollo">Retraso Global del Desarrollo</option>
+        <option value="Traumatismo">Traumatismo</option>
+        <option value="Sx Hipotónico">Sx Hipotónico</option>
+        <option value="Sx Dismórfico">Sx Dismórfico</option>
+        <option value="Sx Marfan">Sx Marfan</option>
+        <option value="Hemiparesia">Hemiparesia</option>
+        <option value="Sx Lenox">Sx Lenox</option>
+        <option value="Cuadriparesia Hipotónica">Cuadriparesia Hipotónica</option>
+        <option value="Otro">Otro</option>
     </select>
 </div>
 

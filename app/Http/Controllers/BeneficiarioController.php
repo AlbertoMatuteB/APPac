@@ -87,7 +87,7 @@ class BeneficiarioController extends Controller
     public function update(Request $request, Beneficiario $beneficiario)
     {
         $data =[
-        'nombreBeneficiario', 'curp', 'tipoSangre', 'genero', 'email', 'fechaNacimiento', 'telefono', 'direccion', 'observacion',
+        'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'tipoSangre', 'diagnostico', 'email', 'telefono', 'municipio', 'observacion',
         ];
 
         request()->validate([
@@ -95,8 +95,8 @@ class BeneficiarioController extends Controller
             'fechaNacimiento' => 'required',
             'genero' => 'required',
             'curp' => 'required',
-            'diagnostico' => 'required',
             'tipoSangre' => 'required',
+            'diagnostico' => 'required',
             'email' => 'required',
             'telefono' => 'required|numeric',
             'municipio' => 'required',
@@ -106,13 +106,14 @@ class BeneficiarioController extends Controller
 
         $beneficiario->update([
             'nombreBeneficiario'  => $request->input('nombreBeneficiario'),
+            'fechaNacimiento' => $request->input('fechaNacimiento'),
+            'genero'=> $request->input('genero'),
             'curp' => $request->input('curp'),
             'tipoSangre' => $request->input('tipoSangre'),
-            'genero'=> $request->input('genero'),
+            'diagnostico' => $request->input('diagnostico'),
             'email' => $request->input('email'),
-            'fechaNacimiento' => $request->input('fechaNacimiento'),
             'telefono' => $request->input('telefono'),
-            'direccion' => $request->input('direccion'),
+            'municipio' => $request->input('municipio'),
             'observacion' => $request->input('observacion'),
             //'fecharegistro' => $request->input('fecharegistro')
             ]);
