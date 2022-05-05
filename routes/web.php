@@ -30,7 +30,6 @@ Route::resource('register',BeneficiarioController::class);
 
 
 Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiarios']);
-Route::post('/beneficiarios/searchmunicipio', ['as' => 'search-beneficiarios-municipio', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosMunicipio']);
 Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge']);
 
 Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData']);

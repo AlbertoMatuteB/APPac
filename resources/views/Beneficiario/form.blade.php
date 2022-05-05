@@ -42,7 +42,7 @@
         @if($modo == 'Editar')
             <option value="{{isset($beneficiario) ? $beneficiario->genero: ''}}" selected>{{$beneficiario->genero}}</option>
         @endif
-        <option value="Masculino">Sin Registrar</option>
+        <option value="Sin Registrar">Sin Registrar</option>
         <option value="Masculino">Masculino</option>
         <option value="Femenino">Femenino</option>
     </select>
@@ -64,15 +64,22 @@
         @if($modo == 'Editar')
             <option value="{{isset($beneficiario) ? $beneficiario->diagnostico: ''}}" selected>{{$beneficiario->diagnostico}}</option>
         @endif
-        <option value="A">Sin Registrar</option>
-        <option value="A">A+</option>
-        <option value="A">A-</option>
-        <option value="B">B+</option>
-        <option value="B">B-</option>
-        <option value="AB">AB+</option>
-        <option value="AB">AB-</option>
-        <option value="O">O+</option>
-        <option value="O">O-</option>
+        <option value="PCI">P.C.I.</option>
+        <option value="discapacidadIntelectual">Discapacidad Intelectual</option>
+        <option value="sixdown">Six Down</option>
+        <option value="epilepsia">Epilepsia</option>
+        <option value="hidrocefalia">Hidrocefalia</option>
+        <option value="paraparesiaHipotónica">Paraparesia Hipotónica</option>
+        <option value="cuadriparesiaEspástica">Cuadriparesia Espástica</option>
+        <option value="retrasoGlobalDesarrollo">Retraso Global del Desarrollo</option>
+        <option value="traumatismo">Traumatismo</option>
+        <option value="sxHipotonico">Sx Hipotónico</option>
+        <option value="sxDismorfico">Sx Dismórfico</option>
+        <option value="sxMarfan">Sx Marfan</option>
+        <option value="hemiparesia">Hemiparesia</option>
+        <option value="sxLenox">Sx Lenox</option>
+        <option value="cuadriparesiaHipotpnica">Cuadriparesia Hipotónica</option>
+        <option value="otrto">Otro</option>
     </select>
 </div>
 

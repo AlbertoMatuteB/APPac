@@ -148,15 +148,4 @@ class BeneficiarioController extends Controller
         
         return json_encode( $beneficiarios );
     }
-
-    // Buscar un beneficiario a partir del request AJAX.
-    public function searchMunicipio(Request $request)
-    {
-
-        $beneficiarios = Beneficiario::where('municipio', 'like', '%'.$request->get('searchQuestMunicipio'). '%')
-                        ->where('genero', 'like', '%'.$request->get('searchQuestGenero'). '%')
-                        ->get();
-        
-        return json_encode( $beneficiarios );
-    }
 }
