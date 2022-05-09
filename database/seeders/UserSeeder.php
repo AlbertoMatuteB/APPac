@@ -22,9 +22,10 @@ class UserSeeder extends Seeder
         [
             'name' => 'Forrest',
             'last_name' => 'Gump',
-            'rol_id' => '1',
+            'role_id' => '1',
             'email' => 'fgump@bubbagump.com',
             'password' => Hash::make('undiaalavez'),
+            'visibility' => True
         ]
     ]);
     }
