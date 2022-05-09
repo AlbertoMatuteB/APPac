@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('beneficiary', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained();
             $table->string('name');
-            $table->string('last_name');
-            $table->foreignId('role_id')->constrained();
-            $table->string('email')->unique();
-            //$table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('visibility');
-            $table->rememberToken();
+            $table->date('birth_date');
+            $table->string('CURP');
+            $table->string('genre');
+            $table->string('blood_type');
+            $table->string('email');
+            $table->string('city');
+            $table->text('observations');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('beneficiary');
     }
 };
