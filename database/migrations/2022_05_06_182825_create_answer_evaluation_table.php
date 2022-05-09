@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('activity_id')->constrained();
             $table->foreignId('evaluation_id')->constrained();  
-            $table->foreignId('beneficiary_id')->constrained(); 
+            $table->foreignId('beneficiary_id')->references('id')->on('beneficiary'); 
             $table->string('answer');
             $table->text('comments');
             $table->timestamps();
