@@ -26,8 +26,7 @@ class UserSeeder extends Seeder
                 'email' => 'fgump@bubbagump.com',
                 'password' => Hash::make('undiaalavez'),
                 'visibility' => True
-            ],
-            [
+            ], [
                 'name' => 'Super',
                 'last_name' => 'Admin',
                 'role_id' => '1',
