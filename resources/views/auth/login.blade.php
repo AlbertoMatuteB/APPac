@@ -41,7 +41,7 @@
                         </svg>
                     </span>
                     <input id="password" name="password" type="password" placeholder="Contraseña"
-                        class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-transparent text-base border-b-2  outline-none focus:border-black w-full pl-10" />
+                        class="mb-5 px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-transparent text-base border-b-2  outline-none focus:border-black w-full pl-10" />
                     @error('password')
                     <span class="text-red-500" role="alert">
                         <strong>{{ $message }}</strong>
@@ -49,13 +49,13 @@
                     @enderror
                 </div>
 
-                <div class="flex items-center justify-center">
+                {{-- <div class="flex items-center justify-center">
                     <div class="flex items-center">
                         <input id="remember-me" name="remember" type="checkbox" id="remember" {{ old('remember') ? 'checked' : '' }}
                             class="h-4 w-4 text-slate-300 focus:ring-indigo-500 border-slate-300 rounded">
                         <label for="remember" class="ml-2 block text-sm text-slate-300">{{ __('Remember Me') }}</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <div>
                     <button type="submit"

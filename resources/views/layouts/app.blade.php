@@ -39,7 +39,7 @@
             </div>
             <div class="group inline-block relative">
                 <button class="inline-flex items-center">
-                    <span class="font-light text-xl tracking-normal mr-2">Username</span>
+                    <span class="font-light text-xl tracking-normal mr-2">{{ Auth::user()->name }}</span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
