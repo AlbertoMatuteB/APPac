@@ -22,3 +22,7 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+use App\Http\Controllers\UserController;
+ 
+Route::get('/usuario', [UserController::class, 'index']);
