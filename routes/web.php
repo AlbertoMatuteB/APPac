@@ -22,3 +22,7 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/registerUser', function () {
+    return view('auth.register');
+});
