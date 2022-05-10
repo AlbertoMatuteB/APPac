@@ -36,4 +36,28 @@ class UserController extends Controller
             'usuarios' => $result
         ]);
     }
+
+        /**
+     * Regresa la vista con la tabla que contiene a todos los usuarios.
+     *
+     * @param  
+     * @return \Illuminate\View\View
+     */
+    public function getUser(int $id)
+    {
+        $user = DB::table('users')->find($id);
+
+        
+
+        $UserArray =[
+            "id" => $user->id,
+            "name" => $user->name,
+            "last_name" => $user->last_name,
+            "email" => $user->email,  
+        ]; 
+
+        return view('usuarios.consultarUsuario', [
+            'usuario' => $UserArray
+        ]);
+    }
 }
