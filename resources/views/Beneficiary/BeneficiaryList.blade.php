@@ -52,7 +52,7 @@
                     </button>
                 </div>
             </div>
-            <div class="overflow-x-auto">
+            <div class="">
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="bg-transparent">
