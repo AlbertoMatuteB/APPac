@@ -10,9 +10,9 @@ class ListBeneficiary extends Controller
 {
     public function __invoke()
     {
-        $beneficiary = Beneficiary::all();
+        $beneficiary = Beneficiary::paginate(1);
 
-        return view('Beneficiary.BeneficiaryList', ['beneficiary' => $beneficiary]);
+        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiary]);
     }
 }
 /**

@@ -9,7 +9,7 @@
                 <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
             </div>
             <div
-                class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4">
+                class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
                 <div class="font-semibold pl-4">Buscar Beneficiarios</div>
                 <div class="font-semibold">Buscar por edad</div>
                 <div class="font-semibold">Buscar por Municipio</div>
@@ -46,51 +46,86 @@
                     </select>
                 </div>
                 <div>
-                    <a class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24" href="#"
-                        target="_blank" rel="">Agregar</a>
+                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
+                        <a class="text-white text-center" href="#"
+                            target="_blank" rel="">Agregar</a>
+                    </button>
                 </div>
             </div>
-            <div class="overflow-x-auto border-x border-t">
+            <div class="overflow-x-auto">
                 <table class="table-auto w-full">
-                    <thead class="border-b">
-                        <tr class="bg-gray-100">
+                    <thead class="">
+                        <tr class="bg-transparent">
                             <th class="text-left p-4 font-medium">
-                                Name
+                                Nombre
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Email
+                                Fecha de nacimiento
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Role
+                                CURP
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Género
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Correo
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Institucion
+                            </th>
+                            <th class="text-right p-4 font-medium">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b hover:bg-gray-50">
+                        @foreach ($beneficiaries as $beneficiary)
+                        <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                Test name
+                                {{$beneficiary->name}}
                             </td>
                             <td class="p-4">
-                                pp popo
+                                {{$beneficiary->birth_date}}
                             </td>
                             <td class="p-4">
-                                Administrator
+                                {{$beneficiary->CURP}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiary->genre}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiary->email}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiary->institution_id}}
+                            </td>
+                            <td class="p-4">
+                                <div class="group inline-block relative">
+                                    <button class="inline-flex items-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <ul class="pt-2 absolute hidden group-hover:block z-10">
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4">
-                                Test 2
-                            </td>
-                            <td class="p-4">
-                                cbt
-                            </td>
-                            <td class="p-4">
-                                Super Administrator
-                            </td>
-                        </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
+            {{$beneficiaries->links()}}
         </div>
     </div>
 </div>
