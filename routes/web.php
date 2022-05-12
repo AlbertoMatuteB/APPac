@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BeneficiarioController;
@@ -33,3 +34,11 @@ Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 
 Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge']);
 
 Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData']);
+use App\Http\Controllers\UserController;
+ 
+Route::get('/usuario', [UserController::class, 'index']);
+
+Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+
+Route::get('/beneficiarios', ListBeneficiary::class);
+
