@@ -40,9 +40,8 @@
                 <div>
                     <select
                         class="block appearance-none w-full bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-2xl leading-tight focus:outline-none focus:border-slate-300">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
+                        <option>Administrador</option>
+                        <option>Usuario base</option>
                     </select>
                 </div>
                 <div>
@@ -67,8 +66,6 @@
                             </th>
                             <th class="text-left p-4 font-medium">
                                 Correo
-                            </th>
-                            <th class="text-right p-4 font-medium">
                             </th>
                         </tr>
                     </thead>
@@ -100,9 +97,8 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}</a>
+                                                href="/usuario/{{$usuario['id']}}">
+                                                Consultar</a>
                                         </li>
                                     </ul>
                                 </div>
