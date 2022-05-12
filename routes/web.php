@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,3 +29,6 @@ use App\Http\Controllers\UserController;
 Route::get('/usuario', [UserController::class, 'index']);
 
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+
+Route::get('/beneficiarios', ListBeneficiary::class);
+
