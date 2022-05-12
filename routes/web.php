@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -27,3 +28,5 @@ Route::get('/', function () {
 Route::get('/registerUser', [UserController::class, 'create']);
 
 Route::post('/registerUser', [UserController::class, 'store'])->name('register');
+
+Route::get('/beneficiarios', ListBeneficiary::class);
