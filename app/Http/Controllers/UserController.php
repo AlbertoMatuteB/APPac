@@ -26,7 +26,8 @@ class UserController extends Controller
                 "id" => $user->id,
                 "name" => $user->name,
                 "last_name" => $user->last_name,
-                "email" => $user->email,  
+                "email" => $user->email,
+                "role" => DB::table('roles')->where('id', $user->role_id)->value('name')
             ]; 
 
             $result[$user->id] = $UserArray;
@@ -53,7 +54,8 @@ class UserController extends Controller
             "id" => $user->id,
             "name" => $user->name,
             "last_name" => $user->last_name,
-            "email" => $user->email,  
+            "email" => $user->email,
+            "role" => DB::table('roles')->where('id', $user->role_id)->value('name')  
         ]; 
 
         return view('usuarios.consultarUsuario', [

@@ -1,41 +1,18 @@
 @extends('layouts.app')
 @section('content')
-<table class="table-fixed">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Correo</th>
-      <th>Consultar</th>
-    </tr>
-  </thead>
-  <tbody>
-@foreach($usuarios as $usuario)
-    <tr>
-      <td>{{$usuario['name']}}</td>
-      <td>{{$usuario['last_name']}}</td>
-      <td>{{$usuario['email']}}</td>
-      <td><a href="/usuario/{{$usuario['id']}}">Consultar</a></td>
-    </tr>
-@endforeach
-    </tbody>
-</table>
-@endsection
-@extends('layouts.app')
-@section('content')
 
 <div class="">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
             <div>
-                <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
+                <h1 class="font-blue-appac text-left text-4xl font-black">Usuarios</h2>
             </div>
             <div
                 class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
-                <div class="font-semibold pl-4">Buscar Beneficiarios</div>
-                <div class="font-semibold">Buscar por edad</div>
-                <div class="font-semibold">Buscar por Municipio</div>
+                <div class="font-semibold pl-4">Buscar usuario</div>
+                <div class="font-semibold">Buscar por correo</div>
+                <div class="font-semibold pl-4">Buscar por rol</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
                     <span
@@ -99,16 +76,16 @@
                         @foreach($usuarios as $usuario)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$usuario->name}}
+                              {{$usuario['name']}}
                             </td>
                             <td class="p-4">
-                                {{$usuario->birth_date}}
+                              {{$usuario['last_name']}}
                             </td>
                             <td class="p-4">
-                                {{$usuario->CURP}}
+                              {{$usuario['role']}}
                             </td>
                             <td class="p-4">
-                                {{$usuario->genre}}
+                              {{$usuario['email']}}
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
@@ -136,11 +113,8 @@
                     </tbody>
                 </table>
             </div>
-            {{$usuario->links()}}
         </div>
     </div>
 </div>
 {{-- {{die($beneficiary)}} --}}
-
-
 @endsection
