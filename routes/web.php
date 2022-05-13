@@ -27,13 +27,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/registerUser', [UserController::class, 'create']);
-
-Route::post('/registerUser', [UserController::class, 'store'])->name('register');
-
-Route::get('/beneficiarios', ListBeneficiary::class);
-
-Route::get('/crearUsuario', [RegistrationController::class, 'create']);
+Route::get('/usuarios/registrar', [RegistrationController::class, 'create']);
 Route::post('crearUsuario', [RegistrationController::class, 'store']);
 
 
