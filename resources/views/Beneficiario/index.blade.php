@@ -1,272 +1,137 @@
 
 @extends('layouts.app')
-
 @section('content')
-
-
-<div class="container">
-
-    @if (Session::has('eliminado'))
-        <div class="alert alert-success" role="alert"> {{Session::get('eliminado')}} </div>      
-    @endif
-
-    @if (Session::has('nuevo'))
-        <div class="alert alert-success" role="alert"> {{Session::get('nuevo')}} </div>       
-    @endif
-
-    @if (Session::has('editado'))
-        <div class="alert alert-success" role="alert"> {{Session::get('editado')}} </div>    
-    @endif 
-
-    
-    <h1 id="JornadaTitulo" class="bluenefro"><i class="bi bi-people-fill"></i> Beneficiarios</h1>
-
-    <div class="container">
-    
-    <br/>
-    <br/>
-
-    <div class= "container box" id="searchfields">
-        
-        <div class= "row">
-            
-            <div class= "col-sm">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h5>Buscar por Nombre:</h5>
-                    </div>
-                    <div class="panel-body">
-                    <input type="text" name="search" id="searchnombre"
-                        class="form-control" placeholder="Nombre Beneficiario..."/>
-                    </div>
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<div class="">
+    {{-- min-h-full --}}
+    <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
+        <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
+            <div>
+                <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
+            </div>
+            <div
+                class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
+                <div class="font-semibold pl-4">Buscar Beneficiarios</div>
+                <div class="font-semibold">Buscar por edad</div>
+                <div class="font-semibold">Buscar por Municipio</div>
+                <div>&nbsp;</div>
+                <div class="pl-4">
+                    <span
+                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </span>
+                    <input type="text" placeholder="Buscar..."
+                        class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                </div>
+                <div> <span
+                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </span>
+                    <input type="text" placeholder="Buscar..."
+                        class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                </div>
+                <div>
+                    <select
+                        class="block appearance-none w-full bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-2xl leading-tight focus:outline-none focus:border-slate-300">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
+                        <a class="text-white text-center" href="{{ url('beneficiario/create') }}">Agregar</a>
+                    </button>
                 </div>
             </div>
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full">
+                    <thead class="">
+                        <tr class="bg-transparent">
+                            <th class="text-left p-4 font-medium">
+                                Nombre
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Edad
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                CURP
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Género
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Correo
+                            </th>
+                            <th class="text-left p-4 font-medium">
+                                Municipio
+                            </th>
+                            <th class="text-right p-4 font-medium">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($Beneficiario as $beneficiario)
+                        <tr class="border-y hover:bg-gray-50">
+                            <td class="p-4">
+                                {{$beneficiario->nombreBeneficiario}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiario->age}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiario->curp}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiario->genero}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiario->email}}
+                            </td>
+                            <td class="p-4">
+                                {{$beneficiario->municipio}}
+                            </td>
+                            <td class="p-4">
+                                <div class="group inline-block relative">
+                                    <button class="inline-flex items-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <ul class="pt-2 absolute hidden group-hover:block z-10">
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
 
-            <div class= "col-sm">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h5>Buscar por Edad:</h5>
-                    </div>
-                    <div class="panel-body">
-                        <input type="text" name="search" id="searchage"
-                        class="form-control" placeholder="Edad Beneficiario..."/>
-                    </div>
-                    <div class="table-responsive">
-                    </div>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            {{$Beneficiario->links()}}
         </div>
-    
-        <br>
-
-        <div class= "row">
-            
-            <div class= "col-sm">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h5>Buscar por Municipio:</h5>
-                    </div>
-                    <div class="panel-body">
-                    <input type="text" name="search" id="searchmunicipio"
-                        class="form-control" placeholder="Municipio Beneficiario..."/>
-                    </div>
-                </div>
-            </div>
-
-            <div class= "col-sm">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h5>Buscar por Género:</h5>
-                    </div>
-                    <div class="panel-body">
-                        <select class="form-select" aria-label="selectgenero" id="searchgenero">
-                            <option value="">Todos</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Masculino">Masculino</option>
-                        </select>
-                    </div>
-                    <div class="table-responsive">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <br>
-    
-    <div class="row">
-        <div class="col-sm text-right">
-        <a id="beneficiarioAddB" href="{{ url('beneficiario/create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Registrar Beneficiario </a>
     </div>
 </div>
-
-<br>
-
-<table class="table table-light table-hover table-responsive-sm">
-    
-    <thead class="greennefrobg whitenefro">
-        <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Género</th>
-            <th>Municipio</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    
-    <tbody id="dynamic-row">
-        @foreach ($Beneficiario as $beneficiario)
-        <tr>
-            <td>{{$beneficiario->id}}</td>
-            <td>{{$beneficiario->nombreBeneficiario}}</td>
-            <td>{{$beneficiario->age}}</td>
-            <td>{{$beneficiario->genero}}</td>
-            <td>{{$beneficiario->municipio}}</td>
-        
-            <td>
-                <a href="{{url('/beneficiario/'.$beneficiario->id)}}" class="btn btn-outline-dark">
-                    Consultar
-                </a>
-
-                <a href="{{url('/beneficiario/'.$beneficiario->id.'/edit')}}" class="btn btn-outline-secondary">
-                    Editar
-                </a>
-
-                <form action="{{url('/beneficiario/'.$beneficiario->id)}}" class="d-inline" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Borrar">
-                </form>
-
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-
-</table>
-
-{{$Beneficiario->links()}}
-
-</div>
+{{-- {{die($beneficiario)}} --}}
 
 
-
-
-
-
-
-
-
-
-<script>
-    $('body').on('keyup change', '#searchfields', function()
-    {
-        if ($( "#searchage" ).val() == '')
-        {
-            var searchQuest = $( "#searchnombre" ).val();
-            var searchQuestMunicipio = $( "#searchmunicipio" ).val();
-            var searchQuestGenero = $("#searchgenero option:selected").val();
-            $.ajax(
-            {
-                method: 'POST',
-                url:'{{ route("search-beneficiarios") }}',
-                dataType: 'json',
-                data:
-                {
-                    '_token': '{{ csrf_token() }}',
-                    searchQuest: searchQuest,
-                    searchQuestMunicipio: searchQuestMunicipio,
-                    searchQuestGenero: searchQuestGenero,
-                },
-                success: function(res)
-                {
-                    var tableRow = '';
-                    $('#dynamic-row').html('');
-                    $.each(res, function(index, value)
-                    {
-                        dob = new Date(value.fechaNacimiento);
-                        var today = new Date();
-                        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-                        var urlshow = 'beneficiario/'+value.id;
-                        var urledit = 'beneficiario/'+value.id+'/edit';
-                        var urldel = 'beneficiario/'+value.id;
-
-                        tableRow = '<tr><td>'+value.id+'</td><td>'+value.nombreBeneficiario+'</td><td>'+age+'</td><td>'+value.genero+'</td><td>'+value.municipio+'</td>';
-                        tableRow += '<td><a href="'+urlshow+'" class="btn btn-outline-dark">Consultar</a>';
-                        tableRow += '<a href="'+urledit+'" class="btn btn-outline-secondary">Editar</a>';
-                        tableRow += '<form action="'+urldel+'" class="d-inline" method="post">@method("DELETE") @csrf<input type="submit" onclick="return confirm("¿Quiere Borrar Beneficiario?")"  class="btn btn-outline-danger" value="Borrar"></form>';
-                        tableRow += '</td></tr>'
-                        $('#dynamic-row').append(tableRow);
-                    });
-                    console.log(tableRow);
-                }
-            });
-        }
-        else
-        {
-            var searchQuest = $( "#searchnombre" ).val();
-            var searchQuestMunicipio = $( "#searchmunicipio" ).val();
-            var today = new Date().getFullYear();
-            var searchQuestAge = today - $( "#searchage" ).val();
-            
-            var m = new Date().getMonth() + 1;
-            if (m < 10)
-            {
-                m = '0' + m;
-            }
-            
-            var d = new Date().getDate();
-            if (d < 10)
-            {
-                d = '0' + d;
-            }
-            var fechaBegin = searchQuestAge - 1 + '-' + m + '-' + d;
-            var fechaEnd = searchQuestAge + '-' + m + '-' + d;
-            var searchQuestGenero = $("#searchgenero option:selected").val();
-            
-            $.ajax(
-            {
-                method: 'POST',
-                url:'{{ route("search-beneficiarios-age") }}',
-                dataType: 'json',
-                data:
-                {
-                    '_token': '{{ csrf_token() }}',
-                    searchQuest: searchQuest,
-                    searchQuestMunicipio: searchQuestMunicipio,
-                    searchQuestAge: searchQuestAge,
-                    searchQuestGenero: searchQuestGenero,
-                    fechaBegin: fechaBegin,
-                    fechaEnd: fechaEnd,
-                },
-                success: function(res)
-                {
-                    var tableRow = '';
-                    $('#dynamic-row').html('');
-                    $.each(res, function(index, value)
-                    {
-                        dob = new Date(value.fechaNacimiento);
-                        
-                        var today = new Date();
-                        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-                        var urlshow = 'beneficiario/'+value.id;
-                        var urledit = 'beneficiario/'+value.id+'/edit';
-                        var urldel = 'beneficiario/'+value.id;
-                        
-                        tableRow = '<tr><td>'+value.id+'</td><td>'+value.nombreBeneficiario+'</td><td>'+age+'</td><td>'+value.genero+'</td><td>'+value.municipio+'</td>';
-                        tableRow += '<td><a href="'+urlshow+'" class="btn btn-outline-dark">Consultar</a>';
-                        tableRow += '<a href="'+urledit+'" class="btn btn-outline-secondary">Editar</a>';
-                        tableRow += '<form action="'+urldel+'" class="d-inline" method="post"><input type="submit" onclick="return confirm("¿Quiere Borrar Beneficiario?")"  class="btn btn-outline-danger" value="Borrar"></form>';
-                        tableRow += '</td></tr>'
-                        
-                        $('#dynamic-row').append(tableRow);
-                    });
-                }
-            });
-        }
-    });
-</script>
 @endsection
