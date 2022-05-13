@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use app\Http\Controllers\RegistrationController;
+use app\Http\Controllers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +25,8 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/crearUsuario', [RegistrationController::class, 'create']);
+Route::post('crearUsuario', [RegistrationController::class, 'store']);
+
+
