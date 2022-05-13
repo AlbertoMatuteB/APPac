@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/usuario', [UserControllerler::class, 'index']);
+Route::get('/usuario', [UserController::class, 'index']);
 
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
 

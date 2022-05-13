@@ -17,12 +17,13 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 
 
 </head>
 
-<body class="antialiased">
+<body class="antialiased h-screen">
     @auth
     <nav class="relative flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
         <div class="flex items-center flex-shrink-0 mr-6 pr-6 border-r-2 border-gray-300">

@@ -13,6 +13,11 @@ body{
 }
 .menu-grid{
     display: grid;
-    grid-template-columns: repeat(4,minmax(0, 300px));
-    grid-template-rows: repeat(2, minmax(0, 250px));
+    grid-template-columns: repeat(2,minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.menu-icon-size{
+    font-size: 100px !important;
+    font-weight: 100 !important;
+
 }
