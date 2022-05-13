@@ -24,7 +24,7 @@
 
 <body class="antialiased">
     @auth
-    <nav class="flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
+    <nav class="relative flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
         <div class="flex items-center flex-shrink-0 mr-6 pr-6 border-r-2 border-gray-300">
             <img src="{{asset('img/logo_apac.jpeg')}}" class="w-14 mr-4" alt="Logo Apac">
             <span class="font-bold text-2xl tracking-normal">Apac</span>
@@ -33,7 +33,7 @@
         
         <div class="w-full inline-block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow">
-                <a href="" class="font-light text-xl block mt-4 lg:inline-block lg:mt-0 mr-4">
+                <a href="/home" class="font-light text-xl block mt-4 lg:inline-block lg:mt-0 mr-4">
                     Menu
                 </a>
             </div>
