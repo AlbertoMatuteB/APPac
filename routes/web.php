@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use app\Http\Controllers\UserController; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/usuario/crear', 'app\Http\Controllers\UserController@crearUsuario');
+
+
