@@ -616,9 +616,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.grid-cols-11 {
-  grid-template-columns: repeat(11, minmax(0, 1fr));
-}
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
@@ -748,6 +745,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
 .px-24 {
   padding-left: 6rem;
   padding-right: 6rem;
@@ -759,6 +760,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -776,16 +781,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
 .pt-8 {
   padding-top: 2rem;
+}
+.pr-10 {
+  padding-right: 2.5rem;
 }
 .pt-2 {
   padding-top: 0.5rem;
@@ -796,8 +796,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pr-8 {
   padding-right: 2rem;
 }
-.pr-10 {
-  padding-right: 2.5rem;
+.pt-4 {
+  padding-top: 1rem;
 }
 .pl-4 {
   padding-left: 1rem;
@@ -810,9 +810,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pr-6 {
   padding-right: 1.5rem;
-}
-.pt-4 {
-  padding-top: 1rem;
 }
 .text-left {
   text-align: left;

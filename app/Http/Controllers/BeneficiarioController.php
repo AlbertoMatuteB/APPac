@@ -84,11 +84,16 @@ class BeneficiarioController extends Controller
         return view('beneficiario.create', ["beneficiario" => $beneficiarioEdit]);
     }
 
-    public function update(Request $request, Beneficiario $beneficiario)
+    public function update(Request $request, int $id)
     {
-        $data =[
-        'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'tipoSangre', 'diagnostico', 'email', 'telefono', 'municipio', 'observacion',
-        ];
+        dd($beneficiario->$id);
+        $to_find = DB::table('beneficiarios')->find($id);
+
+        // $data =[
+        // 'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'tipoSangre', 'diagnostico', 'email', 'telefono', 'municipio', 'observacion',
+        // ];
+        
+        $beneficiario = Beneficiarios::find($id);
 
         request()->validate([
             'nombreBeneficiario' => 'required',
@@ -104,7 +109,7 @@ class BeneficiarioController extends Controller
             'fecharegistro' => 'nullable', //'required',
         ]);
 
-        $beneficiario->update([
+        $to_find->update([
             'nombreBeneficiario'  => $request->input('nombreBeneficiario'),
             'fechaNacimiento' => $request->input('fechaNacimiento'),
             'genero'=> $request->input('genero'),

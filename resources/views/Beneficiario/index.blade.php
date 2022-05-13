@@ -13,8 +13,8 @@
             </div>
             <div
                 class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
-                <div class="font-semibold pl-4">Buscar Beneficiarios</div>
-                <div class="font-semibold">Buscar por edad</div>
+                <div class="font-semibold pl-4">Buscar por Nombre</div>
+                <div class="font-semibold">Buscar por Edad</div>
                 <div class="font-semibold">Buscar por Municipio</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">

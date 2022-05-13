@@ -17,7 +17,7 @@ class CreateBeneficiariosTable extends Migration
             $table->id();
             $table->string("nombreBeneficiario", 140);
             $table->date("fechaNacimiento");
-            $table->string("genero", 10);
+            $table->string("genero", 15);
             $table->string("curp",18);
             $table->string("diagnostico");
             $table->string("tipoSangre");
