@@ -48,8 +48,8 @@
                                 <select name="rol_id" id="rol_id" class="form-control @error('rol') is-invalid @enderror" required>
                                     <option disabled selected value> -- Seleccione Rol -- </option>
                                     <option value="1">Administrador</option>
-                                    <option value="2">Evaluador</option>                       
-                                    
+                                    <option value="2">Evaluador</option>
+
                                 </select>
 
                                 @error('rol')
@@ -118,24 +118,24 @@
                         <th>Acciones</th>
                         </tr>
                         </thead>
-        
+
                         <tbody id="dynamic-row" class="text-center">
-                            
+
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
-                                
+
+
                                 <td>
                                 <a href="#">
                                     Consultar
                                 </a>
-                                
+
                                 </td>
                             </tr>
-                            
-                            
+
+
                         </tbody>
 
                     </table>
