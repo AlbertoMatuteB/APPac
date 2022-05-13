@@ -19,7 +19,7 @@
                 <div>&nbsp;</div>
                 <div class="pl-4">
                     <span
-                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                    class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -30,7 +30,7 @@
                         class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
                 </div>
                 <div> <span
-                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -54,7 +54,7 @@
                     </button>
                 </div>
             </div>
-            <div class="overflow-x-auto">
+            <div class="">
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="bg-transparent">
@@ -114,9 +114,22 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}</a>
+                                                href="{{url('/beneficiario/'.$beneficiario->id)}}" >
+                                                Consultar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{url('/beneficiario/'.$beneficiario->id.'/edit')}}">
+                                                Editar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
+                                                <form action="{{url('/beneficiario/'.$beneficiario->id)}}" class="" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
+                                                </form>
+                                                </a>
                                         </li>
                                     </ul>
                                 </div>
