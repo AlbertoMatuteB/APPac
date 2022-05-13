@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\User;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -94,5 +94,47 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Regresa la vista con el formulario para editar usuario
+     */
+    public function editForm(int $id)
+    {
+        $user = DB::table('users')->find($id);
 
+
+
+        $UserArray =[
+            "id" => $user->id,
+            "name" => $user->name,
+            "last_name" => $user->last_name,
+            "email" => $user->email,
+            "role" => DB::table('roles')->where('id', $user->role_id)->value('name')
+        ];
+
+        return view('usuarios.editarUsuario', [
+            'usuario' => $UserArray
+        ]);
+    }
+
+    /**
+     * Funcionalidad para editar usuario
+     */
+    public function editUser(int $id, Request $request)
+    {
+        $request->validate([
+            'name' =>'required',
+            'last_name' => 'required',
+            'email'=>'required'
+        ]);
+
+        $user = User::find($id);
+
+        $user->update([
+            'name'=> $request -> name,
+            'last_name' => $request -> last_name,
+            'email' => $request -> email,
+        ]);
+
+        return back()->with('message','Profile Updated');
+    }
 }

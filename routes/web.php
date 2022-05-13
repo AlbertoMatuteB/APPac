@@ -36,5 +36,9 @@ Route::get('/usuario', [UserController::class, 'index']);
 
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
 
-Route::get('/beneficiarios', ListBeneficiary::class);
+Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
+
+Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
+
+//Route::get('/beneficiarios', ListBeneficiary::class);
 
