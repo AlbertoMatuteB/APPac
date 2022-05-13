@@ -3,30 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User as User;
+use app\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    //Show Registration Form
-    public function create() {
-        return view('auth.register');
-    }
-
-    //Create New User
-    public function store(Request $request) {
-        echo 'console.log(It works)';
-        request()->validate([
-            'name' => 'required',
-            'last_name' => 'required',
-            'role_id' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed',
+    public function store(Request $request)
+    {
+        $this->validate($request,[
+            'name'=> 'requiered',
+            'last_name' => 'requiered',
+            'role_id' => 'requiered',
+            'email' => 'requiered | email',
+            'password' => 'requiered',
         ]);
 
-        $user = User::create(request(['name', 'last_name', 'role_id', 'email', 'password']));
+        /*User::create(request([
+            'name'=> $request -> name,
+            'last_name' => $request -> last_name,
+            'role_id' => $request -> role_id,
+            'email' => $request -> email,
+            'password' => Hash::make($request->password),
+        ]));*/
 
-        auth()->login($user);
 
-        return redirect()->to('/');
+        DB::table('users')->insert([
+            'name'=> $request -> name,
+            'last_name' => $request -> last_name,
+            'role_id' => $request -> role_id,
+            'email' => $request -> email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return view('home');
+
     }
+
+
 }
+
+
+
+
