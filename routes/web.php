@@ -30,4 +30,11 @@ Route::get('/', function () {
 Route::get('/usuarios/registrar', [RegistrationController::class, 'create']);
 Route::post('crearUsuario', [RegistrationController::class, 'store']);
 
+use App\Http\Controllers\UserController;
+
+Route::get('/usuario', [UserController::class, 'index']);
+
+Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+
+Route::get('/beneficiarios', ListBeneficiary::class);
 
