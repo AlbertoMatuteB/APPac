@@ -86,14 +86,8 @@ class BeneficiarioController extends Controller
 
     public function update(Request $request, int $id)
     {
-        dd($beneficiario->$id);
-        $to_find = DB::table('beneficiarios')->find($id);
-
-        // $data =[
-        // 'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'tipoSangre', 'diagnostico', 'email', 'telefono', 'municipio', 'observacion',
-        // ];
         
-        $beneficiario = Beneficiarios::find($id);
+        $beneficiario = Beneficiario::find($id);
 
         request()->validate([
             'nombreBeneficiario' => 'required',
@@ -109,7 +103,7 @@ class BeneficiarioController extends Controller
             'fecharegistro' => 'nullable', //'required',
         ]);
 
-        $to_find->update([
+        $beneficiario->update([
             'nombreBeneficiario'  => $request->input('nombreBeneficiario'),
             'fechaNacimiento' => $request->input('fechaNacimiento'),
             'genero'=> $request->input('genero'),
