@@ -51,5 +51,5 @@ Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'us
 Route::get('/usuario', [UserController::class, 'index']);
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
 
-Route::get('/beneficiarios', ListBeneficiary::class);
+//Route::get('/beneficiarios', ListBeneficiary::class);
 

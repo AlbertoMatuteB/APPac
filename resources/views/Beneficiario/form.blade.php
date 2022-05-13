@@ -13,11 +13,6 @@
 
 @endif
 
-<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> -->
-
 
 <div class="">
     {{-- min-h-full --}}
@@ -58,7 +53,7 @@
 
 
             @if ($modo == "Crear")
-            <form class="grid grid-rows-11 gap-x-6 gap-y-2 items-center" method="POST" action="/beneficiario">
+            <form class="grid grid-rows-11 gap-y-2 items-center" method="POST" action="/beneficiario">
             @csrf
                 <div class="font-semibold pt-2">&nbsp;&nbsp;Nombre
                     <input type="text" placeholder=""
@@ -196,7 +191,7 @@
 
             
             @if ($modo == "Editar")
-            <form class="grid grid-rows-11 gap-x-6 gap-y-2 items-center" method="post" action="/editBeneficiario/{{$beneficiario['id']}}">
+            <form class="grid grid-rows-11 gap-y-2 items-center" method="post" action="/editBeneficiario/{{$beneficiario['id']}}">
             @csrf
                 <div class="font-semibold pt-2">&nbsp;&nbsp;Nombre
                     <input type="text" placeholder=""
