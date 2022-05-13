@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use app\Http\Controllers\RegistrationController;
-use app\Http\Controllers;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers;
 
 
 /*

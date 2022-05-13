@@ -146,6 +146,11 @@
 
 
 <!-- Eliminar al terminar el proyecto!!!!!!!!!! -->
+@if(Auth::user()->role_id == 2)
+<h1 >CONTACTA AL ADMINISTRADOR</h1>
+@endif
+@if(Auth::user()->role_id == 1)
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -153,7 +158,7 @@
                 <div class="card-header">{{ __('Registrar Usuario') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/crearUsuario">
                         @csrf
 
                         <div class="form-group row">
@@ -171,15 +176,29 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="last_name" type="text" class="form-control @error('name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+
+                                @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
 
-                                <select name="rol" id="rol" class="form-control @error('rol') is-invalid @enderror" required>
+                                <select name="role_id" id="role_id" class="form-control @error('rol_id') is-invalid @enderror" required>
                                     <option disabled selected value> -- Seleccione Rol -- </option>
-                                    <option value="Administrador">Administrador</option>
-                                    <option value="Evaluador">Evaluador</option>                       
-                                    <option value="Visitante">Visitante</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Evaluador</option>                       
+                                  
                                 </select>
 
                                 @error('rol')
@@ -275,6 +294,8 @@
     </div>
 </div>
 
+
+@endif
 @endif
 
 @endsection
