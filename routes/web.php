@@ -45,6 +45,8 @@ Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])
 
 Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData']);
 
+Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create']);
+
 
 
 
