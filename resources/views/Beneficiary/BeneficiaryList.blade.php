@@ -112,12 +112,12 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{url('/beneficiario/'.$beneficiary->id)}}" >
+                                                href="{{url('/beneficiarios/'.$beneficiary->id)}}" >
                                                 Consultar</a>
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{url('/beneficiario/'.$beneficiary->id.'/edit')}}">
+                                                href="{{url('/beneficiarios/'.$beneficiary->id.'/edit')}}">
                                                 Editar</a>
                                         </li>
                                         <li class="z-10">

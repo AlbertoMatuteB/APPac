@@ -4,6 +4,7 @@ use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BeneficiarioController;
+use App\Http\Controllers\Beneficiary\DeleteBeneficiary;
 use App\Http\Controllers\Beneficiary\ReadBeneficiary;
 use App\Http\Controllers\UserController;
 
@@ -38,4 +39,5 @@ Route::get('/usuario', [UserController::class, 'index']);
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
 
 Route::get('/beneficiarios', ListBeneficiary::class);
-Route::get('/beneficiario/{id}', ReadBeneficiary::class);
+Route::get('/beneficiarios/{id}', ReadBeneficiary::class);
+Route::post('/beneficiarios/{id}/delete', DeleteBeneficiary::class);
