@@ -12,7 +12,7 @@ class Beneficiario extends Model
 
     protected $fillable =
     [
-        'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'diagnostico', 'tipoSangre', 'email', 'telefono', 'municipio', 'observacion','fecharegistro'
+        'nombreBeneficiario', 'fechaNacimiento', 'genero', 'curp', 'diagnostico', 'tipoSangre', 'email', 'telefono', 'municipio', 'observacion', 'fecharegistro'
     ];
 
     protected $table = "beneficiarios";
@@ -22,5 +22,4 @@ class Beneficiario extends Model
     {
         return Carbon::parse($this->attributes['fechaNacimiento'])->age;
     }
-    
 }

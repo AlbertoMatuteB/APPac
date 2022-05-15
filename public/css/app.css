@@ -548,14 +548,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-16 {
   height: 4rem;
 }
-.h-full {
-  height: 100%;
-}
 .h-6 {
   height: 1.5rem;
 }
 .h-screen {
   height: 100vh;
+}
+.h-full {
+  height: 100%;
 }
 .h-4 {
   height: 1rem;

@@ -17,9 +17,6 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-
-
 </head>
 
 <body class="antialiased">

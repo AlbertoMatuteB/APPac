@@ -78,25 +78,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($beneficiaries as $beneficiario)
+                        @foreach ($beneficiaries as $beneficiary)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$beneficiario->nombreBeneficiario}}
+                                {{$beneficiary->name}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->fechaNacimiento}}
+                                {{$beneficiary->birth_date}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->curp}}
+                                {{$beneficiary->CURP}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->genero}}
+                                {{$beneficiary->gender}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->email}}
+                                {{$beneficiary->email}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->municipio}}
+                                {{$beneficiary->institution->name}}
+                            </td>
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
@@ -111,9 +112,22 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}</a>
+                                                href="{{url('/beneficiario/'.$beneficiary->id)}}" >
+                                                Consultar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{url('/beneficiario/'.$beneficiary->id.'/edit')}}">
+                                                Editar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
+                                                <form action="{{url('/beneficiario/'.$beneficiary->id)}}" class="" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
+                                                </form>
+                                                </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -128,7 +142,5 @@
         </div>
     </div>
 </div>
-{{-- {{die($beneficiaioy)}} --}}
-
 
 @endsection

@@ -18,7 +18,7 @@
 
         @csrf
         {{ method_field('PATCH') }}
-        @include('beneficiario.card',['modo'=>'Detalle de'])
+        @include('Beneficiary.card',['modo'=>'Detalle de'])
 
     </div>
 

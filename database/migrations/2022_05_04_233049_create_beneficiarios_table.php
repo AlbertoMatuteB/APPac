@@ -18,14 +18,14 @@ class CreateBeneficiariosTable extends Migration
             $table->string("nombreBeneficiario", 140);
             $table->date("fechaNacimiento");
             $table->string("genero", 15);
-            $table->string("curp",18);
+            $table->string("curp", 18);
             $table->string("diagnostico");
             $table->string("tipoSangre");
             $table->string("email");
             $table->string("telefono");
             $table->string("municipio", 30);
             $table->text("observacion");
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

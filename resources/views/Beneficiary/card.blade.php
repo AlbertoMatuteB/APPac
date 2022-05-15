@@ -14,9 +14,6 @@
 @endif
 
 
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
 <div class="">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
@@ -38,7 +35,7 @@
             </div>
 
 
-            <div class="grid grid-rows-11 gap-x-6 gap-y-2 py-4 pr-10">
+            {{-- <div class="grid grid-rows-11 gap-x-6 gap-y-2 py-4 pr-10">
 
                 <div class=" font-semibold pt-2">
                     <a class="font-semibold pt-2">Nombre: {{ $beneficiario->nombreBeneficiario }}</a>
@@ -73,19 +70,19 @@
                 <div class=" font-semibold pt-2">
                     <a class="font-semibold pt-2">Observaciones: {{ $beneficiario->observacion }}</a>
                 </div>            
-            </div>
+            </div> --}}
  
 
             <div class="grid grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
                 <div></div>
                 <div>
                     <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{url('/beneficiario/'.$beneficiario->id.'/edit')}}">Editar</a>
+                        {{-- <a class="text-white text-center" href="{{url('/beneficiario/'.$beneficiario->id.'/edit')}}">Editar</a> --}}
                     </button>
                 </div>
                 <div>
                     <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <form action="{{url('/beneficiario/'.$beneficiario->id)}}"  method="post">
+                        {{-- <form action="{{url('/beneficiario/'.$beneficiario->id)}}"  method="post"> --}}
                         @method('DELETE')
                         @csrf
                             <input type="submit" onclick="return confirm('¿Quiere Borrar Beneficiario?')"  class="btn btn-danger" value="Borrar">
