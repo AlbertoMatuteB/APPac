@@ -41,16 +41,11 @@
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
-                                    <a class="z-10">
-                                        <a class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-cyan-500 hover:bg-cyan-600 text-align: center"
-                                            href="/usuario/{{$usuario['id']}}">
-                                            Editar</a>
-                                    </a>
-                                    <a class="z-10">
-                                        <a class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-red-400 hover:bg-red-500 text-align: center"
-                                            href="/usuario/{{$usuario['id']}}">
-                                            Eliminar</a>
-                                    </a>
+                                    <form action="/usuarios/{{$usuario['id']}}" method="post">
+                                        <input class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-red-400 hover:bg-red-500 text-align: center" type="submit" value="Delete" />
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </form>
                                 </div>
                             </td>
                         </tr>
