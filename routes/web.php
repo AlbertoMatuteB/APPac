@@ -3,6 +3,7 @@
 use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,6 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
-
-use App\Http\Controllers\UserController;
  
 Route::get('/usuario', [UserController::class, 'index']);
 
