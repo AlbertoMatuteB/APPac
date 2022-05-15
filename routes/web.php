@@ -18,15 +18,15 @@ use App\Http\Controllers\UserController;
 
 Route::get('/home', function () {
     return view('home');
-});
+})->middleware('auth');
 
 
 Route::get('/', function () {
     return view('auth.login');
 });
  
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuario', [UserController::class, 'index'])->middleware('auth');
 
-Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
-Route::get('/beneficiarios', ListBeneficiary::class);
+Route::get('/beneficiarios', ListBeneficiary::class)->middleware('auth');

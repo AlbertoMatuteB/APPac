@@ -48,6 +48,21 @@ class UserController extends Controller
     {
         $user = DB::table('users')->find($id);
 
+        $UserArray =[
+            "id" => $user->id,
+            "name" => $user->name,
+            "last_name" => $user->last_name,
+            "email" => $user->email,
+            "role" => DB::table('roles')->where('id', $user->role_id)->value('name')  
+        ]; 
+
+        return view('usuarios.consultarUsuario', [
+            'usuario' => $UserArray
+        ]);
+    }
+    public function getUserByName($name)
+    {
+        $user = User::where('username','John') -> first();
         
 
         $UserArray =[
