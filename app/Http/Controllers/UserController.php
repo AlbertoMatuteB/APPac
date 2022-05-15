@@ -62,4 +62,15 @@ class UserController extends Controller
             'usuario' => $UserArray
         ]);
     }
+
+            /**
+     * Elimina al usuario con el id identificado y regresa la vista de consultar usuarios.
+     *
+     * @param  int $id
+     * @return \Illuminate\View\View
+     */
+    public function delete(int $id){
+        $deleted = DB::table('users')->where('id', '=', $id)->delete();
+        return $this->index();
+    }
 }
