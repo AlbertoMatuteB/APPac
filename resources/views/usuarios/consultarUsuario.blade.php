@@ -41,21 +41,16 @@
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
-                                    <button class="inline-flex items-center">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                    <ul class="pt-2 absolute hidden group-hover:block z-10">
-                                        <li class="z-10">
-                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="/usuario/{{$usuario['id']}}">
-                                                Eliminar</a>
-                                        </li>
-                                    </ul>
+                                    <a class="z-10">
+                                        <a class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-cyan-500 hover:bg-cyan-600 text-align: center"
+                                            href="/usuario/{{$usuario['id']}}">
+                                            Editar</a>
+                                    </a>
+                                    <a class="z-10">
+                                        <a class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-red-400 hover:bg-red-500 text-align: center"
+                                            href="/usuario/{{$usuario['id']}}">
+                                            Eliminar</a>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

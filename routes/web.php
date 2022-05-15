@@ -31,4 +31,3 @@ Route::get('/usuario', [UserController::class, 'index']);
 Route::get('/usuario/{id}', [UserController::class, 'getUser']);
 
 Route::get('/beneficiarios', ListBeneficiary::class);
-
