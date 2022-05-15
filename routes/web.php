@@ -33,4 +33,3 @@ Route::get('/usuarios/{id}', [UserController::class, 'getUser']);
 Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
 
 Route::get('/beneficiarios', ListBeneficiary::class);
-
