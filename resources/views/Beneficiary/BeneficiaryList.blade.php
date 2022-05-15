@@ -23,7 +23,7 @@
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </span>
-                    <input type="text" placeholder="Buscar..."
+                    <input type="text" placeholder="Buscar..." id="searchnombre" name="search"
                         class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
                 </div>
                 <div> <span
@@ -34,7 +34,7 @@
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </span>
-                    <input type="text" placeholder="Buscar..."
+                    <input type="text" placeholder="Buscar..." id="searchage" name="search"
                         class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
                 </div>
                 <div>
@@ -131,5 +131,112 @@
 </div>
 {{-- {{die($beneficiary)}} --}}
 
+<script>
+    $('body').on('keyup change', '#searchfields', function()
+    {
+        if ($( "#searchage" ).val() == '')
+        {
+            var searchQuest = $( "#searchnombre" ).val();
+            var searchQuestMunicipio = $( "#searchmunicipio" ).val();
+            var searchQuestGenero = $("#searchgenero option:selected").val();
+            $.ajax(
+            {
+                method: 'POST',
+                url:'{{ route("search-beneficiarios") }}',
+                dataType: 'json',
+                data:
+                {
+                    '_token': '{{ csrf_token() }}',
+                    searchQuest: searchQuest,
+                    searchQuestMunicipio: searchQuestMunicipio,
+                    searchQuestGenero: searchQuestGenero,
+                },
+                success: function(res)
+                {
+                    var tableRow = '';
+                    $('#dynamic-row').html('');
+                    $.each(res, function(index, value)
+                    {
+                        dob = new Date(value.birth_date);
+                        var today = new Date();
+                        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                        var urlshow = 'beneficiario/'+value.id;
+                        var urledit = 'beneficiario/'+value.id+'/edit';
+                        var urldel = 'beneficiario/'+value.id;
 
+                        tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+age+'</td><td>'+value.genre+'</td><td>'+value.city+'</td>';
+                        tableRow += '<td><a href="'+urlshow+'" class="btn btn-outline-dark">Consultar</a>';
+                        tableRow += '<a href="'+urledit+'" class="btn btn-outline-secondary">Editar</a>';
+                        tableRow += '<form action="'+urldel+'" class="d-inline" method="post">@method("DELETE") @csrf<input type="submit" onclick="return confirm("¿Quiere Borrar Beneficiario?")"  class="btn btn-outline-danger" value="Borrar"></form>';
+                        tableRow += '</td></tr>'
+                        $('#dynamic-row').append(tableRow);
+                    });
+                    console.log(tableRow);
+                }
+            });
+        }
+        else
+        {
+            var searchQuest = $( "#searchnombre" ).val();
+            var searchQuestMunicipio = $( "#searchmunicipio" ).val();
+            var today = new Date().getFullYear();
+            var searchQuestAge = today - $( "#searchage" ).val();
+            
+            var m = new Date().getMonth() + 1;
+            if (m < 10)
+            {
+                m = '0' + m;
+            }
+            
+            var d = new Date().getDate();
+            if (d < 10)
+            {
+                d = '0' + d;
+            }
+            var fechaBegin = searchQuestAge - 1 + '-' + m + '-' + d;
+            var fechaEnd = searchQuestAge + '-' + m + '-' + d;
+            var searchQuestGenero = $("#searchgenero option:selected").val();
+            
+            $.ajax(
+            {
+                method: 'POST',
+                url:'{{ route("search-beneficiarios-age") }}',
+                dataType: 'json',
+                data:
+                {
+                    '_token': '{{ csrf_token() }}',
+                    searchQuest: searchQuest,
+                    searchQuestMunicipio: searchQuestMunicipio,
+                    searchQuestAge: searchQuestAge,
+                    searchQuestGenero: searchQuestGenero,
+                    fechaBegin: fechaBegin,
+                    fechaEnd: fechaEnd,
+                },
+                success: function(res)
+                {
+                    var tableRow = '';
+                    $('#dynamic-row').html('');
+                    $.each(res, function(index, value)
+                    {
+                        dob = new Date(value.birth_date);
+                        
+                        var today = new Date();
+                        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                        var urlshow = 'beneficiario/'+value.id;
+                        var urledit = 'beneficiario/'+value.id+'/edit';
+                        var urldel = 'beneficiario/'+value.id;
+                        
+                        tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+age+'</td><td>'+value.genre+'</td><td>'+value.city+'</td>';
+                        tableRow += '<td><a href="'+urlshow+'" class="btn btn-outline-dark">Consultar</a>';
+                        tableRow += '<a href="'+urledit+'" class="btn btn-outline-secondary">Editar</a>';
+                        tableRow += '<form action="'+urldel+'" class="d-inline" method="post"><input type="submit" onclick="return confirm("¿Quiere Borrar Beneficiario?")"  class="btn btn-outline-danger" value="Borrar"></form>';
+                        tableRow += '</td></tr>'
+                        
+                        $('#dynamic-row').append(tableRow);
+                    });
+                }
+            });
+        }
+    });
+</script>
 @endsection

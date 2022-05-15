@@ -25,3 +25,6 @@ Route::get('/', function () {
 });
 
 Route::get('/beneficiarios', ListBeneficiary::class);
+
+Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiaryController@searchBeneficiarios']);
+Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiaryController@searchBeneficiariosAge']);
