@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('evaluation_area', function (Blueprint $table) {
             $table->foreignId('area_id')->constrained();
-            $table->foreignId('evaluation_id')->constrained();  
-            $table->timestamps();
+            $table->foreignId('evaluation_id')->constrained();
+            // $table->timestamps();
         });
     }
 

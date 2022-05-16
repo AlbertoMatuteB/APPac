@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('name');
             $table->date('birth_date');
             $table->string('CURP');
-            $table->string('genre');
+            $table->string('gender');
             $table->string('blood_type');
             $table->string('email');
             $table->string('city');
             $table->text('observations');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

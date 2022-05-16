@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('area_id')->constrained();
-            $table->foreignId('habilities_id')->constrained();            
+            $table->foreignId('habilities_id')->constrained();
             $table->string('name');
             $table->text('description');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
