@@ -61,7 +61,7 @@
 
                 <div class="flex flex-row">
                     <a class="text-white text-center w-full rounded-lg bg-green-appac text-white text-center py-2 px-24"
-                        href="#" target="_blank" rel="">Agregar</a>
+                        href="/crearUsuario" target="_blank" rel="">Agregar</a>
                 </div> --}}
 
             </div>

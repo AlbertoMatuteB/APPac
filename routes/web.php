@@ -3,6 +3,7 @@
 use App\Http\Controllers\Beneficiary\ListBeneficiary;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
