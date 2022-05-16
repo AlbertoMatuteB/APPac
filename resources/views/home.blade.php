@@ -24,7 +24,7 @@
         </span>
         <span class="font-blue-appac font-semibold">Diagnóstico</span>
     </a>
-
+    @if(Auth::user()->role_id == 1)
     <a href="/usuario"
         class="flex flex-col items-center justify-center bg-white w-full h-full rounded-lg shadow-md hover:shadow-lg">
         <span class="material-icons material-icons-outlined  font-blue-appac menu-icon-size">
@@ -32,6 +32,7 @@
         </span>
         <span class="font-blue-appac font-semibold">Usuarios</span>
     </a>
+    @endif
 </div>
 
 
