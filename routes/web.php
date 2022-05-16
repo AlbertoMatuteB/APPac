@@ -19,14 +19,14 @@ use App\Http\Controllers;
 
 Route::get('/home', function () {
     return view('home');
-});
+})->middleware('auth');
 
 
 Route::get('/', function () {
-    return view('auth.login');
-});
+    return view('home');
+})->middleware('auth');
 
-Route::get('/crearUsuario', [RegistrationController::class, 'create']);
-Route::post('crearUsuario', [RegistrationController::class, 'store']);
+Route::get('/crearUsuario', [RegistrationController::class, 'create'])->middleware('auth');;
+Route::post('crearUsuario', [RegistrationController::class, 'store'])->middleware('auth');;
 
 
