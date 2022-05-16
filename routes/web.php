@@ -47,16 +47,12 @@ Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class,
 
 Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->middleware('auth');
 
-
-
-
-
 Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiarios'])->middleware('auth');
+
 Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge'])->middleware('auth');
 
-
-
 Route::get('/usuario', [UserController::class, 'index'])->middleware('auth');
+
 Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
 //Route::get('/beneficiarios', ListBeneficiary::class);
