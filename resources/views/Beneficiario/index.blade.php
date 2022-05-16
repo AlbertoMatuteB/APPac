@@ -1,6 +1,9 @@
+
 @extends('layouts.app')
 @section('content')
-
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
@@ -10,13 +13,13 @@
             </div>
             <div
                 class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
-                <div class="font-semibold pl-4">Buscar Beneficiarios</div>
-                <div class="font-semibold">Buscar por edad</div>
+                <div class="font-semibold pl-4">Buscar por Nombre</div>
+                <div class="font-semibold">Buscar por Edad</div>
                 <div class="font-semibold">Buscar por Municipio</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
                     <span
-                        class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                    class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,7 +30,7 @@
                         class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
                 </div>
                 <div> <span
-                        class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -59,7 +62,7 @@
                                 Nombre
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Fecha de nacimiento
+                                Edad
                             </th>
                             <th class="text-left p-4 font-medium">
                                 CURP
@@ -71,20 +74,20 @@
                                 Correo
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Institucion
+                                Municipio
                             </th>
                             <th class="text-right p-4 font-medium">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($beneficiaries as $beneficiario)
+                        @foreach ($Beneficiario as $beneficiario)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
                                 {{$beneficiario->nombreBeneficiario}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->fechaNacimiento}}
+                                {{$beneficiario->age}}
                             </td>
                             <td class="p-4">
                                 {{$beneficiario->curp}}
@@ -111,9 +114,22 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}</a>
+                                                href="{{url('/beneficiario/'.$beneficiario->id)}}" >
+                                                Consultar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{url('/beneficiario/'.$beneficiario->id.'/edit')}}">
+                                                Editar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
+                                                <form action="{{url('/beneficiario/'.$beneficiario->id)}}" class="" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
+                                                </form>
+                                                </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -124,11 +140,11 @@
                     </tbody>
                 </table>
             </div>
-            {{$beneficiaries->links()}}
+            {{$Beneficiario->links()}}
         </div>
     </div>
 </div>
-{{-- {{die($beneficiaioy)}} --}}
+{{-- {{die($beneficiario)}} --}}
 
 
 @endsection
