@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+@if(Auth::user()->role_id == 1)
+
 <div class="">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
@@ -61,7 +63,7 @@
 
                 <div class="flex flex-row">
                     <a class="text-white text-center w-full rounded-lg bg-green-appac text-white text-center py-2 px-24"
-                        href="#" target="_blank" rel="">Agregar</a>
+                        href="/crearUsuario" target="_blank" rel="">Agregar</a>
                 </div> --}}
 
             </div>
@@ -102,7 +104,7 @@
                                 <div class="group inline-block relative">
                                     <a class="z-10">
                                         <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                            href="/usuarios/{{$usuario['id']}}">
+                                            href="/usuario/{{$usuario['id']}}">
                                             Consultar</a>
                                     </a>
                                 </div>
@@ -117,4 +119,19 @@
     </div>
 </div>
 {{-- {{die($beneficiary)}} --}}
+@endif
+
+@if(Auth::user()->role_id == 2)
+<div class="">
+    <h1 class="text-3xl text-black text-center align-middle">
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        Contacta a un administrador para consultar usuarios.
+    </h1>
+</div>
+@endif
+
 @endsection
