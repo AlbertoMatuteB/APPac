@@ -21,8 +21,22 @@ Route::get('/home', HomeController::class)->middleware('auth');
 
 
 Route::get('/', function () {
-    return view('auth.login');
-});
+    return view('home');
+})->middleware('auth');
+
+
+Route::get('/crearUsuario', [RegistrationController::class, 'create'])->middleware('auth');
+
+Route::post('crearUsuario', [RegistrationController::class, 'store'])->middleware('auth');
+
+Route::resource('register',BeneficiarioController::class)->middleware('auth');
+// Route::post('beneficiario', [BeneficiarioController::class, 'store']);
+
+Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])->middleware('auth');
+
+Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData'])->middleware('auth');
+
+Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->middleware('auth');
 
 Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
@@ -35,5 +49,6 @@ Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBen
 Route::get('/usuarios', [UserController::class, 'index']);
 
 Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+
 
 
