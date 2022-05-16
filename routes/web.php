@@ -24,6 +24,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::post('/buscarBeneficiario', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiarios');
+Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiariosAge');
+
 use App\Http\Controllers\UserController;
  
 Route::get('/usuarios', [UserController::class, 'index']);
