@@ -34,30 +34,30 @@ Route::post('crearUsuario', [RegistrationController::class, 'store'])->middlewar
 
 
 
-Route::resource('register',BeneficiarioController::class);
+Route::resource('register',BeneficiarioController::class)->middleware('auth');
 
 
-Route::resource('beneficiario',BeneficiarioController::class);
+Route::resource('beneficiario',BeneficiarioController::class)->middleware('auth');
 
 // Route::post('beneficiario', [BeneficiarioController::class, 'store']);
 
-Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update']);
+Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])->middleware('auth');
 
-Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData']);
+Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData'])->middleware('auth');
 
-Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create']);
-
-
+Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->middleware('auth');
 
 
 
-Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiarios']);
-Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge']);
+
+
+Route::post('/beneficiarios/search', ['as' => 'search-beneficiarios', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiarios'])->middleware('auth');
+Route::post('/beneficiarios/searchage', ['as' => 'search-beneficiarios-age', 'uses' => 'App\Http\Controllers\BeneficiarioController@searchBeneficiariosAge'])->middleware('auth');
 
 
 
-Route::get('/usuario', [UserController::class, 'index']);
-Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+Route::get('/usuario', [UserController::class, 'index'])->middleware('auth');
+Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
 //Route::get('/beneficiarios', ListBeneficiary::class);
 
