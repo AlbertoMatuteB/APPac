@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('beneficiary_diagnosis', function (Blueprint $table) {
             $table->foreignId('beneficiary_id')->references('id')->on('beneficiary');
             $table->foreignId('diagnosis_id')->references('id')->on('diagnosis');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
