@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('beneficiary_id')->references('id')->on('beneficiary');
             $table->date('date');
             $table->text('observations');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

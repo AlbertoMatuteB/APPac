@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('area_id')->constrained();
             $table->string('name');
             $table->text('description');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

@@ -59,7 +59,9 @@
                     </select>
                 </div>
                 <div>
-                <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24" href="#">Agregar</a>
+                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
+                        <a class="text-white text-center" href="{{ url('beneficiario/new') }}">Agregar</a>
+                    </button>
                 </div>
             </div>
             <div class="">
@@ -101,13 +103,14 @@
                                 {{$beneficiary->CURP}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiary->genre}}
+                                {{$beneficiary->gender}}
                             </td>
                             <td class="p-4">
                                 {{$beneficiary->email}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiary->institution_id}}
+                                {{$beneficiary->institution->name}}
+                            </td>
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
@@ -122,9 +125,21 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}</a>
+                                                href="{{url('/beneficiarios/'.$beneficiary->id)}}" >
+                                                Consultar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{url('/beneficiarios/'.$beneficiary->id.'/edit')}}">
+                                                Editar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
+                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}" class="" method="post">
+                                                    @csrf
+                                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
+                                                </form>
+                                                </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -139,7 +154,5 @@
         </div>
     </div>
 </div>
-{{-- {{die($beneficiary)}} --}}
-
 
 @endsection

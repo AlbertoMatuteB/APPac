@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('answer_evaluation', function (Blueprint $table) {
             $table->id();
             $table->foreignId('activity_id')->constrained();
-            $table->foreignId('evaluation_id')->constrained();  
-            $table->foreignId('beneficiary_id')->references('id')->on('beneficiary'); 
+            $table->foreignId('evaluation_id')->constrained();
+            $table->foreignId('beneficiary_id')->references('id')->on('beneficiary');
             $table->string('answer');
             $table->text('comments');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
