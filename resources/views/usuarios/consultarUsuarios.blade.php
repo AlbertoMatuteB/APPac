@@ -102,7 +102,7 @@
                                 <div class="group inline-block relative">
                                     <a class="z-10">
                                         <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                            href="/usuario/{{$usuario['id']}}">
+                                            href="/usuarios/{{$usuario['id']}}">
                                             Consultar</a>
                                     </a>
                                 </div>
