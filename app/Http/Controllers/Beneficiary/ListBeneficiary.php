@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Beneficiary;
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ListBeneficiary extends Controller
 {
@@ -13,6 +14,26 @@ class ListBeneficiary extends Controller
         $beneficiary = Beneficiary::paginate(1);
 
         return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiary]);
+    }
+
+    // Buscar un beneficiario a partir del request AJAX.
+    public function searchBeneficiarios(Request $request)
+    {
+        $name=$request->get('search');
+        $beneficiaries = DB::table('beneficiary')->where('name', 'like', '%'.$name.'%')->paginate(5);
+
+        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
+    }
+
+    // Busca un beneficiario con el request AJAX y el parámetro edad.
+    public function searchBeneficiariosAge(Request $request)
+    {
+        $mytime = date("Y");
+        $name=$request->get('search');
+        $year = $mytime - $name;
+        $beneficiaries = DB::table('beneficiary')->where('birth_date', 'like', '%'.$year.'%')->paginate(5);
+
+        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
     }
 }
 /**
