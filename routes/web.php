@@ -26,8 +26,10 @@ Route::get('/', function () {
 
 use App\Http\Controllers\UserController;
  
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuarios', [UserController::class, 'index']);
 
-Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+Route::get('/usuarios/{id}', [UserController::class, 'getUser']);
+
+Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
 
 Route::get('/beneficiarios', ListBeneficiary::class);
