@@ -54,5 +54,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth/login');
         });
 
+        
+
     }
 }

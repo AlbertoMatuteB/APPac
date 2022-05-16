@@ -5,6 +5,8 @@
 
 
 @can('create', App\Models\User::class)
+@if(Auth::user()->role_id == 1)
+
 
 <div class="">
     {{-- min-h-full --}}
@@ -135,6 +137,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @else
 
@@ -148,7 +151,11 @@
 
 <!-- Eliminar al terminar el proyecto!!!!!!!!!! -->
 @if(Auth::user()->role_id == 2)
-<h1 >CONTACTA AL ADMINISTRADOR</h1>
+<div class="">
+    <h1 class="text-3xl text-black text-center align-middle">
+        Contacta a un administrador para crear nuevos usuarios!!
+    </h1>
+</div>
 @endif
 @if(Auth::user()->role_id == 1)
 
