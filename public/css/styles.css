@@ -11,10 +11,6 @@ body {
   background-color: #0061AA;
 }
 
-.bg-green-appac {
-  background-color: #00aa47;
-}
-
 .bg-default-grey {
   background-color: #F8F8FF;
 }
@@ -28,4 +24,12 @@ body {
 .menu-icon-size {
   font-size: 100px !important;
   font-weight: 100 !important;
+}
+
+.bg-green-appac {
+  background-color: #00aa47;
+}
+
+.bg-default-grey {
+  background-color: #F8F8FF;
 }
