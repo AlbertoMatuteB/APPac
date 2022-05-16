@@ -4,7 +4,7 @@
 <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
     <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
         <div>
-            <h1 class="font-blue-appac text-left text-4xl font-black">Crear nuevo Beneficiario</h2>
+            <h1 class="font-blue-appac text-left text-4xl font-black">Editar Beneficiario</h2>
         </div>
 
 
@@ -21,9 +21,9 @@
         </button>
 
 
-        <form class="grid grid-rows-11 gap-y-2 items-center" method="POST" action="/beneficiarios">
+        <form class="grid grid-rows-11 gap-y-2 items-center" method="POST" action="{{url('/beneficiarios/'.$beneficiary->id . '/edit')}} ">
           @csrf
-          @include('Beneficiary.form',['mode'=>'create'])
+          @include('Beneficiary.form',['mode'=>'Edit'])
         </form>
 
     </div>

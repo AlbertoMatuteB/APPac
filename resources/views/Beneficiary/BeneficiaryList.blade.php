@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{ url('beneficiario/create') }}">Agregar</a>
+                        <a class="text-white text-center" href="{{ url('beneficiario/new') }}">Agregar</a>
                     </button>
                 </div>
             </div>
@@ -122,8 +122,7 @@
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
-                                                <form action="{{url('/beneficiario/'.$beneficiary->id)}}" class="" method="post">
-                                                    @method('DELETE')
+                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}" class="" method="post">
                                                     @csrf
                                                     <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
                                                 </form>
