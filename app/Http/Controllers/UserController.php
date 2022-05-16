@@ -48,6 +48,21 @@ class UserController extends Controller
     {
         $user = DB::table('users')->find($id);
 
+        $UserArray =[
+            "id" => $user->id,
+            "name" => $user->name,
+            "last_name" => $user->last_name,
+            "email" => $user->email,
+            "role" => DB::table('roles')->where('id', $user->role_id)->value('name')  
+        ]; 
+
+        return view('usuarios.consultarUsuario', [
+            'usuario' => $UserArray
+        ]);
+    }
+    public function getUserByName($name)
+    {
+        $user = User::where('username','John') -> first();
         
 
         $UserArray =[
@@ -61,5 +76,16 @@ class UserController extends Controller
         return view('usuarios.consultarUsuario', [
             'usuario' => $UserArray
         ]);
+    }
+
+            /**
+     * Elimina al usuario con el id identificado y regresa la vista de consultar usuarios.
+     *
+     * @param  int $id
+     * @return \Illuminate\View\View
+     */
+    public function delete(int $id){
+        $deleted = DB::table('users')->where('id', '=', $id)->delete();
+        return $this->index();
     }
 }

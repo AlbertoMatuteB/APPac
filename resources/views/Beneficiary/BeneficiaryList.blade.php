@@ -15,27 +15,40 @@
                 <div class="font-semibold">Buscar por Municipio</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
-                    <span
-                        class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </span>
-                    <input type="text" placeholder="Buscar..."
+                    <form method="POST" action="/buscarBeneficiario" class="pl-4 items-center flex flex-row">
+                        @csrf
+                        <span
+                            class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </span>
+                        <input type="text" placeholder="Buscar..." id="searchnombre" name="search"
                         class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                        <button type="submit" class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </form>
                 </div>
-                <div> <span
-                        class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </span>
-                    <input type="text" placeholder="Buscar..."
-                        class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                <div> 
+                    <form method="POST" action="/buscarBeneficiarioEdad" class="pl-4 items-center flex flex-row">
+                        @csrf
+                        <span
+                            class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </span>
+                        <input type="text" placeholder="Buscar..." id="searchage" name="search"
+                            class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                        <button type="submit" class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill=".bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </form>
                 </div>
                 <div>
                     <select
@@ -46,9 +59,7 @@
                     </select>
                 </div>
                 <div>
-                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{ url('beneficiario/create') }}">Agregar</a>
-                    </button>
+                <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24" href="#">Agregar</a>
                 </div>
             </div>
             <div class="">
@@ -78,25 +89,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($beneficiaries as $beneficiario)
+                        @foreach ($beneficiaries as $beneficiary)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$beneficiario->nombreBeneficiario}}
+                                {{$beneficiary->name}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->fechaNacimiento}}
+                                {{$beneficiary->birth_date}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->curp}}
+                                {{$beneficiary->CURP}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->genero}}
+                                {{$beneficiary->genre}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->email}}
+                                {{$beneficiary->email}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->municipio}}
+                                {{$beneficiary->institution_id}}
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
@@ -128,7 +139,7 @@
         </div>
     </div>
 </div>
-{{-- {{die($beneficiaioy)}} --}}
+{{-- {{die($beneficiary)}} --}}
 
 
 @endsection

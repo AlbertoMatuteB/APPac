@@ -26,7 +26,7 @@
                         class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-transparent text-base border-b-2  outline-none focus:border-black w-full pl-10" />
                     @error('email')
                     <span class="text-red-500" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>Asegurate de ingresar credenciales correctos</strong>
                     </span>
                     @enderror
                 </div>
