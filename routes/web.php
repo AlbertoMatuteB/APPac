@@ -45,6 +45,9 @@ Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBen
 
 Route::get('/usuarios', [UserController::class, 'index']);
 
+Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
+
+
 Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
 
 Route::resource('register', BeneficiarioController::class);

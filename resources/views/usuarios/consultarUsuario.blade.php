@@ -43,7 +43,7 @@
                             <td class="p-4">
                                 <div class="group inline-block relative">
                                     <form action="/usuarios/{{$usuario['id']}}" method="post">
-                                        <input class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-red-400 hover:bg-red-500 text-align: center" type="submit" value="Delete" />
+                                        <input class="z-10 border font-light text-lg py-2 px-4 block whitespace-no-wrap bg-red-400 hover:bg-red-500 text-align: center" type="submit" value="Borrar" />
                                         <input type="hidden" name="_method" value="delete" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>

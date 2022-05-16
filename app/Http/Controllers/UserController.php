@@ -60,21 +60,29 @@ class UserController extends Controller
             'usuario' => $UserArray
         ]);
     }
-    public function getUserByName($name)
+    public function getUserByRol(Request $request)
     {
-        $user = User::where('username','John') -> first();
-        
+        $users = collect(DB::table('users')->where('role_id',$request->rol)->get());
 
-        $UserArray =[
-            "id" => $user->id,
-            "name" => $user->name,
-            "last_name" => $user->last_name,
-            "email" => $user->email,
-            "role" => DB::table('roles')->where('id', $user->role_id)->value('name')  
-        ]; 
+        $result = [];
 
-        return view('usuarios.consultarUsuario', [
-            'usuario' => $UserArray
+        foreach($users as $user){
+
+            $UserArray =[
+                "id" => $user->id,
+                "name" => $user->name,
+                "last_name" => $user->last_name,
+                "email" => $user->email,
+                "role" => DB::table('roles')->where('id', $user->role_id)->value('name')
+            ]; 
+
+            $result[$user->id] = $UserArray;
+        }
+
+     
+
+        return view('usuarios.consultarUsuarios', [
+            'usuarios' => $result
         ]);
     }
 
