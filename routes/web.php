@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Beneficiary\ListBeneficiary;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,24 +17,23 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', HomeController::class)->middleware('auth');
 
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::post('/buscarBeneficiario', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiarios');
-Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiariosAge');
+Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
-use App\Http\Controllers\UserController;
+Route::get('/beneficiarios', ListBeneficiary::class)->middleware('auth');
+
+Route::post('/buscarBeneficiario', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiarios');
+
+Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiariosAge');
  
 Route::get('/usuarios', [UserController::class, 'index']);
 
-Route::get('/usuarios/{id}', [UserController::class, 'getUser']);
-
 Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
 
-Route::get('/beneficiarios', ListBeneficiary::class);
+
