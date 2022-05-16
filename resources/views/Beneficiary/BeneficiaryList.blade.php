@@ -47,7 +47,8 @@
                 </div>
                 <div>
                     <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{ url('beneficiario/create') }}">Agregar</a>
+                        <a class="text-white text-center" href="#"
+                            target="_blank" rel="">Agregar</a>
                     </button>
                 </div>
             </div>
@@ -78,25 +79,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($beneficiaries as $beneficiario)
+                        @foreach ($beneficiaries as $beneficiary)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$beneficiario->nombreBeneficiario}}
+                                {{$beneficiary->name}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->fechaNacimiento}}
+                                {{$beneficiary->birth_date}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->curp}}
+                                {{$beneficiary->CURP}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->genero}}
+                                {{$beneficiary->genre}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->email}}
+                                {{$beneficiary->email}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiario->municipio}}
+                                {{$beneficiary->institution_id}}
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
@@ -128,7 +129,7 @@
         </div>
     </div>
 </div>
-{{-- {{die($beneficiaioy)}} --}}
+{{-- {{die($beneficiary)}} --}}
 
 
 @endsection
