@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" href="{{ asset('img/logo_apac.jpeg') }}">
     <title>Apac qro</title>
 
     <!-- Scripts -->

@@ -46,13 +46,10 @@
                     </select>
                 </div>
                 <div>
-                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="#"
-                            target="_blank" rel="">Agregar</a>
-                    </button>
+                <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24" href="#">Agregar</a>
                 </div>
             </div>
-            <div class="overflow-x-auto">
+            <div class="">
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="bg-transparent">

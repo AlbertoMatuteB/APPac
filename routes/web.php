@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/home', HomeController::class);
+Route::get('/home', HomeController::class)->middleware('auth');
 
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/usuario', [UserController::class, 'index'])->middleware('auth');
 
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
-Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+Route::get('/beneficiarios', ListBeneficiary::class)->middleware('auth');
 
-Route::get('/beneficiarios', ListBeneficiary::class);
