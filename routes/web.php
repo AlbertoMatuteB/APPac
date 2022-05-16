@@ -24,7 +24,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/beneficiarios', ListBeneficiary::class);
-
 Route::post('/buscarBeneficiario', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiarios');
 Route::post('/buscarBeneficiarioEdad', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiariosAge');
+
+use App\Http\Controllers\UserController;
+ 
+Route::get('/usuarios', [UserController::class, 'index']);
+
+Route::get('/usuarios/{id}', [UserController::class, 'getUser']);
+
+Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+
+Route::get('/beneficiarios', ListBeneficiary::class);
