@@ -20,10 +20,8 @@ class RegistrationController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             
-        
-            
         ]);
-        
+       
         $user = User::create(request(['name','last_name','role_id', 'email', 'password']));
         
         //auth()->login($user);
