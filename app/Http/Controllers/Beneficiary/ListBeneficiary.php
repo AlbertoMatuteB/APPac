@@ -20,7 +20,7 @@ class ListBeneficiary extends Controller
     public function searchBeneficiarios(Request $request)
     {
         $name=$request->get('search');
-        $beneficiaries = DB::table('beneficiary')->where('name', 'like', '%'.$name.'%')->paginate(5);
+        $beneficiaries = Beneficiary::with('institution')->where('name', 'like', '%'.$name.'%')->paginate(5);
 
         return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
     }
@@ -31,7 +31,7 @@ class ListBeneficiary extends Controller
         $mytime = date("Y");
         $name=$request->get('search');
         $year = $mytime - $name;
-        $beneficiaries = DB::table('beneficiary')->where('birth_date', 'like', '%'.$year.'%')->paginate(5);
+        $beneficiaries = Beneficiary::with('institution')->where('birth_date', 'like', '%'.$year.'%')->paginate(5);
 
         return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
     }
