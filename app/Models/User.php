@@ -25,7 +25,7 @@ class User extends Authenticatable
         'role_id',
         'email',
         'password',
-        
+
     ];
 
     /**
@@ -40,6 +40,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Add a mutator to ensure hashed passwords
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -48,10 +56,5 @@ class User extends Authenticatable
     [
         'email_verified_at' => 'datetime',
     ];
-
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
 
 }
