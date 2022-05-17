@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             DiagnosisSeeder::class,
             AreaSeeder::class,
             HabilitySeeder::class,
-            InstitutionSeeder::class
+            InstitutionSeeder::class,
+            CitySeeder::class,
         ]);
     }
 }
