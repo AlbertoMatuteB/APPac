@@ -33,6 +33,6 @@ class Beneficiary extends Model
     }
     public function city()
     {
-        return $this->hasOne(City::class, 'city_id');
+        return $this->hasOne(City::class, 'id', 'city_id');
     }
 }

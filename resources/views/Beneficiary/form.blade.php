@@ -21,7 +21,7 @@
             @endif
         />
     </div>
-    <div class="font-semibold">
+    {{-- <div class="font-semibold">
         <span>Género</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -31,12 +31,19 @@
                 disabled
             @endif
         />
-    </div>
+    </div> --}}
     <div class="font-semibold">
         <span>Género</span>
         <select name="gender"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+            @if ( $mode=='Consult')
+                disabled
+            @endif>
+            @if($mode=='Edit' || $mode=='Consult' ) 
+            <option value="{{$beneficiary->gender}}" selected>{{$beneficiary->gender}}</option>
+            @else
             <option selected></option>
+            @endif
             <option value="Hombre">Hombre</option>
             <option value="Mujer">Mujer</option>
         </select>
@@ -55,8 +62,17 @@
     <div class="font-semibold">
         <span>Tipo de sangre</span>
         <select name="blood_type"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+            @if ( $mode=='Consult')
+                disabled
+            @endif>
+
+            @if($mode=='Edit' || $mode=='Consult' ) 
+            <option value="{{$beneficiary->blood_type}}" selected>{{$beneficiary->blood_type}}</option>
+            @else
             <option selected></option>
+            @endif
+           
             <option value="A+">A+</option>
             <option value="A-">A-</option>
             <option value="B+">B+</option>
@@ -67,7 +83,7 @@
             <option value="AB-">AB-</option>
         </select>
     </div>
-    <div class="font-semibold">
+    {{-- <div class="font-semibold">
         <span>Tipo de sangre</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -77,14 +93,21 @@
                 disabled
             @endif
         />
-    </div>
+    </div> --}}
     <div class="font-semibold">
         <span>Municipio</span>
         <select name="city_id"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+            @if ( $mode=='Consult')
+                disabled
+            @endif>
+            @if($mode=='Edit' || $mode=='Consult' ) 
+            <option value="{{$beneficiary->city->id}}" selected>{{$beneficiary->city->name}}</option>
+            @else
             <option selected></option>
+            @endif
             @foreach ($cities as $city)
-                <option value="{{$city->name}}">{{$city->name}}</option>
+                <option value="{{$city->id}}">{{$city->name}}</option>
             @endforeach
         </select>
     </div>

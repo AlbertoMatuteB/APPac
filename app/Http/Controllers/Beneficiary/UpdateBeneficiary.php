@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Beneficiary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class UpdateBeneficiary extends Controller
@@ -40,8 +41,9 @@ class UpdateBeneficiary extends Controller
     }
     public function show($id)
     {
-        $beneficiary = Beneficiary::find($id);
+        $beneficiary = Beneficiary::with('city')->where('id', $id)->first();
+        $cities = City::all();
 
-        return view('Beneficiary.update', compact('beneficiary'));
+        return view('Beneficiary.update', compact('beneficiary', 'cities'));
     }
 }

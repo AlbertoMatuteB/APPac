@@ -28,7 +28,7 @@ class CreateBeneficiary extends Controller
             'CURP' => request('CURP'),
             'blood_type' => request('blood_type'),
             'email' => request('email'),
-            'city_id' => request('city'),
+            'city_id' => request('city_id'),
             'observations' => request('observations'),
             'institution_id' => 1,
         ]);

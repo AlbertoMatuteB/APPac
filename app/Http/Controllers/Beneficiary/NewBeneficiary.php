@@ -11,7 +11,7 @@ class NewBeneficiary extends Controller
 {
     public function __invoke()
     {
-        $cities = City::select('name')->get();
+        $cities = City::all();
         return view('Beneficiary.create', compact('cities'));
     }
 }
