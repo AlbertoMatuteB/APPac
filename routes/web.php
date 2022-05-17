@@ -16,6 +16,9 @@ use App\Http\Controllers\Beneficiary\UpdateBeneficiary;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
+Route::get('/cons', function () {
+    return view('construct');
+})->middleware('auth');
 
 Route::get('/', function () {
     return view('home');
