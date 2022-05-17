@@ -20,7 +20,7 @@ class UpdateBeneficiary extends Controller
             'CURP' => 'required',
             'blood_type' => 'required',
             'email' => 'required',
-            'city' => 'nullable',
+            'city_id' => 'nullable',
             'observations' => 'nullable',
         ]);
 
@@ -31,7 +31,7 @@ class UpdateBeneficiary extends Controller
             'CURP' => request('CURP'),
             'blood_type' => request('blood_type'),
             'email' => request('email'),
-            'city' => request('city'),
+            'city_id' => request('city'),
             'observations' => request('observations'),
             'institution_id' => 1,
         ]);

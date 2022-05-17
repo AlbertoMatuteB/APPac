@@ -33,6 +33,15 @@
         />
     </div>
     <div class="font-semibold">
+        <span>Género</span>
+        <select name="gender"
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            <option selected></option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+        </select>
+    </div>
+    <div class="font-semibold">
         <span>Email</span>
         <input type="email"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -42,6 +51,21 @@
                 disabled
             @endif
         />
+    </div>
+    <div class="font-semibold">
+        <span>Tipo de sangre</span>
+        <select name="blood_type"
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            <option selected></option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
     </div>
     <div class="font-semibold">
         <span>Tipo de sangre</span>
@@ -56,14 +80,13 @@
     </div>
     <div class="font-semibold">
         <span>Municipio</span>
-        <input type="text"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="city"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->city}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+        <select name="city_id"
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            <option selected></option>
+            @foreach ($cities as $city)
+                <option value="{{$city->name}}">{{$city->name}}</option>
+            @endforeach
+        </select>
     </div>
     <div class="font-semibold">
         <span>CURP</span>
