@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('gender');
             $table->string('blood_type');
             $table->string('email');
-            $table->string('city');
+            // $table->unsignedBigInteger('city_id');
+            // $table->foreign('city_id')->references('id')->on('city');
+            $table->foreignId('city_id')->constrained();
             $table->text('observations');
             // $table->timestamps();
         });
