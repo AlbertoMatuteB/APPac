@@ -59,7 +59,7 @@ class AreaSeeder extends Seeder
         ],
         [
             'id' => '9',
-            'name' => 'Habilidades de trabajo',
+            'name' => 'Habilidades de Trabajo',
             'description' => 'Habilidades de trabajo',
         ],
         [
