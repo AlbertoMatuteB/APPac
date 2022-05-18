@@ -80,3 +80,9 @@ Route::get('/beneficiarios/{id}', ReadBeneficiary::class);
 Route::post('/beneficiarios/{id}/delete', DeleteBeneficiary::class);
 Route::get('/beneficiarios/{id}/edit', [UpdateBeneficiary::class, 'show']);
 Route::post('/beneficiarios/{id}/edit', UpdateBeneficiary::class);
+
+Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
+
+Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
+
+//Route::get('/beneficiarios', ListBeneficiary::class);
