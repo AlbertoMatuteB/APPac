@@ -15,7 +15,7 @@
                 <div class="font-semibold">Buscar por Municipio</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
-                    <form method="POST" action="/buscarBeneficiario" class="pl-4 items-center flex flex-row">
+                    <form method="POST" action="/beneficiarios/search" class="pl-4 items-center flex flex-row">
                         @csrf
                         <span
                             class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
@@ -33,7 +33,7 @@
                     </form>
                 </div>
                 <div> 
-                    <form method="POST" action="/buscarBeneficiarioEdad" class="pl-4 items-center flex flex-row">
+                    <form method="POST" action="/beneficiarios/search/age" class="pl-4 items-center flex flex-row">
                         @csrf
                         <span
                             class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
