@@ -15,26 +15,6 @@ class ListBeneficiary extends Controller
 
         return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiary]);
     }
-
-    // Buscar un beneficiario a partir del request AJAX.
-    public function searchBeneficiarios(Request $request)
-    {
-        $name=$request->get('search');
-        $beneficiaries = Beneficiary::with('institution')->where('name', 'like', '%'.$name.'%')->paginate(5);
-
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
-    }
-
-    // Busca un beneficiario con el request AJAX y el parámetro edad.
-    public function searchBeneficiariosAge(Request $request)
-    {
-        $mytime = date("Y");
-        $name=$request->get('search');
-        $year = $mytime - $name;
-        $beneficiaries = Beneficiary::with('institution')->where('birth_date', 'like', '%'.$year.'%')->paginate(5);
-
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
-    }
 }
 /**
  * TODO

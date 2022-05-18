@@ -96,7 +96,7 @@
     </div> --}}
     <div class="font-semibold">
         <span>Municipio</span>
-        <select name="city_id"
+        <select name="city_id" id="city_id"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             @if ( $mode=='Consult')
                 disabled
