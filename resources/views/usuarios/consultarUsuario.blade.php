@@ -57,9 +57,11 @@
                                                 Editar</a>
                                         </li>
                                         <li class="z-10">
-                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="/usuario/{{$usuario['id']}}">
-                                                Eliminar</a>
+                                            <form action="/usuarios/{{$usuario['id']}}" method="post">
+                                                <input class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap" type="submit" value="Eliminar" />
+                                                <input type="hidden" name="_method" value="delete" />
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
