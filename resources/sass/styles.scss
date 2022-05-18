@@ -1,0 +1,32 @@
+body {
+    font-family: 'Montserrat', serif;
+    background-color: #F8F8FF;
+}
+
+.font-blue-appac {
+    color: #0061AA;
+}
+
+.bg-blue-appac {
+    background-color: #0061AA;
+}
+
+.bg-default-grey{
+    background-color:#F8F8FF;
+}
+.menu-grid{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.menu-icon-size{
+    font-size: 100px !important;
+    font-weight: 100 !important;
+}
+.bg-green-appac {
+    background-color: #00aa47;
+}
+
+.bg-default-grey {
+    background-color: #F8F8FF;
+}
