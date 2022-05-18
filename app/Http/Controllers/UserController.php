@@ -168,6 +168,6 @@ class UserController extends Controller
             'email' => $request -> email,
         ]);
 
-        return back()->with('message','Profile Updated');
+        return redirect('/usuarios')->with('alert','Perfil Actualizado');
     }
 }
