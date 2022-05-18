@@ -8,7 +8,7 @@
             <div>
                 <h1 class="font-blue-appac text-left text-4xl font-black">{{$usuario['name']}}</h2>
             </div>
-            <div class="overflow-x-auto">
+            <div class="">
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="bg-transparent">
