@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             HabilitySeeder::class,
             InstitutionSeeder::class,
             CitySeeder::class,
+            ActivitySeeder::class
         ]);
     }
 }
