@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         //
         DB::table('users')->insert([
-           [
+            [
                 'name' => 'Super',
                 'last_name' => 'Admin',
                 'role_id' => '1',

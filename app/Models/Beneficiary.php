@@ -20,7 +20,7 @@ class Beneficiary extends Model
         'gender',
         'blood_type',
         'email',
-        'city',
+        'city_id',
         'observations'
     ];
     public function institution()
@@ -30,5 +30,9 @@ class Beneficiary extends Model
     public function age()
     {
         return Carbon::parse($this->birth_date)->age;
+    }
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
     }
 }

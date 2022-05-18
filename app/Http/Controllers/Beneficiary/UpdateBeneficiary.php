@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Beneficiary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class UpdateBeneficiary extends Controller
@@ -20,7 +21,7 @@ class UpdateBeneficiary extends Controller
             'CURP' => 'required',
             'blood_type' => 'required',
             'email' => 'required',
-            'city' => 'nullable',
+            'city_id' => 'nullable',
             'observations' => 'nullable',
         ]);
 
@@ -31,7 +32,7 @@ class UpdateBeneficiary extends Controller
             'CURP' => request('CURP'),
             'blood_type' => request('blood_type'),
             'email' => request('email'),
-            'city' => request('city'),
+            'city_id' => request('city'),
             'observations' => request('observations'),
             'institution_id' => 1,
         ]);
@@ -40,8 +41,9 @@ class UpdateBeneficiary extends Controller
     }
     public function show($id)
     {
-        $beneficiary = Beneficiary::find($id);
+        $beneficiary = Beneficiary::with('city')->where('id', $id)->first();
+        $cities = City::all();
 
-        return view('Beneficiary.update', compact('beneficiary'));
+        return view('Beneficiary.update', compact('beneficiary', 'cities'));
     }
 }

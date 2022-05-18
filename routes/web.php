@@ -20,16 +20,19 @@ Route::get('/cons', function () {
     return view('construct');
 })->middleware('auth');
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
 
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+});
 
 Route::get('/crearUsuario', [RegistrationController::class, 'create'])->middleware('auth');
 
 Route::post('crearUsuario', [RegistrationController::class, 'store'])->middleware('auth');
 
-Route::resource('register',BeneficiarioController::class)->middleware('auth');
+Route::resource('register', BeneficiarioController::class)->middleware('auth');
 // Route::post('beneficiario', [BeneficiarioController::class, 'store']);
 
 Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])->middleware('auth');
@@ -40,7 +43,7 @@ Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->mid
 
 Route::get('/usuario/{id}', [UserController::class, 'getUser'])->middleware('auth');
 
-Route::get('/beneficiarios', ListBeneficiary::class)->middleware('auth');
+// Route::get('/beneficiarios', ListBeneficiary::class)->middleware('auth');
 
 Route::post('/buscarBeneficiario', 'App\Http\Controllers\Beneficiary\ListBeneficiary@searchBeneficiarios');
 
@@ -77,9 +80,9 @@ Route::get('/beneficiarios/{id}', ReadBeneficiary::class);
 Route::post('/beneficiarios/{id}/delete', DeleteBeneficiary::class);
 Route::get('/beneficiarios/{id}/edit', [UpdateBeneficiary::class, 'show']);
 Route::post('/beneficiarios/{id}/edit', UpdateBeneficiary::class);
+
 Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
 
 Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
 
 //Route::get('/beneficiarios', ListBeneficiary::class);
-

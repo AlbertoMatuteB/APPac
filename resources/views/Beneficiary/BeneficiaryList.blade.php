@@ -26,8 +26,8 @@
                             </svg>
                         </span>
                         <input type="text" placeholder="Buscar..." id="searchnombre" name="search"
-                        class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
-                        <button type="submit" class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                        class="bg-white px-3 py-2 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-l-lg outline-none focus:border-slate-300 w-full pl-8" />
+                        <button type="submit" class="rounded-r-lg  bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
                             <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         </button>
                     </form>
@@ -44,7 +44,7 @@
                             </svg>
                         </span>
                         <input type="text" placeholder="Buscar..." id="searchage" name="search"
-                            class="bg-white px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8" />
+                            class="bg-white px-3 py-2 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-l-lg outline-none focus:border-slate-300 w-full pl-8" />
                         <button type="submit" class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
                             <svg class="w-6 h-6" fill=".bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         </button>
