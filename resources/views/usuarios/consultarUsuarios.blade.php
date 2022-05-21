@@ -29,7 +29,7 @@
                 <div class="flex flex-col">
                     <div class="mb-4" >&nbsp;</div>
                     <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24"
-                        href="{{ url('/crearUsuario') }}" target="_blank" rel="">Agregar</a>
+                        href="/crearUsuario" >Agregar</a>
                 </div>
 
                 {{-- <div class="flex flex-column">
