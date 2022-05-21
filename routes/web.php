@@ -14,7 +14,7 @@ use App\Http\Controllers\Beneficiary\ReadBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiaryByAge;
 use App\Http\Controllers\Beneficiary\UpdateBeneficiary;
-
+use App\Http\Controllers\DiagnosisController;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -55,16 +55,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/beneficiarios/{id}/edit', UpdateBeneficiary::class);
     Route::post('/beneficiarios/search', SearchBeneficiary::class);
     Route::post('/beneficiarios/search/age', SearchBeneficiaryByAge::class);
+
+    Route::get('/diagnosticos', [DiagnosisController::class, 'index']);
+    Route::post('/diagnosticos/{id}/delete', [DiagnosisController::class, 'delete']);
+    Route::get('/diagnosticos/nuevo', [DiagnosisController::class, 'create']);
+    Route::post('/diagnosticos/crear', [DiagnosisController::class, 'store']);
 });
-
-
-
-
-
-
-
-
-// Route::resource('register', BeneficiarioController::class)->middleware('auth');
-// Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])->middleware('auth');
-// Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData'])->middleware('auth');
-// Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->middleware('auth');
