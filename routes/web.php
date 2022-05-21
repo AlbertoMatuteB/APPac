@@ -14,7 +14,10 @@ use App\Http\Controllers\Beneficiary\ReadBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiaryByAge;
 use App\Http\Controllers\Beneficiary\UpdateBeneficiary;
-use App\Http\Controllers\DiagnosisController;
+use App\Http\Controllers\Diagnosis\ListDiagnosis;
+use App\Http\Controllers\Diagnosis\NewDiagnosis;
+use App\Http\Controllers\Diagnosis\CreateDiagnosis;
+use App\Http\Controllers\Diagnosis\DeleteDiagnosis;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -56,8 +59,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/beneficiarios/search', SearchBeneficiary::class);
     Route::post('/beneficiarios/search/age', SearchBeneficiaryByAge::class);
 
-    Route::get('/diagnosticos', [DiagnosisController::class, 'index']);
-    Route::post('/diagnosticos/{id}/delete', [DiagnosisController::class, 'delete']);
-    Route::get('/diagnosticos/nuevo', [DiagnosisController::class, 'create']);
-    Route::post('/diagnosticos/crear', [DiagnosisController::class, 'store']);
+    Route::get('/diagnosticos', ListDiagnosis::class);
+    Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
+    Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
+    Route::post('/diagnosticos/crear', CreateDiagnosis::class);
 });

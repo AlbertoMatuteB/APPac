@@ -31,19 +31,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($diagnosticos as $diagnostico)
+                        @foreach ($diagnosis as $diagnostic)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$diagnostico->name}}
+                                {{$diagnostic->name}}
                             </td>
                             <td class="p-4">
-                                {{$diagnostico->id}}
+                                {{$diagnostic->id}}
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
                                     <a class="z-10">
                                     <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
-                                                <form action="{{url('/diagnosticos/'.$diagnostico->id . '/delete')}}" class="" method="post">
+                                                <form action="{{url('/diagnosticos/'.$diagnostic->id . '/delete')}}" class="" method="post">
                                                     @csrf
                                                     <input type="submit" onclick="return confirm('¿Quiere Eliminar Diagnostico?')"  class="btn btn-outline-danger" value="Eliminar">
                                                 </form>
