@@ -75,18 +75,13 @@
                                 Fecha de nacimiento
                             </th>
                             <th class="text-left p-4 font-medium">
-                                CURP
+                                Estatus
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Género
+                                Evaluador
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Correo
-                            </th>
-                            <th class="text-left p-4 font-medium">
-                                Institucion
-                            </th>
-                            <th class="text-right p-4 font-medium">
+                                Fecha
                             </th>
                         </tr>
                     </thead>
@@ -107,9 +102,6 @@
                             </td>
                             <td class="p-4">
                                 {{$beneficiary->email}}
-                            </td>
-                            <td class="p-4">
-                                {{$beneficiary->institution->name}}
                             </td>
                             </td>
                             <td class="p-4">
