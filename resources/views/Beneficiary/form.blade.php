@@ -3,43 +3,30 @@
         <span>Nombre</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="name"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->name}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+            name="name" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->name}}" @else @endif @if (
+            $mode=='Consult' ) disabled @endif />
     </div>
     <div class="font-semibold">
         <span>Fecha de nacimiento</span>
         <input type="date"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="birth_date"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->birth_date}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+            name="birth_date" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->birth_date}}" @else @endif
+            @if ( $mode=='Consult' ) disabled @endif />
     </div>
-    {{-- <div class="font-semibold">
-        <span>Género</span>
-        <input type="text"
+    @if ($mode =='Consult')
+    <div class="font-semibold">
+        <span>Edad</span>
+        <input type="number"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="gender"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->gender}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
-    </div> --}}
+            name="age" value="{{$beneficiary->age()}}" disabled />
+    </div>
+    @endif
     <div class="font-semibold">
         <span>Género</span>
         <select name="gender"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            @if ( $mode=='Consult')
-                disabled
-            @endif>
-            @if($mode=='Edit' || $mode=='Consult' ) 
+            @if ( $mode=='Consult' ) disabled @endif>
+            @if($mode=='Edit' || $mode=='Consult' )
             <option value="{{$beneficiary->gender}}" selected>{{$beneficiary->gender}}</option>
             @else
             <option selected></option>
@@ -52,27 +39,21 @@
         <span>Email</span>
         <input type="email"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="email"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+            name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
+            $mode=='Consult' ) disabled @endif />
     </div>
     <div class="font-semibold">
         <span>Tipo de sangre</span>
         <select name="blood_type"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            @if ( $mode=='Consult')
-                disabled
-            @endif>
+            @if ( $mode=='Consult' ) disabled @endif>
 
-            @if($mode=='Edit' || $mode=='Consult' ) 
+            @if($mode=='Edit' || $mode=='Consult' )
             <option value="{{$beneficiary->blood_type}}" selected>{{$beneficiary->blood_type}}</option>
             @else
             <option selected></option>
             @endif
-           
+
             <option value="A+">A+</option>
             <option value="A-">A-</option>
             <option value="B+">B+</option>
@@ -83,31 +64,18 @@
             <option value="AB-">AB-</option>
         </select>
     </div>
-    {{-- <div class="font-semibold">
-        <span>Tipo de sangre</span>
-        <input type="text"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="blood_type"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->blood_type}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
-    </div> --}}
     <div class="font-semibold">
         <span>Municipio</span>
         <select name="city_id" id="city_id"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            @if ( $mode=='Consult')
-                disabled
-            @endif>
-            @if($mode=='Edit' || $mode=='Consult' ) 
+            @if ( $mode=='Consult' ) disabled @endif>
+            @if($mode=='Edit' || $mode=='Consult' )
             <option value="{{$beneficiary->city->id}}" selected>{{$beneficiary->city->name}}</option>
             @else
             <option selected></option>
             @endif
             @foreach ($cities as $city)
-                <option value="{{$city->id}}">{{$city->name}}</option>
+            <option value="{{$city->id}}">{{$city->name}}</option>
             @endforeach
         </select>
     </div>
@@ -115,27 +83,45 @@
         <span>CURP</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="CURP"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->CURP}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+            name="CURP" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->CURP}}" @else @endif @if (
+            $mode=='Consult' ) disabled @endif />
     </div>
+    <div class="font-semibold">
+        <span>Diagnosticos</span>
+        <div x-data="{show: false}" class="mt-2 py-px bg-default-grey placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            <a href="#" x-on:click.prevent="show = !show"
+                class="z-10 w-full grid">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="justify-self-end stroke-current inline-block h-6 w-full transform transition duration-150"
+                    x-bind:class="{ 'rotate-180': show }">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
+            <div x-show.transition="show"
+                class="bg-transparent relative z-20 flex w-full flex-col px-4 py-2 placeholder-slate-400 text-slate-600 whitespace-nowrap outline-none w-full z-10">
+                @foreach ($diagnosis as $diagnostic)
+                <div>
+                    <input type="checkbox" name="type[]" value="4x4" class="inline-block mr-2" />
+                    {{$diagnostic->name}}
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <div class="font-semibold">
         <span>Observaciones</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="observations"
-            @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->observations}}" @else @endif
-            @if ( $mode=='Consult')
-                disabled
-            @endif
-        />
+            name="observations" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->observations}}" @else
+            @endif @if ( $mode=='Consult' ) disabled @endif />
     </div>
-    <div class="flex items-center justify-center items-center">
+
+    @if ($mode != 'Consult')
+    <div class="flex items-center justify-center items-center mt-8">
         <button class="rounded-lg bg-blue-appac py-2 px-32" type="submit">
             <a class="text-white text-center">Aceptar</a>
         </button>
     </div>
+    @endif
 </div>

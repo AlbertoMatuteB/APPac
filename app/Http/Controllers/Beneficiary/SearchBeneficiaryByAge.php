@@ -15,6 +15,6 @@ class SearchBeneficiaryByAge extends Controller
         $year = $mytime - $name;
         $beneficiaries = Beneficiary::with('institution')->where('birth_date', 'like', '%' . $year . '%')->paginate(5);
 
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
+        return view('Beneficiary.index', ['beneficiaries' => $beneficiaries]);
     }
 }

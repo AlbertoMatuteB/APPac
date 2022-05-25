@@ -14,7 +14,7 @@
                 <div class="font-semibold">Buscar por edad</div>
                 <div class="font-semibold">Buscar por Municipio</div>
                 <div>&nbsp;</div>
-                <div class="pl-4">
+                <div>
                     <form method="POST" action="/beneficiarios/search" class="pl-4 items-center flex flex-row">
                         @csrf
                         <span
@@ -33,7 +33,7 @@
                     </form>
                 </div>
                 <div> 
-                    <form method="POST" action="/beneficiarios/search/age" class="pl-4 items-center flex flex-row">
+                    <form method="POST" action="/beneficiarios/search/age" class="items-center flex flex-row">
                         @csrf
                         <span
                             class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
@@ -59,9 +59,9 @@
                     </select>
                 </div>
                 <div>
-                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{ url('beneficiario/new') }}">Agregar</a>
-                    </button>
+                    <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24"
+                        href="{{ url('beneficiario/new') }}">Agregar</a>
+                    
                 </div>
             </div>
             <div class="">
