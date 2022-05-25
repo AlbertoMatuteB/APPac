@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('img/logo.webp') }}">
-    <title>Apac qro</title>
+    <title>APAC I.A.P QRO</title>
 
     <!-- Scripts -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -28,7 +29,7 @@
     <nav class="relative flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
         <div class="flex items-center flex-shrink-0 mr-6 pr-6 border-r-2 border-gray-300">
             <img src="{{asset('img/logo_apac.jpeg')}}" class="w-14 mr-4" alt="Logo Apac">
-            <span class="font-bold text-2xl tracking-normal">Apac</span>
+            <span class="font-bold text-2xl tracking-normal">APAC</span>
         </div>
 
         
@@ -60,7 +61,6 @@
             </div>
         </div>
         
-        {{-- {{ Auth::user()->name }} --}}
     </nav>
     @endauth
     @yield('content')

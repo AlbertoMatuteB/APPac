@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Beneficiary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
+use App\Models\Diagnosis;
 use Illuminate\Http\Request;
 
 class SearchBeneficiary extends Controller
@@ -12,7 +13,8 @@ class SearchBeneficiary extends Controller
     {
         $name = $request->get('search');
         $beneficiaries = Beneficiary::with('institution')->where('name', 'like', '%' . $name . '%')->paginate(5);
+        $diagnosis = Diagnosis::all();
 
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
+        return view('Beneficiary.index', compact('beneficiaries', 'diagnosis'));
     }
 }

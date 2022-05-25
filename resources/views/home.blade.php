@@ -17,7 +17,7 @@
         <span class="font-blue-appac font-semibold">Evaluaciones</span>
     </a>
 
-    <a href="/cons"
+    <a href="/diagnosticos"
         class="flex flex-col items-center justify-center bg-white w-full h-full rounded-lg shadow-md hover:shadow-lg">
         <span class="material-icons material-icons-outlined  font-blue-appac menu-icon-size">
             summarize
