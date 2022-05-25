@@ -88,9 +88,9 @@
     </div>
     <div class="font-semibold">
         <span>Diagnosticos</span>
-        <div x-data="{show: false}" class="mt-2 py-px bg-default-grey placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
-            <a href="#" x-on:click.prevent="show = !show"
-                class="z-10 w-full grid">
+        <div x-data="{show: false}"
+            class="mt-2 py-px bg-default-grey placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
+            <a href="#" x-on:click.prevent="show = !show" class="z-10 w-full grid">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     class="justify-self-end stroke-current inline-block h-6 w-full transform transition duration-150"
                     x-bind:class="{ 'rotate-180': show }">
@@ -101,7 +101,16 @@
                 class="bg-transparent relative z-20 flex w-full flex-col px-4 py-2 placeholder-slate-400 text-slate-600 whitespace-nowrap outline-none w-full z-10">
                 @foreach ($diagnosis as $diagnostic)
                 <div>
-                    <input type="checkbox" name="type[]" value="4x4" class="inline-block mr-2" />
+                    <input type="checkbox" name="diagnosis[]" value="{{$diagnostic->id}}" class="inline-block mr-2"
+                        @if($mode=='Edit' || $mode=='Consult' ) 
+                            @foreach ($diagnosisBeneficiaries as $diagnosisBeneficiary) 
+                                @if ($diagnostic->id==$diagnosisBeneficiary->diagnosis_id)
+                                    checked
+                                @endif
+                            @endforeach 
+                        @endif 
+                        @if ($mode=='Consult' ) disabled @endif
+                        />
                     {{$diagnostic->name}}
                 </div>
                 @endforeach

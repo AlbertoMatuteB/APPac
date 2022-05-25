@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Beneficiary;
 use App\Http\Controllers\Controller;
 use App\Models\Beneficiary;
 use App\Models\City;
+use App\Models\Diagnosis;
+use App\Models\DiagnosisBeneficiary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,10 @@ class ReadBeneficiary extends Controller
     {
         $beneficiary = Beneficiary::with('institution')->findOrFail($id);
         $cities = City::all();
-        // $beneficiary['age']=Carbon
-        // return view('Beneficiary.show');
-        return view('Beneficiary.show', compact('beneficiary', 'cities'))->with(['id' => $id]);
+        $diagnosis = Diagnosis::all();
+        $diagnosisBeneficiaries = DiagnosisBeneficiary::where('beneficiary_id', $id)->get('diagnosis_id');
+
+
+        return view('Beneficiary.show', compact('beneficiary', 'cities', 'diagnosis', 'diagnosisBeneficiaries'))->with(['id' => $id]);
     }
 }
