@@ -13,6 +13,6 @@ class SearchBeneficiary extends Controller
         $name = $request->get('search');
         $beneficiaries = Beneficiary::with('institution')->where('name', 'like', '%' . $name . '%')->paginate(5);
 
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiaries]);
+        return view('Beneficiary.index', ['beneficiaries' => $beneficiaries]);
     }
 }

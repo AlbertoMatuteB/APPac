@@ -29,25 +29,4 @@
     </div>
 </div>
 
-
-
-
-
-
-{{-- 
-<div class="container">
-
-@if(isset($beneficiario))
-  <form action="{{url('/beneficiario/'.$beneficiario->id)}}" method="post">
-@method('PUT')
-@include('Beneficiary.form',['modo'=>'Editar'])
-@else
-<form action="{{url('/beneficiario/')}}" method="post">
-    @include('Beneficiary.form',['modo'=>'Crear'])
-    @endif
-    @csrf
-
-
-</form>
-</div> --}}
 @endsection

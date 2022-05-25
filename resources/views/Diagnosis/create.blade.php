@@ -37,7 +37,7 @@
 
                         <div class="flex items-center justify-center items-center py-4  ">
                             <button class="rounded-lg bg-blue-appac py-2 px-32" type="submit">
-                                <a class="text-white text-center">Crear</a>
+                                <a class="w-full text-white text-center">Crear</a>
                             </button>
                         </div>
                     </form>

@@ -13,7 +13,7 @@ class ListBeneficiary extends Controller
     {
         $beneficiary = Beneficiary::with('institution')->paginate(10);
 
-        return view('Beneficiary.BeneficiaryList', ['beneficiaries' => $beneficiary]);
+        return view('Beneficiary.index', ['beneficiaries' => $beneficiary]);
     }
 }
 /**
