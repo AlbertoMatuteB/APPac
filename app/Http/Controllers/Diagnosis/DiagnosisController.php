@@ -19,7 +19,7 @@ class DiagnosisController extends Controller
     {
         $result = Diagnosticos::all();
         
-        return view('diagnosis.diagnosticos', [
+        return view('Diagnosis.diagnosticos', [
             'diagnosticos' => $result
         ]);
     }
@@ -39,7 +39,7 @@ class DiagnosisController extends Controller
 
     public function create()
     {
-        return view('diagnosis.create');
+        return view('Diagnosis.create');
     }
 
     public function store()

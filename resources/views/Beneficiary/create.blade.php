@@ -8,7 +8,7 @@
         </div>
 
 
-        <button type="button"  onclick="return confirm('¿Desea regresar a beneficiarios?')"
+        <button type="button"   onclick="window.location.href='/beneficiarios';" 
             class="px-20 mr-2  py-2 rounded-lg bg-default-grey text-gray text-center text-center inline-flex items-center hover:bg-gray-200">
             <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"

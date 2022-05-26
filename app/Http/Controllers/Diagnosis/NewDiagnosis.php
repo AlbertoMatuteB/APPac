@@ -12,6 +12,6 @@ class NewDiagnosis extends Controller
 {
     public function __invoke()
     {
-        return view('diagnosis.create');
+        return view('Diagnosis.create');
     }
 }
