@@ -92,7 +92,7 @@
                     </thead>
                     <tbody>
                         @foreach ($beneficiaries as $beneficiary)
-                        <tr class="border-y hover:bg-gray-50">
+                        <tr class="border-y hover:bg-gray-50"   onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';">
                             <td class="p-4">
                                 {{$beneficiary->name}}
                             </td>
