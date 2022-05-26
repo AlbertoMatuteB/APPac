@@ -18,15 +18,6 @@ class UserController extends Controller
             'password' => 'requiered',
         ]);
 
-        /*User::create(request([
-            'name'=> $request -> name,
-            'last_name' => $request -> last_name,
-            'role_id' => $request -> role_id,
-            'email' => $request -> email,
-            'password' => Hash::make($request->password),
-        ]));*/
-
-
         DB::table('users')->insert([
             'name'=> $request -> name,
             'last_name' => $request -> last_name,
@@ -35,7 +26,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return view('home');
+        return redirect('/usuarios')->with('alert','Perfil Creado');
 
     }
 
@@ -52,7 +43,7 @@ class UserController extends Controller
         $result = [];
 
         foreach($users as $user){
-
+            
             $UserArray =[
                 "id" => $user->id,
                 "name" => $user->name,

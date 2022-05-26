@@ -6,13 +6,13 @@
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
             <div>
-                <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
+                <h1 class="font-blue-appac text-left text-4xl font-black">Evaluaciones</h2>
             </div>
             <div
                 class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
-                <div class="font-semibold pl-4">Buscar Beneficiarios</div>
-                <div class="font-semibold">Buscar por edad</div>
-                <div class="font-semibold">Buscar por Municipio</div>
+                <div class="font-semibold pl-4">Buscar por Beneficiario</div>
+                <div class="font-semibold">Buscar por fecha</div>
+                <div class="font-semibold">Buscar por evaluador</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
                     <form method="POST" action="/beneficiarios/search" class="pl-4 items-center flex flex-row">
@@ -59,9 +59,8 @@
                     </select>
                 </div>
                 <div>
-                    <button class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                        <a class="text-white text-center" href="{{ url('beneficiario/new') }}">Agregar</a>
-                    </button>
+                       <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24" href="{{ url('beneficiario/new') }}">Agregar</a>
+                 
                 </div>
             </div>
             <div class="">
@@ -69,19 +68,13 @@
                     <thead class="">
                         <tr class="bg-transparent">
                             <th class="text-left p-4 font-medium">
-                                Nombre
+                                Beneficiario
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Fecha de nacimiento
-                            </th>
-                            <th class="text-left p-4 font-medium">
-                                Estatus
+                                Fecha de evaluacion
                             </th>
                             <th class="text-left p-4 font-medium">
                                 Evaluador
-                            </th>
-                            <th class="text-left p-4 font-medium">
-                                Fecha
                             </th>
                             <th class="text-right p-4 font-medium">
                             </th>
@@ -97,13 +90,7 @@
                                 {{$beneficiary->birth_date}}
                             </td>
                             <td class="p-4">
-                                {{$beneficiary->CURP}}
-                            </td>
-                            <td class="p-4">
                                 {{$beneficiary->gender}}
-                            </td>
-                            <td class="p-4">
-                                {{$beneficiary->email}}
                             </td>
                             </td>
                             <td class="p-4">
