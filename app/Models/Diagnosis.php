@@ -15,8 +15,4 @@ class Diagnosis extends Model
         'name',
         'description',
     ];
-    public function beneficiary()
-    {
-        return $this->belongsToMany(Beneficiary::class);
-    }
 }
