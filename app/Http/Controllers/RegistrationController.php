@@ -23,9 +23,7 @@ class RegistrationController extends Controller
         ]);
        
         $user = User::create(request(['name','last_name','role_id', 'email', 'password']));
-        
-        //auth()->login($user);
-        
-        return redirect()->to('/');
+       
+        return redirect('/usuarios')->with('alert','Perfil Creado');
     }
 }
