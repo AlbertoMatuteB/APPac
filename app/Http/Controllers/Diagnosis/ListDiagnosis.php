@@ -14,7 +14,7 @@ class ListDiagnosis extends Controller
     {
         $result = Diagnosis::all();
 
-        return view('diagnosis.index', [
+        return view('Diagnosis.index', [
             'diagnosis' => $result
         ]);
     }
