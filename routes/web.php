@@ -23,6 +23,8 @@ use App\Http\Controllers\Evaluation\NewEvaluation;
 use App\Http\Controllers\Evaluation\CreateEvaluation;
 use App\Http\Controllers\Evaluation\QuickEvaluation;
 use App\Http\Controllers\Evaluation\SearchByDate;
+use App\Http\Controllers\Evaluation\SearchByName;
+use App\Http\Controllers\Evaluation\DeleteEvaluation;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -74,4 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evaluaciones/crear', CreateEvaluation::class);
     Route::get('/evaluaciones/crear/{id}', QuickEvaluation::class);
     Route::post('/evaluaciones/fecha', SearchByDate::class);
+    Route::post('/evaluaciones/nombre', SearchByName::class);
+    Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
+    
 });

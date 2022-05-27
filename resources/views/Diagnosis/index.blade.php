@@ -15,16 +15,6 @@
                         href="/diagnosticos/nuevo">Agregar</a>
                 </div>
             </div>
-            {{-- <div
-                class=" w-full rounded-xl flex justify-between items-center py-4 pr-10">
-                <div class="flex flex-col">
-                </div>
-                <div class="flex flex-col">
-                    <div class="mb-4" >&nbsp;</div>
-                    <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24"
-                        href="/diagnosticos/nuevo">Agregar</a>
-                </div>
-            </div> --}}
             <div class="">
                 <table class="table-auto w-full">
                     <thead class="">

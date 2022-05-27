@@ -20,7 +20,7 @@
                 Regresar
             </a>
         </button>
-                <div class="card-body">
+                <div class="card-body py-4">
                     <form class="grid grid-rows-11 gap-y-2 items-center" method="POST" action="/evaluaciones/crear">
                         @csrf
 
@@ -31,7 +31,7 @@
 
                                 <select name="beneficiary_id" id="beneficiary_id"
                                 class="block appearance-none w-full bg-default-grey border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-2xl leading-tight focus:outline-none focus:border-slate-300" required>
-                                    <option disabled selected value> -- Seleccione un Usuario -- </option>
+                                    <option disabled selected value> -- Seleccione aqui -- </option>
                                     @foreach ($beneficiaries as $beneficiary)
                                     <option value="{{$beneficiary->id}}"> {{$beneficiary->name}}</option>
                                     @endforeach
@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row mb-0 ">
+                        <div class="form-group row mb-0 py-4">
                         <div class="col-md-6 offset-md-4 flex items-center justify-center items-center">
                             <button class="rounded-lg bg-blue-appac py-2 px-32 " type="submit">
                                 <a class="w-full text-white text-center">Comenzar</a>

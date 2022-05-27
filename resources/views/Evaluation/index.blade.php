@@ -15,7 +15,7 @@
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div class="pl-4">
-                    <form method="POST" action="/beneficiarios/search" class="pl-4 items-center flex flex-row">
+                    <form method="POST" action="/evaluaciones/nombre" class="pl-4 items-center flex flex-row">
                         @csrf
                         <span
                             class="z-10 leading-snug font-normal absolute text-center text-slate-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1">
@@ -97,7 +97,7 @@
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
-                                                <form action="{{url('/beneficiarios/'.$evaluation->id . '/delete')}}" class="" method="post">
+                                                <form action="{{url('/evaluaciones/'.$evaluation->id . '/delete')}}" class="" method="post">
                                                     @csrf
                                                     <input type="submit" onclick="return confirm('¿Quiere Eliminar Evaluación?')"  class="btn btn-outline-danger" value="Eliminar">
                                                 </form>

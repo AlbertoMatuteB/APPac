@@ -24,6 +24,6 @@ class QuickEvaluation extends Controller
             'observations'=> "Ninguna",
         ]);
 
-        return redirect('evaluaciones')->with('nuevo', 'Evaluacion Registrada Exitosamente!');
+        return view('Evaluation.eval', ['evaluation' => $evaluation]);
     }
 }
