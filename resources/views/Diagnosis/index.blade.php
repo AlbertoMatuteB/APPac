@@ -68,6 +68,7 @@
                     </tbody>
                 </table>
             </div>
+            {{$diagnosis->links()}}
         </div>
     </div>
 </div>
