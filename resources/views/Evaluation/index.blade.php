@@ -70,13 +70,13 @@
                         @foreach ($evaluations as $evaluation)
                         <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
-                                {{$evaluation->name}}
+                                {{$evaluation->beneficiary->name}}
                             </td>
                             <td class="p-4">
                                 {{$evaluation->date}}
                             </td>
                             <td class="p-4">
-                                {{$evaluation->gender}}
+                                {{$evaluation->evaluator->name . ' ' . $evaluation->evaluator->last_name}}
                             </td>
                             </td>
                             <td class="p-4">

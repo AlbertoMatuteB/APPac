@@ -18,4 +18,12 @@ class Evaluation extends Model
         'date',
         'observations',
     ];
+    public function evaluator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class, 'beneficiary_id');
+    }
 }

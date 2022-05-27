@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 class ListEvaluation extends Controller
 {
     public function __invoke()
-    {   
-        
-        $evaluations = Evaluation::paginate(10);
+    {
+
+        $evaluations = Evaluation::with('evaluator', 'beneficiary')->paginate(10);
 
         return view('Evaluation.index', ['evaluations' => $evaluations]);
     }
