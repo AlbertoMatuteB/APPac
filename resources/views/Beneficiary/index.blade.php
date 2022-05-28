@@ -50,11 +50,11 @@
                         </button>
                     </form>
                 </div>
-                <div>
-                    <form method="POST" action="/beneficiarios/search/diagnostic">
+                <div class="flex flex-row">
+                    <form method="POST" action="/beneficiarios/search/diagnostic" class="w-full flex flex-row">
                         @csrf
                         <select
-                            class="block appearance-none w-full bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-l-lg leading-tight focus:outline-none focus:border-slate-300"
+                            class="block appearance-none  bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-l-lg leading-tight focus:outline-none focus:border-slate-300"
                             id="searchdiagnosis"
                             name="search">
                             <option>Diagnóstico...</option>
