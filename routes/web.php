@@ -19,6 +19,12 @@ use App\Http\Controllers\Diagnosis\NewDiagnosis;
 use App\Http\Controllers\Diagnosis\CreateDiagnosis;
 use App\Http\Controllers\Diagnosis\DeleteDiagnosis;
 use App\Http\Controllers\Evaluation\ListEvaluation;
+use App\Http\Controllers\Evaluation\NewEvaluation;
+use App\Http\Controllers\Evaluation\CreateEvaluation;
+use App\Http\Controllers\Evaluation\QuickEvaluation;
+use App\Http\Controllers\Evaluation\SearchByDate;
+use App\Http\Controllers\Evaluation\SearchByName;
+use App\Http\Controllers\Evaluation\DeleteEvaluation;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -66,4 +72,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/diagnosticos/crear', CreateDiagnosis::class);
 
     Route::get('/evaluaciones', ListEvaluation::class);
+    Route::get('/evaluaciones/nuevo', NewEvaluation::class);
+    Route::post('/evaluaciones/crear', CreateEvaluation::class);
+    Route::get('/evaluaciones/crear/{id}', QuickEvaluation::class);
+    Route::post('/evaluaciones/fecha', SearchByDate::class);
+    Route::post('/evaluaciones/nombre', SearchByName::class);
+    Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
+    
 });

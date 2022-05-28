@@ -2164,14 +2164,6 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-document.onkeydown = function () {
-  console.log("yes");
-
-  if (window.event.keyCode == '13') {
-    document.form.submit();
-  }
-};
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
