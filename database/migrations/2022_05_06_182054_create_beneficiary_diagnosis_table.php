@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('beneficiary_diagnosis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('beneficiary_id')->references('id')->on('beneficiary');
-            $table->foreignId('diagnosis_id')->references('id')->on('diagnosis');
+            $table->foreignId('beneficiary_id')->references('id')->on('beneficiary')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('diagnosis_id')->references('id')->on('diagnosis')->onUpdate('cascade')->onDelete('cascade');
             // $table->timestamps();
         });
     }

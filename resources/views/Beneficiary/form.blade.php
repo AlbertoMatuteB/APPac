@@ -1,5 +1,6 @@
-<div class="grid grid-rows-11 gap-y-4 items-center">
-    <div class="font-semibold">
+<div class="grid grid-rows-7 gap-y-4 items-center">
+    <div class="flex flex-row space-x-4">
+    <div class="font-semibold w-full">
         <span>Nombre</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -11,7 +12,21 @@
             </span>
             @enderror
     </div>
-    <div class="font-semibold">
+    <div class="font-semibold w-full">
+        <span>Email</span>
+        <input type="email"
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+            name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
+            $mode=='Consult' ) disabled @endif required autocomplete="email" autofocus>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+    </div>
+    </div>
+    <div class="flex flex-row space-x-4">
+    <div class="font-semibold w-full">
         <span>Fecha de nacimiento</span>
         <input type="date"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -24,7 +39,7 @@
             @enderror
     </div>
     @if ($mode =='Consult')
-    <div class="font-semibold">
+    <div class="font-semibold ">
         <span>Edad</span>
         <input type="number"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -36,7 +51,7 @@
             @enderror
     </div>
     @endif
-    <div class="font-semibold">
+    <div class="font-semibold w-full">
         <span>Género</span>
         <select name="gender"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -57,19 +72,7 @@
             <option value="Mujer">Mujer</option>
         </select>
     </div>
-    <div class="font-semibold">
-        <span>Email</span>
-        <input type="email"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
-            $mode=='Consult' ) disabled @endif required autocomplete="email" autofocus>
-            @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-    </div>
-    <div class="font-semibold">
+    <div class="font-semibold w-full">
         <span>Tipo de sangre</span>
         <select name="blood_type"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -96,7 +99,21 @@
             <option value="AB-">AB-</option>
         </select>
     </div>
+    </div>
     <div class="font-semibold">
+        <span>CURP</span>
+        <input type="text"
+            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+            name="CURP" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->CURP}}" @else @endif @if (
+            $mode=='Consult' ) disabled @endif required autocomplete="CURP" autofocus>
+            @error('CURP')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+    </div>
+    <div class="flex flex-row space-x-4">
+    <div class="font-semibold w-full">
         <span>Municipio</span>
         <select name="city_id" id="city_id"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -116,7 +133,7 @@
             @endforeach
         </select>
     </div>
-    <div class="font-semibold">
+    <div class="font-semibold w-full">
         <span>Nivel Socioeconómico</span>
         <select name="social_status"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -139,18 +156,8 @@
             <option value="Alto ">Alto </option>
         </select>
     </div>
-    <div class="font-semibold">
-        <span>CURP</span>
-        <input type="text"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            name="CURP" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->CURP}}" @else @endif @if (
-            $mode=='Consult' ) disabled @endif required autocomplete="CURP" autofocus>
-            @error('CURP')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
     </div>
+    
     <div class="font-semibold">
         <span>Diagnosticos</span>
         <div x-data="{show: false}"
@@ -182,7 +189,8 @@
             </div>
         </div>
     </div>
-    <div class="font-semibold">
+    <div class="flex flex-row space-x-4">
+    <div class="font-semibold w-full">
         <span>Sistema de Salud</span>
         <select name="health_care"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -202,8 +210,7 @@
             <option value="Privado">Privado</option>
         </select>
     </div>
-
-    <div class="font-semibold">
+    <div class="font-semibold w-full">
         <span>Especificar sistema de salud</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
@@ -215,13 +222,17 @@
             </span>
             @enderror
     </div>
-
+    </div>
     <div class="font-semibold">
         <span>Observaciones</span>
-        <input type="text"
-            class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
+        <textarea class="pl-3 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="observations" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->observations}}" @else
-            @endif @if ( $mode=='Consult' ) disabled @endif />
+            @endif @if ( $mode=='Consult' ) disabled @endif required autocomplete="observations" autofocus></textarea>
+        @error('observations')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 
     @if ($mode != 'Consult')

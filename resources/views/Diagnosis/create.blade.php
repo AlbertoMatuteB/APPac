@@ -16,12 +16,10 @@
                 <div class="font-blue-appac text-left text-4xl font-black">{{ __('Crear Diagnostico') }}</div>
 
                 <div class="card-body py-4 ">
-                    <form class="grid grid-rows-11 gap-y-2 items-center" method="POST" action="/diagnosticos/crear">
+                    <form class="grid grid-rows-2 gap-y-2 items-center" method="POST" action="/diagnosticos/crear">
                         @csrf
-
                         <div class="font-semibold pt-2">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text"
                                 class="bg-default-grey px-3 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-2xl outline-none focus:border-slate-300 w-full pl-8"
