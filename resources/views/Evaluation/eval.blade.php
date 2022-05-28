@@ -6,8 +6,6 @@
         <div>
             <h1 class="font-blue-appac text-left text-4xl font-black">Evaluación de beneficiario</h2>
         </div>
-
-
         <button type="button"   onclick="window.location.href='/evaluaciones';" 
             class="px-20 mr-2  py-2 rounded-lg bg-default-grey text-gray text-center text-center inline-flex items-center hover:bg-gray-200">
             <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
