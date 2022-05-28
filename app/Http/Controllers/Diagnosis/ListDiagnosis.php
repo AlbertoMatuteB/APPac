@@ -12,9 +12,9 @@ class ListDiagnosis extends Controller
 {
     public function __invoke()
     {
-        $result = Diagnosis::all();
+        $result = Diagnosis::paginate(10);
 
-        return view('diagnosis.index', [
+        return view('Diagnosis.index', [
             'diagnosis' => $result
         ]);
     }

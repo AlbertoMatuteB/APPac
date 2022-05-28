@@ -20,6 +20,9 @@ class Beneficiary extends Model
         'gender',
         'blood_type',
         'email',
+        'social_status',
+        'health_care',
+        'provider',
         'city_id',
         'observations'
     ];

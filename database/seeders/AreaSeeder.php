@@ -66,6 +66,56 @@ class AreaSeeder extends Seeder
             'id' => '10',
             'name' => 'Habilidades de Salud y Seguridad',
             'description' => 'Habilidades de Salud y Seguridad',
+        ],
+        [
+            'id' => '11',
+            'name' => 'Tono muscular',
+            'description' => 'Tono muscular',
+        ],
+        [
+            'id' => '12',
+            'name' => 'Arcos de movimiento',
+            'description' => 'Arcos de movimiento',
+        ],
+        [
+            'id' => '13',
+            'name' => 'Fuerza muscular',
+            'description' => 'Fuerza muscular',
+        ],
+        [
+            'id' => '14',
+            'name' => 'Postura',
+            'description' => 'Postura',
+        ],
+        [
+            'id' => '15',
+            'name' => 'Equilibrio y coordinación',
+            'description' => 'Equilibrio y coordinación',
+        ],
+        [
+            'id' => '16',
+            'name' => 'Marcha y deambulación',
+            'description' => 'Marcha y deambulación',
+        ],
+        [
+            'id' => '17',
+            'name' => 'Plantoscopia',
+            'description' => 'Plantoscopia',
+        ],
+        [
+            'id' => '18',
+            'name' => 'Lateralidad',
+            'description' => 'Lateralidad',
+        ],
+        [
+            'id' => '19',
+            'name' => 'Pinza fina y gruesa',
+            'description' => 'Pinza fina y gruesa',
+        ],
+        [
+            'id' => '20',
+            'name' => 'Discapacidad intelectual',
+            'description' => 'Discapacidad intelectual',
         ]
     ]);
     }

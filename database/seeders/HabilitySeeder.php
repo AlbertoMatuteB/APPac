@@ -107,6 +107,66 @@ class HabilitySeeder extends Seeder
             'description' => 'Salud y Seguridad',
             'area_id' => '10',
         ],
+        [
+            'id' => '16',
+            'name' => 'General',
+            'description' => 'Tono muscular',
+            'area_id' => '11',
+        ],
+        [
+            'id' => '17',
+            'name' => 'General',
+            'description' => 'Arcos de movimiento',
+            'area_id' => '12',
+        ],
+        [
+            'id' => '18',
+            'name' => 'General',
+            'description' => 'Fuerza muscular',
+            'area_id' => '13',
+        ],
+        [
+            'id' => '19',
+            'name' => 'General',
+            'description' => 'Postura',
+            'area_id' => '14',
+        ],
+        [
+            'id' => '20',
+            'name' => 'General',
+            'description' => 'Equilibrio y coordinación',
+            'area_id' => '15',
+        ],
+        [
+            'id' => '21',
+            'name' => 'General',
+            'description' => 'Marcha y deambulación',
+            'area_id' => '16',
+        ],
+        [
+            'id' => '22',
+            'name' => 'General',
+            'description' => 'Plantoscopia',
+            'area_id' => '17',
+        ],
+        [
+            'id' => '23',
+            'name' => 'General',
+            'description' => 'Lateralidad',
+            'area_id' => '18',
+        ],
+        [
+            'id' => '24',
+            'name' => 'General',
+            'description' => 'Pinza fina y gruesa',
+            'area_id' => '19',
+        ],
+        [
+            'id' => '25',
+            'name' => 'General',
+            'description' => 'Discapacidad intelectual',
+            'area_id' => '20',
+        ]
         ]);
     }
 }

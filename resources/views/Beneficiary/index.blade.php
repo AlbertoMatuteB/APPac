@@ -102,7 +102,7 @@
                     </thead>
                     <tbody>
                         @foreach ($beneficiaries as $beneficiary)
-                        <tr class="border-y hover:bg-gray-50">
+                        <tr class="border-y hover:bg-gray-50"   onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';">
                             <td class="p-4">
                                 {{$beneficiary->name}}
                             </td>
@@ -140,9 +140,16 @@
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                             href="{{url('/evaluaciones/crear/'.$beneficiary->id)}}">
+                                                Evaluar</a>
+                                        </li>
+                                        
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
                                                 href="{{url('/beneficiarios/'.$beneficiary->id.'/edit')}}">
                                                 Editar</a>
                                         </li>
+            
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
                                                 <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}" class="" method="post">

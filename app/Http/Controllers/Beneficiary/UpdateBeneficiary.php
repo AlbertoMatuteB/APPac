@@ -25,6 +25,9 @@ class UpdateBeneficiary extends Controller
             'email' => 'required',
             'city_id' => 'nullable',
             'observations' => 'nullable',
+            'social_status'=> 'required',
+            'health_care' => 'required',
+            'provider' => 'required',
         ]);
 
         $beneficiario->update([
@@ -37,6 +40,9 @@ class UpdateBeneficiary extends Controller
             'city_id' => request('city_id'),
             'observations' => request('observations'),
             'institution_id' => 1,
+            'social_status'=> request('social_status'),
+            'health_care' => request('health_care'),
+            'provider' => request('provider'),
         ]);
 
 
