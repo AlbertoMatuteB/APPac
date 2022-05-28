@@ -599,9 +599,6 @@ Ensure the default browser behavior of the `hidden` attribute.
      -moz-appearance: none;
           appearance: none;
 }
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }

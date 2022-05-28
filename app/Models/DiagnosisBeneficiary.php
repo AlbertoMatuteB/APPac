@@ -15,4 +15,12 @@ class DiagnosisBeneficiary extends Model
         'beneficiary_id',
         'diagnosis_id',
     ];
+    public function beneficiary()
+    {
+        return $this->hasOne(Beneficiary::class, 'id', 'beneficiary_id');
+    }
+    public function diagnostic()
+    {
+        return $this->hasOne(Diagnosis::class, 'id', 'diagnosis_id');
+    }
 }
