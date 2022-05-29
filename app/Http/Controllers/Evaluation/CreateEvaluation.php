@@ -29,6 +29,6 @@ class CreateEvaluation extends Controller
             'observations'=> request('observations'),
         ]);
 
-        return view('Evaluation.eval', ['evaluation' => $evaluation]);
+        return redirect('/evaluaciones/formulario/'.$evaluation->id);
     }
 }

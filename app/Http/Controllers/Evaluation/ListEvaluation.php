@@ -13,7 +13,7 @@ class ListEvaluation extends Controller
     public function __invoke()
     {
 
-        $evaluations = Evaluation::with('evaluator', 'beneficiary')->orderBy('date', 'DESC')->paginate(10);
+        $evaluations = Evaluation::with('evaluator', 'beneficiary')->orderBy('id', 'DESC')->paginate(10);
 
         return view('Evaluation.index', ['evaluations' => $evaluations]);
     }
