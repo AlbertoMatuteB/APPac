@@ -13,7 +13,7 @@
             @enderror
     </div>
     <div class="font-semibold w-full">
-        <span>Email</span>
+        <span>E-mail</span>
         <input type="email"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
@@ -159,7 +159,7 @@
     </div>
     
     <div class="font-semibold">
-        <span>Diagnosticos</span>
+        <span>Diagnósticos</span>
         <div x-data="{show: false}"
             class="mt-2 py-px bg-default-grey placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full">
             <a href="#" x-on:click.prevent="show = !show" class="z-10 w-full grid">

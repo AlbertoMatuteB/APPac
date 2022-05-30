@@ -22,7 +22,7 @@
                                 Rol
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Correo
+                                E-mail
                             </th>
                         </tr>
                     </thead>

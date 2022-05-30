@@ -57,7 +57,7 @@
                                 Beneficiario
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Fecha de evaluacion
+                                Fecha de evaluación
                             </th>
                             <th class="text-left p-4 font-medium">
                                 Evaluador
