@@ -127,7 +127,7 @@
                         <thead class="thead-light text-center">
                         <tr>
                         <th>Nombre</th>
-                        <th>Email</th>
+                        <th>E-mail</th>
                         <th>Rol</th>
                         <th>Acciones</th>
                         </tr>

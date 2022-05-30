@@ -106,10 +106,10 @@
                                 Género
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Correo
+                                E-mail
                             </th>
                             <th class="text-left p-4 font-medium">
-                                Institucion
+                                Institución
                             </th>
                             <th class="text-right p-4 font-medium">
                             </th>
