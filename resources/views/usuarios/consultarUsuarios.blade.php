@@ -13,7 +13,7 @@
             <div class="bg-default-grey w-full rounded-xl flex justify-between items-center py-4 pr-10">
 
                 <div class="flex flex-col">
-                    <div class="font-semibold pl-4 mb-4">Buscar por rol</div>
+                    <div class="font-semibold pl-4 mb-4">Buscar por Rol</div>
                     <form method="POST" action="/buscarUsuarios" class="pl-4 items-center flex flex-row">
                         @csrf
                         <select  name="rol" id="rol"  required
@@ -31,36 +31,6 @@
                     <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24"
                         href="/crearUsuario" >Agregar</a>
                 </div>
-
-                {{-- <div class="flex flex-column">
-                    <div class="font-semibold pl-4">Buscar por rol</div>
-                </div>
-
-
-                <div class="flex flex-row">
-                    <form method="POST" action="/crearUsuario" class="pl-4  items-center">
-                        @csrf
-                        <div>
-                            <select
-                                class="block appearance-none w-full bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-4 pr-8  border-2 rounded-2xl leading-tight focus:outline-none focus:border-slate-300">
-                                <option>Administrador</option>
-                                <option>Usuario base</option>
-                            </select>
-                        </div>
-                        <div>
-                            <button type="submit"
-                                class="w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24">
-                                <a class="text-white text-center">Buscar</a>
-                            </button>
-
-                        </div>
-                    </form>
-                </div>
-
-                <div class="flex flex-row">
-                    <a class="text-white text-center w-full rounded-lg bg-green-appac text-white text-center py-2 px-24"
-                        href="{{ url('/crearUsuario') }}" >Agregar1</a>
-                </div> --}}
 
             </div>
             <div class="overflow-x-auto">

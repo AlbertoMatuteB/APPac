@@ -6,7 +6,7 @@
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
             <div>
-                <h1 class="font-blue-appac text-left text-4xl font-black">Diagnosticos</h2>
+                <h1 class="font-blue-appac text-left text-4xl font-black">Diagnósticos</h2>
             </div>
             <div
                 class="bg-default-grey w-full rounded-xl flex justify-end items-center py-12 pr-10">
@@ -45,7 +45,7 @@
                                                 class="" method="post">
                                                 @csrf
                                                 <input type="submit"
-                                                    onclick="return confirm('¿Quiere Eliminar Diagnostico?')"
+                                                    onclick="return confirm('¿Quiere Eliminar Diagnóstico?')"
                                                     class="btn btn-outline-danger" value="Eliminar">
                                             </form>
                                         </a>
