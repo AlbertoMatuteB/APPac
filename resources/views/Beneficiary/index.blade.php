@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="">
+<div class="" x-data="{ isModalOpen: false }">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
             <div>
                 <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
             </div>
-            <div class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-6">
+            <div
+                class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-6">
                 <div class="font-semibold pl-4">Buscar Beneficiarios</div>
                 <div class="font-semibold">Buscar por Edad</div>
                 <div class="font-semibold">Buscar por Diagnóstico</div>
@@ -69,7 +70,7 @@
                             id="searchdiagnosis" name="search">
                             <option>Diagnóstico...</option>
                             @foreach ($diagnosis as $diagnostic)
-                                <option value="{{$diagnostic->id}}">{{$diagnostic->name}}</option>
+                            <option value="{{$diagnostic->id}}">{{$diagnostic->name}}</option>
                             @endforeach
                         </select>
                         <button type="submit"
@@ -116,8 +117,9 @@
                     </thead>
                     <tbody>
                         @foreach ($beneficiaries as $beneficiary)
-                        <tr class="border-y hover:bg-gray-50"
-                            onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';">
+                        {{-- <tr class="border-y hover:bg-gray-50"
+                            onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';"> --}}
+                        <tr class="border-y hover:bg-gray-50">
                             <td class="p-4">
                                 {{$beneficiary->name}}
                             </td>
@@ -166,22 +168,49 @@
                                         </li>
 
                                         <li class="z-10">
-                                            <a
-                                                class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
-                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}"
-                                                    class="" method="post">
-                                                    @csrf
-                                                    <input type="submit"
-                                                        onclick="return confirm('¿Quiere Eliminar Beneficiario?')"
-                                                        class="btn btn-outline-danger" value="Eliminar">
-                                                </form>
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                @click=" isModalOpen = true ">
+                                                Elminiar
                                             </a>
+                                            {{-- <a
+                                                class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                
+                                                >
+                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}"
+                                            class="" method="post">
+                                            @csrf
+                                            <input type="submit"
+                                                onclick="return confirm('¿Quiere Eliminar Beneficiario?')"
+                                                class="btn btn-outline-danger" value="Eliminar"
+                                                @click=" isModalOpen = true ">
+                                            </form>
+                                            </a> --}}
                                         </li>
                                     </ul>
                                 </div>
                             </td>
-                        </tr>
+                            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
+                                style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
+                                <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0"
+                                    @click.away="isModalOpen = false">
+                                    <h2 class="text-2xl">¿Seguro que quieres borrar beneficiario?</h2>
+                                    <div class="flex flex-row justify-end space-x-4 mt-8">
 
+                                        <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}"
+                                            method="post">
+                                            @csrf
+                                            <button
+                                                class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                                                @click="isModalOpen = false" type="submit">Aceptar</button>
+                                        </form>
+
+                                        <button
+                                            class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                                            @click="isModalOpen = false">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
