@@ -68,7 +68,8 @@
                     </thead>
                     <tbody>
                         @foreach ($evaluations as $evaluation)
-                        <tr class="border-y hover:bg-gray-50">
+                        <tr class="border-y hover:bg-gray-50"
+                        onclick="window.location.href='{{url('/evaluacion/'.$evaluation->id)}}';">
                             <td class="p-4">
                                 {{$evaluation->beneficiary->name}}
                             </td>
