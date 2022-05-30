@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('evaluation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('beneficiary_id')->references('id')->on('beneficiary')->onUpdate('cascade')->onDelete('cascade');
             $table->string('answer');
-            $table->text('comments');
+            $table->text('comments')->nullable();
         });
     }
 

@@ -23,12 +23,12 @@ class CreateEvaluation extends Controller
         $date = Carbon::now();
 
         $evaluation = Evaluation::create([
-            'user_id'=> $user,
-            'beneficiary_id'=> request('beneficiary_id'),
-            'date'=> $date->format("Y-m-d"),
-            'observations'=> request('observations'),
+            'user_id' => $user,
+            'beneficiary_id' => request('beneficiary_id'),
+            'date' => $date->format("Y-m-d"),
+            'observations' => trim(request('observations')),
         ]);
 
-        return view('Evaluation.eval', ['evaluation' => $evaluation]);
+        return redirect('/evaluaciones/formulario/' . $evaluation->id);
     }
 }

@@ -4,9 +4,9 @@
 <div class="flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
     <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
         <div>
-        <h1 class="font-blue-appac text-left text-4xl font-black">Evaluación de {{$evaluation->beneficiary->name}}</h1>
-        <h3 class="font-blue-appac text-left text-2xl font-black">{{$evaluation->date}}</h3>
-        <h3 class="font-blue-appac text-left text-2xl font-black">Evaluador:  {{$evaluation->evaluator->name . ' ' . $evaluation->evaluator->last_name}}</h3>
+            <h1 class="font-blue-appac text-left text-4xl font-black">Evaluación de {{$evaluation->beneficiary->name}}</h1>
+            <h3 class="font-blue-appac text-left text-2xl font-black">{{$evaluation->date}}</h3>
+            <h3 class="font-blue-appac text-left text-2xl font-black">Evaluador:  {{$evaluation->evaluator->name . ' ' . $evaluation->evaluator->last_name}}</h3>
         </div>
         <button type="button"   onclick="window.location.href='/evaluaciones';" 
             class="px-20 mr-2  py-2 rounded-lg bg-default-grey text-gray text-center text-center inline-flex items-center hover:bg-gray-200">
@@ -22,7 +22,7 @@
 
         <form class="grid grid-rows-11 gap-y-2 items-center" method="post" action="/evaluaciones/{{$evaluation->id}}/submit">
           @csrf
-          @include('Evaluation.form',['mode'=>'create'])
+          @include('Evaluation.form',['mode'=>'Consult'])
         </form>
         
 
