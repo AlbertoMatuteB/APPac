@@ -8,8 +8,7 @@
             <div>
                 <h1 class="font-blue-appac text-left text-4xl font-black">Beneficiarios</h2>
             </div>
-            <div
-                class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
+            <div class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-6">
                 <div class="font-semibold pl-4">Buscar Beneficiarios</div>
                 <div class="font-semibold">Buscar por edad</div>
                 <div class="font-semibold">Buscar por Diagnóstico</div>
@@ -26,9 +25,15 @@
                             </svg>
                         </span>
                         <input type="text" placeholder="Buscar..." id="searchnombre" name="search"
-                        class="bg-white px-3 py-2 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-l-lg outline-none focus:border-slate-300 w-full pl-8" />
-                        <button type="submit" class="rounded-r-lg  bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
-                            <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                            class="bg-white px-3 py-2 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-l-lg outline-none focus:border-slate-300 w-full pl-8" />
+                        <button type="submit"
+                            class="rounded-r-lg  bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
                     </form>
                 </div>
@@ -45,26 +50,63 @@
                         </span>
                         <input type="text" placeholder="Buscar..." id="searchage" name="search"
                             class="bg-white px-3 py-2 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-l-lg outline-none focus:border-slate-300 w-full pl-8" />
-                        <button type="submit" class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
-                            <svg class="w-6 h-6" fill=".bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                        <button type="submit"
+                            class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill=".bg-blue-appac" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
                     </form>
                 </div>
-                <div class="flex flex-row">
-                    <form method="POST" action="/beneficiarios/search/diagnostic" class="w-full flex flex-row">
+                <div>
+                    <form method="POST" action="/beneficiarios/search/diagnostic" class="items-center flex flex-row">
+                        @csrf
+                        <select
+                            class="block appearance-none w-full bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 pl-3 border-2 rounded-l-lg leading-tight focus:outline-none focus:border-slate-300"
+                            id="searchdiagnosis" name="search">
+                            <option>Diagnóstico...</option>
+                            @foreach ($diagnosis as $diagnostic)
+                                <option value="{{$diagnostic->id}}">{{$diagnostic->name}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit"
+                            class="rounded-r-lg bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill=".bg-blue-appac" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <a class="text-white text-center w-full rounded-lg bg-blue-appac text-white text-center py-2 px-24"
+                        href="{{ url('beneficiario/new') }}">Agregar</a>
+                </div>
+                {{-- <div>
+                    <form method="POST" action="/beneficiarios/search/diagnostic" class="items-center flex flex-row">
                         @csrf
                         <select
                             class="block appearance-none  bg-white border-gray-200 placeholder-slate-400 text-slate-600 py-2 px-3 pr-8  border-2 rounded-l-lg leading-tight focus:outline-none focus:border-slate-300"
-                            id="searchdiagnosis"
-                            name="search">
+                            id="searchdiagnosis" name="search">
                             <option>Diagnóstico...</option>
                             @foreach ($diagnosis as $diagnostic)
                             <option value="{{$diagnostic->id}}">{{$diagnostic->name}}</option>
                             @endforeach
                         </select>
 
-                        <button type="submit" class="rounded-r-lg  bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
-                            <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                        <button type="submit"
+                            class="rounded-r-lg  bg-slate-300 hover:bg-slate-400 text-white text-center py-2 px-4">
+                            <svg class="w-6 h-6" fill="bg-blue-appac" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
                     </form>
                 </div>
@@ -72,7 +114,7 @@
                     <a class="text-white text-center w-full rounded bg-blue-appac text-white text-center py-2 px-24"
                         href="{{ url('beneficiario/new') }}">Agregar</a>
 
-                </div>
+                </div> --}}
             </div>
             <div class="">
                 <table class="table-auto w-full">
@@ -102,7 +144,8 @@
                     </thead>
                     <tbody>
                         @foreach ($beneficiaries as $beneficiary)
-                        <tr class="border-y hover:bg-gray-50"   onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';">
+                        <tr class="border-y hover:bg-gray-50"
+                            onclick="window.location.href='{{url('/beneficiarios/'.$beneficiary->id)}}';">
                             <td class="p-4">
                                 {{$beneficiary->name}}
                             </td>
@@ -135,28 +178,32 @@
                                     <ul class="pt-2 absolute hidden group-hover:block z-10">
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                                href="{{url('/beneficiarios/'.$beneficiary->id)}}" >
+                                                href="{{url('/beneficiarios/'.$beneficiary->id)}}">
                                                 Consultar</a>
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                             href="{{url('/evaluaciones/crear/'.$beneficiary->id)}}">
+                                                href="{{url('/evaluaciones/crear/'.$beneficiary->id)}}">
                                                 Evaluar</a>
                                         </li>
-                                        
+
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
                                                 href="{{url('/beneficiarios/'.$beneficiary->id.'/edit')}}">
                                                 Editar</a>
                                         </li>
-            
+
                                         <li class="z-10">
-                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
-                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}" class="" method="post">
+                                            <a
+                                                class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
+                                                <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}"
+                                                    class="" method="post">
                                                     @csrf
-                                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar Beneficiario?')"  class="btn btn-outline-danger" value="Eliminar">
+                                                    <input type="submit"
+                                                        onclick="return confirm('¿Quiere Eliminar Beneficiario?')"
+                                                        class="btn btn-outline-danger" value="Eliminar">
                                                 </form>
-                                                </a>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
