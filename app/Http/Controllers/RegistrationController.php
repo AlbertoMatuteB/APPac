@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Hash;
@@ -18,6 +19,7 @@ class RegistrationController extends Controller
             'last_name' => 'required',
             'role_id' => 'required',
             'email' => 'required|email',
+            'email' => 'unique:users,email',
             'password' => 'required',
             
         ]);

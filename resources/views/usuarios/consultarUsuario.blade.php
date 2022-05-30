@@ -58,7 +58,7 @@
                                         </li>
                                         <li class="z-10">
                                             <form action="/usuarios/{{$usuario['id']}}" method="post">
-                                                <input class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap" type="submit" value="Eliminar" />
+                                                <input class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap" type="submit" value="Eliminar"  onclick="return confirm('¿Eliminar Usuario?')" />
                                                 <input type="hidden" name="_method" value="delete" />
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>
