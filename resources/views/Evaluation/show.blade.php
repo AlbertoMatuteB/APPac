@@ -22,7 +22,7 @@
 
         <form class="grid grid-rows-11 gap-y-2 items-center" method="post" action="/evaluaciones/{{$evaluation->id}}/submit">
           @csrf
-          @include('Evaluation.form',['mode'=>'Consult'])
+          @include('Evaluation.form',['mode'=>'Consult', 'i' => 1])
         </form>
         
 

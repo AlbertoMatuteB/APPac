@@ -1,53 +1,19 @@
-<script src="{{ asset('chart.js/chart.js') }}"></script>
-<canvas id="myChart" width="400" height="400"></canvas>
-<script>
-const ctx = document.getElementById('myChart');
-const myChart = new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
+
+<script src="{{ asset('chart.js/chart.js') }}">
 </script>
- 
+
+  
 <div x-data="{ section: 1 }">
     <ul class="flex flex-row justify-end">
         @foreach ($areas as $area)
-        <li class="" @click="section = {{$area->id}}">
+        <li class="" id="b{{$area->id}}" @click="section = {{$area->id}}">
             <a href="#" class="h-full w-full py-2 px-4 border-t-2 border-x-2 rounded-t-lg"
                 :class="section ==={{$area->id}}? 'bg-white' : 'bg-slate-200'">{{$area->id}}</a>
         </li>
         @endforeach
     </ul>
     @foreach ($areas as $area)
+
     <div x-show="section === {{$area->id}}">
         <h1 class="font-bold py-4">{{$area->name}}</h1>
         <table class="table-auto w-full">
@@ -103,7 +69,61 @@ const myChart = new Chart(ctx, {
                 @endforeach
             </tbody>
         </table>
+        @if ( $mode=='Consult' )
+        <div class="flex items-center justify-center my-20" >
+    <div  class="w-full" ><canvas id="c{{$area->id}}"></canvas></div>
+</div>
+
+<script> 
+    
+    let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
+    let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
+    type: 'bar',
+    data: {
+        
+        labels: [@foreach($answers as $answer) @if($answer -> activity -> area_id == $area->id  ) "{{$answer ->  activity -> name}}" , @endif @endforeach],
+        datasets: [{
+            label: 'Gráfica de actividades',
+            
+            @php
+            $index = $area->id
+            @endphp
+            
+            data: [@foreach ($answers as $answer) @if ($answer -> activity -> area_id == $area->id ){{$answer -> answer}}, @endif @endforeach],
+            
+            
+            
+            
+            backgroundColor: [
+                
+                '#0061AA',
+                
+
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+                
+            }
+        }
+    }
+
+    
+});
+</script>
+@endif
     </div>
+
+    
+    
     @endforeach
     @if ($mode != 'Consult')
     <div class="flex items-center justify-center items-center mt-8">
@@ -113,3 +133,5 @@ const myChart = new Chart(ctx, {
     </div>
     @endif
 </div>
+
+
