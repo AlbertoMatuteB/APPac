@@ -75,6 +75,9 @@
 </div>
 
 <script> 
+    let yLabels{{$area->id}} = {
+    1 : 'No lo logra', 2 : 'En proceso', 3 : 'Lo logra',
+    }
     
     let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
     let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
@@ -109,10 +112,17 @@
     },
     options: {
         scales: {
-            y: {
-                beginAtZero: true
-                
+           
+            yAxes: {
+                beginAtZero: true,
+            ticks: {
+                callback: function(value, index, values) {
+                    // for a value (tick) equals to 8
+                    return yLabels{{$area->id}}[value];
+                    // 'junior-dev' will be returned instead and displayed on your chart
+                }
             }
+        }
         }
     }
 
