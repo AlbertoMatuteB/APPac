@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Hash;
@@ -18,14 +19,13 @@ class RegistrationController extends Controller
             'last_name' => 'required',
             'role_id' => 'required',
             'email' => 'required|email',
+            'email' => 'unique:users,email',
             'password' => 'required',
             
         ]);
        
         $user = User::create(request(['name','last_name','role_id', 'email', 'password']));
-        
-        //auth()->login($user);
-        
-        return redirect()->to('/');
+       
+        return redirect('/usuarios')->with('alert','Perfil Creado');
     }
 }

@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('img/logo.webp') }}">
-    <title>Apac qro</title>
+    <title>APAC I.A.P QRO</title>
 
     <!-- Scripts -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -23,20 +24,21 @@
 
 </head>
 
-<body class="antialiased h-screen">
+<body class="antialiased h-screen" x-data="{hasOverflow:false}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'">
     @auth
-    <nav class="relative flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
+    <nav class="absolute w-full flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
         <div class="flex items-center flex-shrink-0 mr-6 pr-6 border-r-2 border-gray-300">
             <img src="{{asset('img/logo_apac.jpeg')}}" class="w-14 mr-4" alt="Logo Apac">
-            <span class="font-bold text-2xl tracking-normal">Apac</span>
+            <span class="font-bold text-2xl tracking-normal">APAC</span>
         </div>
 
         
         <div class="w-full inline-block flex-grow lg:flex lg:items-center lg:w-auto">
-            <div class="text-sm lg:flex-grow">
+            <div class="text-sm lg:flex-grow ">
                 <a href="/home" class="font-light text-xl block mt-4 lg:inline-block lg:mt-0 mr-4">
                     Menu
                 </a>
+                
             </div>
             <div class="group inline-block relative">
                 <button class="inline-flex items-center">
@@ -51,7 +53,7 @@
                         <a class="bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
                             href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}</a>
+                            {{ __('Cerrar sesión') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -60,7 +62,6 @@
             </div>
         </div>
         
-        {{-- {{ Auth::user()->name }} --}}
     </nav>
     @endauth
     @yield('content')

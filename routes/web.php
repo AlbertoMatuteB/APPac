@@ -13,8 +13,22 @@ use App\Http\Controllers\Beneficiary\NewBeneficiary;
 use App\Http\Controllers\Beneficiary\ReadBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiary;
 use App\Http\Controllers\Beneficiary\SearchBeneficiaryByAge;
+use App\Http\Controllers\Beneficiary\SearchBeneficiaryByDiagnostic;
 use App\Http\Controllers\Beneficiary\UpdateBeneficiary;
-
+use App\Http\Controllers\Diagnosis\ListDiagnosis;
+use App\Http\Controllers\Diagnosis\NewDiagnosis;
+use App\Http\Controllers\Diagnosis\CreateDiagnosis;
+use App\Http\Controllers\Diagnosis\DeleteDiagnosis;
+use App\Http\Controllers\Evaluation\ListEvaluation;
+use App\Http\Controllers\Evaluation\NewEvaluation;
+use App\Http\Controllers\Evaluation\CreateEvaluation;
+use App\Http\Controllers\Evaluation\QuickEvaluation;
+use App\Http\Controllers\Evaluation\SearchByDate;
+use App\Http\Controllers\Evaluation\SearchByName;
+use App\Http\Controllers\Evaluation\DeleteEvaluation;
+use App\Http\Controllers\Evaluation\FormEvaluation;
+use App\Http\Controllers\Evaluation\SubmitEvaluation;
+use App\Http\Controllers\Evaluation\ConsultEvaluation;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -30,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/usuarios', [UserController::class, 'index']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
     Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+    Route::post('/usuarios/{id}/delete', [UserController::class, 'delete']);
     Route::get('/usuario', [UserController::class, 'index']);
     Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
     Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
@@ -55,16 +70,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/beneficiarios/{id}/edit', UpdateBeneficiary::class);
     Route::post('/beneficiarios/search', SearchBeneficiary::class);
     Route::post('/beneficiarios/search/age', SearchBeneficiaryByAge::class);
+    Route::post('/beneficiarios/search/diagnostic', SearchBeneficiaryByDiagnostic::class);
+
+    Route::get('/diagnosticos', ListDiagnosis::class);
+    Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
+    Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
+    Route::post('/diagnosticos/crear', CreateDiagnosis::class);
+
+    Route::get('/evaluaciones', ListEvaluation::class);
+    Route::get('/evaluaciones/nuevo', NewEvaluation::class);
+    Route::post('/evaluaciones/crear', CreateEvaluation::class);
+    Route::get('/evaluaciones/crear/{id}', QuickEvaluation::class);
+    Route::post('/evaluaciones/fecha', SearchByDate::class);
+    Route::post('/evaluaciones/nombre', SearchByName::class);
+    Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
+    Route::get('/evaluaciones/formulario/{id}', FormEvaluation::class);
+    Route::post('/evaluaciones/{id}/submit', SubmitEvaluation::class);
+    Route::get('/evaluacion/{id}', ConsultEvaluation::class);
 });
-
-
-
-
-
-
-
-
-// Route::resource('register', BeneficiarioController::class)->middleware('auth');
-// Route::post('/editBeneficiario/{id}', [BeneficiarioController::class, 'update'])->middleware('auth');
-// Route::get('/beneficiario/{beneficiario}/datos', [BeneficiarioController::class, 'getBeneficiarioData'])->middleware('auth');
-// Route::get('/crearBeneficiario', [BeneficiarioController::class, 'create'])->middleware('auth');

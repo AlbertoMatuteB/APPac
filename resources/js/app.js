@@ -1,8 +1,3 @@
 require('./bootstrap');
-
-document.onkeydown = function () {
-    console.log("yes");
-    if (window.event.keyCode == '13') {
-        document.form.submit();
-    }
-}
+import Chart from 'chart.js/auto';
+window.Chart = Chart;
