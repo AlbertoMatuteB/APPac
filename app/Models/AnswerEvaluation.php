@@ -19,4 +19,15 @@ class AnswerEvaluation extends Model
         'answer',
         'comments',
     ];
+
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class, 'beneficiary_id');
+    }
+
+    public function activity()
+    {
+        return $this->belongsTo(Activities::class, 'activity_id');
+    }
+    
 }

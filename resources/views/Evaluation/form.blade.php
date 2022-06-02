@@ -1,13 +1,19 @@
+
+<script src="{{ asset('chart.js/chart.js') }}">
+</script>
+
+  
 <div x-data="{ section: 1 }">
     <ul class="flex flex-row justify-end">
         @foreach ($areas as $area)
-        <li class="" @click="section = {{$area->id}}">
+        <li class="" id="b{{$area->id}}" @click="section = {{$area->id}}">
             <a href="#" class="h-full w-full py-2 px-4 border-t-2 border-x-2 rounded-t-lg"
                 :class="section ==={{$area->id}}? 'bg-white' : 'bg-slate-200'">{{$area->id}}</a>
         </li>
         @endforeach
     </ul>
     @foreach ($areas as $area)
+
     <div x-show="section === {{$area->id}}">
         <h1 class="font-bold py-4">{{$area->name}}</h1>
         <table class="table-auto w-full">
@@ -63,7 +69,71 @@
                 @endforeach
             </tbody>
         </table>
+        @if ( $mode=='Consult' )
+        <div class="flex items-center justify-center my-20" >
+    <div  class="w-full" ><canvas id="c{{$area->id}}"></canvas></div>
+</div>
+
+<script> 
+    let yLabels{{$area->id}} = {
+    1 : 'No lo logra', 2 : 'En proceso', 3 : 'Lo logra',
+    }
+    
+    let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
+    let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
+    type: 'bar',
+    data: {
+        
+        labels: [@foreach($answers as $answer) @if($answer -> activity -> area_id == $area->id  ) "{{$answer ->  activity -> name}}" , @endif @endforeach],
+        datasets: [{
+            label: 'Gráfica de actividades',
+            
+            @php
+            $index = $area->id
+            @endphp
+            
+            data: [@foreach ($answers as $answer) @if ($answer -> activity -> area_id == $area->id ){{$answer -> answer}}, @endif @endforeach],
+            
+            
+            
+            
+            backgroundColor: [
+                
+                '#0061AA',
+                
+
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        scales: {
+           
+            yAxes: {
+                beginAtZero: true,
+            ticks: {
+                callback: function(value, index, values) {
+                    // for a value (tick) equals to 8
+                    return yLabels{{$area->id}}[value];
+                    // 'junior-dev' will be returned instead and displayed on your chart
+                }
+            }
+        }
+        }
+    }
+
+    
+});
+</script>
+@endif
     </div>
+
+    
+    
     @endforeach
     @if ($mode != 'Consult')
     <div class="flex items-center justify-center items-center mt-8">
@@ -73,3 +143,5 @@
     </div>
     @endif
 </div>
+
+
