@@ -6,7 +6,7 @@
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="bg-white max-w-xl w-full space-y-10 px-14 py-20 rounded-lg shadow-md">
             <div>
-                <h2 class="font-blue-appac text-center text-xl font-semibold">Bienvenido</h2>
+                <h2 class="font-blue-appac text-center text-xl font-semibold">Bienvenido APAC QRO I.A.P</h2>
             </div>
             <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -21,7 +21,7 @@
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                     </span>
-                    <input id="email" name="email" type="email" placeholder="Correo electronico"
+                    <input id="email" name="email" type="email" placeholder="Correo electrónico"
                         value="{{ old('email') }}" required autocomplete="email"
                         class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-transparent text-base border-b-2  outline-none focus:border-black w-full pl-10" />
                     @error('email')
@@ -60,7 +60,7 @@
                 <div>
                     <button type="submit"
                         class="group relative w-full flex justify-center p-4 text-xl font-bold rounded-lg text-white bg-blue-appac hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800">
-                        {{ __('Login') }}
+                        {{ __('Iniciar Sesión') }}
                     </button>
                 </div>
             </form>

@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/usuarios', [UserController::class, 'index']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
     Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+    Route::post('/usuarios/{id}/delete', [UserController::class, 'delete']);
     Route::get('/usuario', [UserController::class, 'index']);
     Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
     Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
@@ -86,5 +87,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/evaluaciones/formulario/{id}', FormEvaluation::class);
     Route::post('/evaluaciones/{id}/submit', SubmitEvaluation::class);
     Route::get('/evaluacion/{id}', ConsultEvaluation::class);
-    
 });

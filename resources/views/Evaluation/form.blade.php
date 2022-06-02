@@ -138,7 +138,7 @@
     @if ($mode != 'Consult')
     <div class="flex items-center justify-center items-center mt-8">
         <button class="rounded-lg bg-blue-appac py-2 px-32" type="submit">
-            <a class="text-white text-center">Registrar Evaluacion</a>
+            <a class="text-white text-center">Registrar Evaluación</a>
         </button>
     </div>
     @endif
