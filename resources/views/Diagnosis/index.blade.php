@@ -4,7 +4,7 @@
 $idDiagnosis = 0
 @endphp
 
-<div class="" x-data="{ isModalOpen: false, idDiagnosis:0, 
+<div class="pt-28" x-data="{ isModalOpen: false, idDiagnosis:0, 
     async deleteDiagnosis(id) {
             try {
                 const resp = await axios.post(
@@ -18,7 +18,7 @@ $idDiagnosis = 0
             }
         },}" x-cloak>
     {{-- min-h-full --}}
-    <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
+    <div class="min-h-full flex items-center justify-center  px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
             <div>
                 <h1 class="font-blue-appac text-left text-4xl font-black">Diagnósticos</h2>
@@ -52,22 +52,11 @@ $idDiagnosis = 0
                             </td>
                             <td class="p-4">
                                 <div class="group inline-block relative">
-                                    <a class="z-10">
-                                        <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
-                                            @click=" isModalOpen = true, idDiagnosis={{$diagnostic->id}},hasOverflow=true">
-                                            Eliminar
-                                        </a>
-
-                                        {{--<a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"> 
-                                            <form action="{{url('/diagnosticos/'.$diagnostic->id . '/delete')}}"
-                                        class="" method="post">
-                                        @csrf
-                                        <input type="submit" onclick="return confirm('¿Quiere Eliminar Diagnóstico?')"
-                                            class="btn btn-outline-danger" value="Eliminar"
-                                            @click=" isModalOpen = true ">
-                                        </form>
-                                    </a>--}}
+                                    <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                        @click=" isModalOpen = true, idDiagnosis={{$diagnostic->id}},hasOverflow=true">
+                                        Eliminar
                                     </a>
+                                    
                                 </div>
                             </td>
 

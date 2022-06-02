@@ -26,7 +26,7 @@
 
 <body class="antialiased h-screen" x-data="{hasOverflow:false}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'">
     @auth
-    <nav class="relative flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
+    <nav class="absolute w-full flex items-center justify-between flex-wrap bg-white px-6 py-4 border-b-2">
         <div class="flex items-center flex-shrink-0 mr-6 pr-6 border-r-2 border-gray-300">
             <img src="{{asset('img/logo_apac.jpeg')}}" class="w-14 mr-4" alt="Logo Apac">
             <span class="font-bold text-2xl tracking-normal">APAC</span>

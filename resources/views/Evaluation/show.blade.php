@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
+<div class="flex items-center justify-center pt-28 py-10 px-16 sm:px-6 lg:px-8">
     <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">
         <div>
             <h1 class="font-blue-appac text-left text-4xl font-black">Evaluación de {{$evaluation->beneficiary->name}}</h1>
