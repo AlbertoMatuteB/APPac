@@ -23,7 +23,7 @@
             <div
                 class="bg-default-grey w-full rounded-xl grid grid-rows-2 grid-cols-4 gap-x-6 gap-y-2 items-center py-4 pr-10">
                 <div class="font-semibold pl-4">Buscar por Beneficiario</div>
-                <div class="font-semibold">Buscar por fecha</div>
+                <div class="font-semibold">Buscar por Fecha</div>
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div class="">
