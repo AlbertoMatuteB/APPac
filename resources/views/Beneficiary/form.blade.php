@@ -13,7 +13,7 @@
             @enderror
     </div>
     <div class="font-semibold w-full">
-        <span>E-mail</span>
+        <span>E-Mail</span>
         <input type="email"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
@@ -27,7 +27,7 @@
     </div>
     <div class="flex flex-row space-x-4">
     <div class="font-semibold w-full">
-        <span>Fecha de nacimiento</span>
+        <span>Fecha de Nacimiento</span>
         <input type="date"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="birth_date" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->birth_date}}" @else @endif
@@ -73,7 +73,7 @@
         </select>
     </div>
     <div class="font-semibold w-full">
-        <span>Tipo de sangre</span>
+        <span>Tipo de Sangre</span>
         <select name="blood_type"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             @if ( $mode=='Consult' ) disabled @endif required autocomplete="blood_type" autofocus>
@@ -211,7 +211,7 @@
         </select>
     </div>
     <div class="font-semibold w-full">
-        <span>Especificar sistema de salud</span>
+        <span>Especificar Sistema de Salud</span>
         <input type="text"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="provider" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->provider}}" @else
