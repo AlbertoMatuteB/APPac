@@ -19,6 +19,7 @@ use App\Http\Controllers\Diagnosis\ListDiagnosis;
 use App\Http\Controllers\Diagnosis\NewDiagnosis;
 use App\Http\Controllers\Diagnosis\CreateDiagnosis;
 use App\Http\Controllers\Diagnosis\DeleteDiagnosis;
+use App\Http\Controllers\Diagnosis\UpdateDiagnosis;
 use App\Http\Controllers\Evaluation\ListEvaluation;
 use App\Http\Controllers\Evaluation\NewEvaluation;
 use App\Http\Controllers\Evaluation\CreateEvaluation;
@@ -76,6 +77,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
     Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
     Route::post('/diagnosticos/crear', CreateDiagnosis::class);
+    Route::get('/diagnosticos/{id}/edit',[UpdateDiagnosis::class, 'show']);
+    Route::post('/diagnosticos/{id}/edit', UpdateDiagnosis::class);
 
     Route::get('/evaluaciones', ListEvaluation::class);
     Route::get('/evaluaciones/nuevo', NewEvaluation::class);
