@@ -20,13 +20,13 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('CURP');
             $table->string('gender');
-            $table->string('blood_type');
-            $table->string('email');
+            $table->string('blood_type')->nullable();
+            $table->string('email')->nullable();
             $table->string('social_status');
             $table->string('health_care');
             $table->string('provider');
             $table->foreignId('city_id')->constrained();
-            $table->text('observations');
+            $table->text('observations')->nullable();
         });
     }
 

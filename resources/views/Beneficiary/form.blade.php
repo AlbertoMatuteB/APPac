@@ -17,7 +17,7 @@
         <input type="email"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="email" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->email}}" @else @endif @if (
-            $mode=='Consult' ) disabled @endif required autocomplete="email" autofocus>
+            $mode=='Consult' ) disabled @endif autocomplete="email" autofocus>
             @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
         <span>Tipo de Sangre</span>
         <select name="blood_type"
             class="pl-2 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
-            @if ( $mode=='Consult' ) disabled @endif required autocomplete="blood_type" autofocus>
+            @if ( $mode=='Consult' ) disabled @endif autocomplete="blood_type" autofocus>
             @error('blood_type')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -227,7 +227,7 @@
         <span>Observaciones</span>
         <textarea class="pl-3 mt-2 bg-default-grey pr-2 py-1 placeholder-slate-400 text-slate-600 relative text-base  border-2 rounded-lg outline-none focus:border-slate-300 w-full"
             name="observations" @if($mode=='Edit' || $mode=='Consult' ) value="{{$beneficiary->observations}}" @else
-            @endif @if ( $mode=='Consult' ) disabled @endif required autocomplete="observations" autofocus>@if($mode=='Edit' || $mode=='Consult' ){{$beneficiary->observations}}@endif</textarea>
+            @endif @if ( $mode=='Consult' ) disabled @endif  autocomplete="observations" autofocus>@if($mode=='Edit' || $mode=='Consult' ){{$beneficiary->observations}}@endif</textarea>
         @error('observations')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
