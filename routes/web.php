@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\CheckRol;
 use App\Http\Controllers\Beneficiary\BeneficiarioController;
 use App\Http\Controllers\Beneficiary\CreateBeneficiary;
 use App\Http\Controllers\Beneficiary\DeleteBeneficiary;
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
         return view('home');
     });
 
+    Route::group(['middleware' => ['checkRol']], function () {
     Route::get('/usuarios', [UserController::class, 'index']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
     Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
@@ -60,7 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/crearUsuario', [RegistrationController::class, 'create']);
     Route::post('crearUsuario', [RegistrationController::class, 'store']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
-
+    });
 
     Route::get('/beneficiarios', ListBeneficiary::class);
     Route::post('/beneficiarios', CreateBeneficiary::class);
