@@ -8,7 +8,7 @@
 @endif
 @if(Auth::user()->role_id == 1)
 
-<div class="">
+<div class="pt-28 pb-10">
     {{-- min-h-full --}}
     <div class="min-h-full flex items-center justify-center py-10 px-16 sm:px-6 lg:px-8">
         <div class="bg-white w-full space-y-10 px-14 py-8 rounded-lg shadow-md">

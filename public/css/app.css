@@ -909,6 +909,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-6 {
   padding-bottom: 1.5rem;
 }
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -923,9 +926,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pl-10 {
   padding-left: 2.5rem;
-}
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
