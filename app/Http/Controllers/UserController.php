@@ -40,19 +40,25 @@ class UserController extends Controller
     {
         $users = collect(DB::table('users')->get());
 
+        $currentUser = auth()->user()->id;
+
         $result = [];
 
         foreach($users as $user){
             
-            $UserArray =[
-                "id" => $user->id,
-                "name" => $user->name,
-                "last_name" => $user->last_name,
-                "email" => $user->email,
-                "role" => DB::table('roles')->where('id', $user->role_id)->value('name')
-            ];
+            if($user->id != $currentUser){
+                $UserArray =[
+                    "id" => $user->id,
+                    "name" => $user->name,
+                    "last_name" => $user->last_name,
+                    "email" => $user->email,
+                    "role" => DB::table('roles')->where('id', $user->role_id)->value('name')
+                ];
+    
+                $result[$user->id] = $UserArray;
 
-            $result[$user->id] = $UserArray;
+            }
+            
         }
 
         return view('usuarios.consultarUsuarios', [
