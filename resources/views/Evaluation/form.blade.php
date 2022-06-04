@@ -1,9 +1,21 @@
-
 <script src="{{ asset('chart.js/chart.js') }}">
 </script>
 
+
+<div @if ( $mode=='create' ) x-data="{ section: 1, isModalOpen: false, idEvaluation:0, 
+    async cancelEvaluation(id) {
+            try {
+                const resp = await axios.post(
+                    `/api/evaluaciones/${id}/delete`
+                );
+                console.log(resp.data);
+                window.location.href='/evaluaciones';
+            } catch (err) {
+                // Handle Error Here
+                console.error(err);
+            }
+        },  }"  @else  x-data="{ section: 0 }"  @endif>
   
-<div @if ( $mode=='create' ) x-data="{ section: 1 }" @else  x-data="{ section: 0 }"  @endif >
     <ul class="flex flex-row justify-end">
         @if ( $mode=='Consult' )
         <li class=""  @click="section = 0">
@@ -81,9 +93,9 @@
             </tbody>
         </table>
         @if ( $mode=='Consult' )
-        <div class="flex items-center justify-center my-20" >
-    <div  class="w-full" ><canvas id="c{{$area->id}}"></canvas></div>
-</div>
+        <div class="flex items-center justify-center my-20">
+            <div class="w-full"><canvas id="c{{$area->id}}"></canvas></div>
+        </div>
 
 <script> 
     let yLabels{{$area->id}} = {
@@ -157,24 +169,86 @@
                     return yLabels{{$area->id}}[value];
                     // 'junior-dev' will be returned instead and displayed on your chart
                 }
-            }
-        }
-        }
-    }
-
-    
-});
-</script>
-@endif
+                
+                let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
+                let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
+                type: 'bar',
+                data: {
+                    
+                    labels: [@foreach($answers as $answer) @if($answer -> activity -> area_id == $area->id  ) "{{$answer ->  activity -> name}}" , @endif @endforeach],
+                    datasets: [{
+                        label: 'Gráfica de actividades',
+                        
+                        @php
+                        $index = $area->id
+                        @endphp
+                        
+                        data: [@foreach ($answers as $answer) @if ($answer -> activity -> area_id == $area->id ){{$answer -> answer}}, @endif @endforeach],
+                        
+                        
+                        
+                        
+                        backgroundColor: [
+                            
+                            '#0061AA',
+                            
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                    
+                        yAxes: {
+                            beginAtZero: true,
+                        ticks: {
+                            callback: function(value, index, values) {
+                                // for a value (tick) equals to 8
+                                return yLabels{{$area->id}}[value];
+                                // 'junior-dev' will be returned instead and displayed on your chart
+                            }
+                        }
+                    }
+                    }
+                }
+                
+            });
+        </script>
+        @endif
     </div>
+
+
     @endforeach
     @if ($mode != 'Consult')
-    <div class="flex items-center justify-center items-center mt-8">
-        <button class="rounded-lg bg-blue-appac py-2 px-32" type="submit">
+    <div class="flex flex row space-x-4 items-center justify-center items-center mt-8">
+        <button class="rounded-lg bg-blue-appac py-2 w-1/3" type="submit">
             <a class="text-white text-center">Registrar Evaluación</a>
+        </button>
+        <button class="rounded-lg bg-red-700 py-2 w-1/3" type="button">
+            <a class="text-white text-center" @click=" isModalOpen = true, hasOverflow=true, idEvaluation={{$evaluation->id}}">Cancelar</a>
         </button>
     </div>
     @endif
+    <div x-cloak class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
+        style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
+        <div x-cloak class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0"
+            @click.away="isModalOpen = false, hasOverflow=false">
+            <h2 class="text-2xl">¿Seguro que quieres cancelar la evaluación?</h2>
+            <div class="flex flex-row justify-end space-x-4 mt-8">
+                <button
+                    class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none" type="button"
+                    @click="isModalOpen = false, cancelEvaluation(idEvaluation), hasOverflow=false"
+                    >Aceptar</button>
+
+                <button class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none" type="button"
+                    @click=" isModalOpen = false, hasOverflow=false">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>
 @if ($mode == 'Consult')
 <script> 
