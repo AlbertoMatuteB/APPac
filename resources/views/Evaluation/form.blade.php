@@ -2,19 +2,7 @@
 </script>
 
 
-<div @if ( $mode=='create' ) x-data="{ section: 1, isModalOpen: false, idEvaluation:0, 
-    async cancelEvaluation(id) {
-            try {
-                const resp = await axios.post(
-                    `/api/evaluaciones/${id}/delete`
-                );
-                console.log(resp.data);
-                window.location.href='/evaluaciones';
-            } catch (err) {
-                // Handle Error Here
-                console.error(err);
-            }
-        },  }"  @else  x-data="{ section: 0 }"  @endif>
+<div @if ( $mode=='create' ) x-data="{ section: 1 }"  @else  x-data="{ section: 0 }"  @endif>
   
     <ul class="flex flex-row justify-end">
         @if ( $mode=='Consult' )
