@@ -29,6 +29,7 @@ use App\Http\Controllers\Evaluation\DeleteEvaluation;
 use App\Http\Controllers\Evaluation\FormEvaluation;
 use App\Http\Controllers\Evaluation\SubmitEvaluation;
 use App\Http\Controllers\Evaluation\ConsultEvaluation;
+use App\Http\Controllers\Evaluation\IndexPDFEvaluation;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -86,5 +87,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
     Route::get('/evaluaciones/formulario/{id}', FormEvaluation::class);
     Route::post('/evaluaciones/{id}/submit', SubmitEvaluation::class);
+    Route::get('/evaluaciones/{id}/pdf', IndexPDFEvaluation::class);
     Route::get('/evaluacion/{id}', ConsultEvaluation::class);
 });

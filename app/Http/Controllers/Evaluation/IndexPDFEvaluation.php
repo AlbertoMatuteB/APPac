@@ -13,7 +13,7 @@ class IndexPDFEvaluation extends Controller
 {
     public function __invoke($id)
     {
-        $evaluation = Evaluation::where('id', $id)->first();
+        $evaluation = Evaluation::with('evaluator', 'beneficiary.institution', 'beneficiary.diagnostic')->where('id', $id)->first();
         $areas = Areas::all();
         $activities = Activities::all();
         $last_eval = Evaluation::where('beneficiary_id', $evaluation->beneficiary_id)->whereNot('id', $id)->orderBy('id', 'DESC')->first();
@@ -23,6 +23,6 @@ class IndexPDFEvaluation extends Controller
             $prev_answers = [];
         }
 
-        return view('Evaluation.eval', ['areas' => $areas, 'activities' =>  $activities, 'evaluation' => $evaluation, 'answers' => $prev_answers]);
+        return view('Evaluation.pdfView', ['areas' => $areas, 'activities' =>  $activities, 'evaluation' => $evaluation, 'answers' => $prev_answers]);
     }
 }
