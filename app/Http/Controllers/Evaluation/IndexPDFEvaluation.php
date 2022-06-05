@@ -16,12 +16,7 @@ class IndexPDFEvaluation extends Controller
         $evaluation = Evaluation::with('evaluator', 'beneficiary.institution', 'beneficiary.diagnostic')->where('id', $id)->first();
         $areas = Areas::all();
         $activities = Activities::all();
-        $last_eval = Evaluation::where('beneficiary_id', $evaluation->beneficiary_id)->whereNot('id', $id)->orderBy('id', 'DESC')->first();
-        if ($last_eval != null) {
-            $prev_answers = AnswerEvaluation::where('evaluation_id', $last_eval->id)->get();
-        } else {
-            $prev_answers = [];
-        }
+        $prev_answers = AnswerEvaluation::where('evaluation_id', $id)->get();
 
         return view('Evaluation.pdfView', ['areas' => $areas, 'activities' =>  $activities, 'evaluation' => $evaluation, 'answers' => $prev_answers]);
     }
