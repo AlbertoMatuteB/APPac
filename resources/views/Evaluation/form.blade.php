@@ -157,54 +157,11 @@
                     return yLabels{{$area->id}}[value];
                     // 'junior-dev' will be returned instead and displayed on your chart
                 }
-                
-                let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
-                let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
-                type: 'bar',
-                data: {
-                    
-                    labels: [@foreach($answers as $answer) @if($answer -> activity -> area_id == $area->id  ) "{{$answer ->  activity -> name}}" , @endif @endforeach],
-                    datasets: [{
-                        label: 'Gráfica de actividades',
-                        
-                        @php
-                        $index = $area->id
-                        @endphp
-                        
-                        data: [@foreach ($answers as $answer) @if ($answer -> activity -> area_id == $area->id ){{$answer -> answer}}, @endif @endforeach],
-                        
-                        
-                        
-                        
-                        backgroundColor: [
-                            
-                            '#0061AA',
-                            
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    scales: {
-                    
-                        yAxes: {
-                            beginAtZero: true,
-                        ticks: {
-                            callback: function(value, index, values) {
-                                // for a value (tick) equals to 8
-                                return yLabels{{$area->id}}[value];
-                                // 'junior-dev' will be returned instead and displayed on your chart
-                            }
-                        }
-                    }
-                    }
-                }
-                
-            });
+            }
+        }
+       }
+    }
+       });
         </script>
         @endif
     </div>
@@ -216,9 +173,7 @@
         <button class="rounded-lg bg-blue-appac py-2 w-1/3" type="submit">
             <a class="text-white text-center">Registrar Evaluación</a>
         </button>
-        <button class="rounded-lg bg-red-700 py-2 w-1/3" type="button">
-            <a class="text-white text-center" @click=" isModalOpen = true, hasOverflow=true, idEvaluation={{$evaluation->id}}">Cancelar</a>
-        </button>
+
     </div>
     @endif
     <div x-cloak class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
@@ -232,11 +187,6 @@
                     @click="isModalOpen = false, cancelEvaluation(idEvaluation), hasOverflow=false"
                     >Aceptar</button>
 
-                <button class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none" type="button"
-                    @click=" isModalOpen = false, hasOverflow=false">Cancelar</button>
-            </div>
-        </div>
-    </div>
 </div>
 @if ($mode == 'Consult')
 <script> 
