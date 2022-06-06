@@ -80,7 +80,70 @@
         </table>
         <div>aqui va el grafico</div>
 
-        @foreach ($areas as $area)
+        {{-- @foreach ($areas as $area) --}}
+        
+        @foreach ($filteredAnswers as $area)
+        <div class="w-full">
+            <h1 class="font-bold py-4">{{$area->name}}</h1>
+            <table class="table-auto w-full">
+                <thead class="">
+                    <tr class="bg-transparent">
+                        <th class="text-left p-4 font-medium">
+                            Actividad
+                        </th>
+                        <th class="text-center p-4 font-medium">
+                            Lo logra
+                        </th>
+                        <th class="text-center p-4 font-medium">
+                            En proceso
+                        </th>
+                        <th class="text-center p-4 font-medium">
+                            No lo logra
+                        </th>
+                        <th class="text-left px-4 font-medium">
+                            Comentario
+                        </th>
+                    </tr>
+                </thead>
+                
+                
+                <tbody>
+                    @foreach ($area->answers as $answer)
+                    <tr class="border-y hover:bg-gray-50">
+                        <td class="p-4 text-left">
+                            {{$answer->activity->name}}
+                        </td>
+                        <td class="p-4 text-center">
+                            <input type="radio" name="{{$answer->activity_id}}" value="3" disabled @if ($answer->answer==3)
+                                checked
+                            @endif>
+                        </td>
+                        <td class="p-4 text-center">
+                            <input type="radio" name="{{$answer->activity_id}}" value="2" disabled @if ($answer->answer==2)
+                                checked
+                            @endif>
+                        </td>
+                        <td class="p-4 text-center">
+                            <input type="radio" name="{{$answer->activity_id}}" value="1" disabled @if ($answer->answer==1)
+                                checked
+                            @endif>
+                        </td>
+                        <td class="px-4 h-full w-auto">
+                            <textarea rows="2" wrap="hard" name="{{'comment-'.$answer->activity_id}}"
+                                class="min-h-full hover:bg-gray-50 outline-none border-none focus:border-indigo-300 w-full"
+                                disabled>
+                                {{$answer->comments}}
+                            </textarea>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endforeach
+        
+        
+        {{-- @foreach ($areas as $area)
 
         <div>
             <h1 class="font-bold py-4">{{$area->name}}</h1>
@@ -138,7 +201,7 @@
                 </tbody>
             </table>
         </div>
-        @endforeach
+        @endforeach --}}
     </div>
 </body>
 
