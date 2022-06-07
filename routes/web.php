@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\CheckRol;
 use App\Http\Controllers\Beneficiary\BeneficiarioController;
 use App\Http\Controllers\Beneficiary\CreateBeneficiary;
 use App\Http\Controllers\Beneficiary\DeleteBeneficiary;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Diagnosis\ListDiagnosis;
 use App\Http\Controllers\Diagnosis\NewDiagnosis;
 use App\Http\Controllers\Diagnosis\CreateDiagnosis;
 use App\Http\Controllers\Diagnosis\DeleteDiagnosis;
+use App\Http\Controllers\Diagnosis\UpdateDiagnosis;
 use App\Http\Controllers\Evaluation\ListEvaluation;
 use App\Http\Controllers\Evaluation\NewEvaluation;
 use App\Http\Controllers\Evaluation\CreateEvaluation;
@@ -42,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
         return view('home');
     });
 
+    Route::group(['middleware' => ['checkRol']], function () {
     Route::get('/usuarios', [UserController::class, 'index']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
     Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
@@ -60,7 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/crearUsuario', [RegistrationController::class, 'create']);
     Route::post('crearUsuario', [RegistrationController::class, 'store']);
     Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
-
+    });
 
     Route::get('/beneficiarios', ListBeneficiary::class);
     Route::post('/beneficiarios', CreateBeneficiary::class);
@@ -77,6 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
     Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
     Route::post('/diagnosticos/crear', CreateDiagnosis::class);
+    Route::get('/diagnosticos/{id}/edit',[UpdateDiagnosis::class, 'show']);
+    Route::post('/diagnosticos/{id}/edit', UpdateDiagnosis::class);
 
     Route::get('/evaluaciones', ListEvaluation::class);
     Route::get('/evaluaciones/nuevo', NewEvaluation::class);
