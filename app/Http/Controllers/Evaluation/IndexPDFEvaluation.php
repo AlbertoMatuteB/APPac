@@ -18,7 +18,6 @@ class IndexPDFEvaluation extends Controller
         $areas = Areas::all();
         $activities = Activities::all();
 
-
         foreach ($areas as $key => $area) {
             $res[$key] = $area;
             $temp = collect();
@@ -30,15 +29,16 @@ class IndexPDFEvaluation extends Controller
                     // $temp[] = $answer;
                     // $res[$key][$key2] = $answer; //meter a arreglo
                 }
-                if (!$temp->isEmpty()) {
-                    $res[$key]['answers'] = $temp;
-                } else {
-                    unset($res[$key]);
-                }
             }
-            // if (!empty($res[$key])) {
-            // }
+            if (!$temp->isEmpty()) {
+                $res[$key]['answers'] = $temp;
+            } else {
+                // array_splice($res, $key, 1);
+                unset($res[$key]);
+            }
         }
+        $res = array_values($res);
+
         // die($data);
 
         // // $data['evaluation'] = $evaluation;

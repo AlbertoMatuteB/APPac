@@ -80,11 +80,10 @@
         </table>
         <div>aqui va el grafico</div>
 
-        {{-- @foreach ($areas as $area) --}}
-        
+          
         @foreach ($filteredAnswers as $area)
-        <div class="w-full">
-            <h1 class="font-bold py-4">{{$area->name}}</h1>
+        <div class="w-full my-4">
+            <h1 class="font-bold py-4 text-xl">{{$area->name}}</h1>
             <table class="table-auto w-full">
                 <thead class="">
                     <tr class="bg-transparent">
@@ -203,6 +202,7 @@
         </div>
         @endforeach --}}
     </div>
+    {{-- {{dd($filteredAnswers)}}       --}}
 </body>
 
 </html>
