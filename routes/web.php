@@ -93,7 +93,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
     Route::get('/evaluaciones/formulario/{id}', FormEvaluation::class);
     Route::post('/evaluaciones/{id}/submit', SubmitEvaluation::class);
-    Route::get('/evaluaciones/{id}/downloadPDF', CreatePDFEvaluation::class);
     Route::get('/evaluaciones/{id}/pdf', IndexPDFEvaluation::class);
     Route::get('/evaluacion/{id}', ConsultEvaluation::class);
 });

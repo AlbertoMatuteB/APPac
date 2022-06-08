@@ -10,16 +10,59 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('chart.js/chart.js') }}"></script>
+    <script src="{{ asset('js/html2pdf.bundle.min.js') }}"></script>
     {{-- Styles --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+    <script>
+        async function generatePDF() {
+                let fileName = "{{$fileName}}";
+				// Choose the element that our invoice is rendered in.
+				const element = document.getElementById('page');
+				// Choose the element and save the PDF for our user.
+				await html2pdf().from(element).save(fileName);
+                setTimeout(() => {
+                    console.log('tab closes');
+                    window.close();
+                }, 000)
+				// html2pdf().from(element).save(fileName).then((onFulfilled) => {
+                //     window.close()  
+                // });
+			}
+		</script>
+
 </head>
 
-<body>
-    <div class="py-10 px-20 flex flex-col items-center justify-center w-full">
+<body x-data="{isModalOpen:true}">
+    <div x-cloak
+        class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
+        style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
+        <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0">
+            <h2 class=" text-2xl">¿Guardar evaluación como pdf?</h2>
+            <div class="flex flex-row justify-end space-x-4 mt-8">
+                <button
+                    class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                    @click=" generatePDF() "
+                    type="button">Aceptar</button>
+
+                {{-- <form action="{{url('/evaluaciones/'.$evaluation->id . '/delete')}}"
+                method="post">
+                @csrf
+                <button
+                    class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                    @click="isModalOpen = false" type="submit">Aceptar</button>
+                </form> --}}
+
+                <button
+                    class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                    @click=" window.close() ">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <div class="py-10 px-20 flex flex-col items-center justify-center w-full" id="page">
         <div class="flex flex-row justify-start items-center w-full pb-4 border-b-2 border-black">
             <img src="{{asset('img/logo_apac.jpeg')}}" class="w-40 relative" alt="Logo Apac">
             {{-- <h1 class="text-center w-full text-4xl  align-middle inline-block">Valora</h1> --}}
@@ -81,8 +124,8 @@
                 </tr>
             </tbody>
         </table>
-        <div class="flex items-center justify-center my-4 w-full">
-            <div  class="w-3/5" ><canvas id="mainChart"></canvas></div>
+        <div class="flex items-center justify-left my-4 w-full">
+            <div  class="w-1/2" ><canvas id="mainChart"></canvas></div>
         </div>
 
           

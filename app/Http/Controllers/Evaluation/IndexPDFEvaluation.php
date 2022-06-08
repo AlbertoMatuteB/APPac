@@ -7,6 +7,7 @@ use App\Models\Activities;
 use App\Models\AnswerEvaluation;
 use App\Models\Areas;
 use App\Models\Evaluation;
+use Carbon\Carbon;
 
 class IndexPDFEvaluation extends Controller
 {
@@ -39,20 +40,21 @@ class IndexPDFEvaluation extends Controller
         }
         $res = array_values($res);
 
-        // die($data);
 
-        // // $data['evaluation'] = $evaluation;
-        // // $data['ans'] = $answers;
-        $data['data'] = $res;
+        $now = Carbon::now('CDT');
+        $now = $now->isoFormat('DDMMYYYYHHmmss');
+        $beneficiaryName = $evaluation->beneficiary->name;
+        $beneficiaryName = str_replace(' ', '_', $beneficiaryName);
 
-        // return response($data);
+        $fileName = 'Ev_' . $beneficiaryName . '_' . $now . '.pdf';
 
         return view('Evaluation.pdfView', [
             'areas' => $areas,
             'activities' =>  $activities,
             'evaluation' => $evaluation,
             'answers' => $answers,
-            'filteredAnswers' => $res
+            'filteredAnswers' => $res,
+            'fileName' => $fileName,
         ]);
     }
 }
