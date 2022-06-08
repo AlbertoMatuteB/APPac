@@ -1,7 +1,3 @@
-<script src="{{ asset('chart.js/chart.js') }}">
-</script>
-
-
 <div @if ( $mode=='create' ) x-data="{ section: 1 }"  @else  x-data="{ section: 0 }"  @endif>
   
     <ul class="flex flex-row justify-end">
@@ -20,7 +16,7 @@
     </ul>
     @if ( $mode=='Consult' )
     <div class="flex items-center justify-center my-20" x-show="section === 0" >
-    <div  class="w-full" ><canvas id="mainChart"></canvas></div>
+        <div  class="w-full" ><canvas id="mainChart"></canvas></div>
     </div>
     @endif
     @foreach ($areas as $area)

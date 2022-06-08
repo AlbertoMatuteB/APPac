@@ -31,6 +31,8 @@ use App\Http\Controllers\Evaluation\DeleteEvaluation;
 use App\Http\Controllers\Evaluation\FormEvaluation;
 use App\Http\Controllers\Evaluation\SubmitEvaluation;
 use App\Http\Controllers\Evaluation\ConsultEvaluation;
+use App\Http\Controllers\Evaluation\CreatePDFEvaluation;
+use App\Http\Controllers\Evaluation\IndexPDFEvaluation;
 
 Route::get('/home', HomeController::class)->middleware('auth');
 
@@ -44,24 +46,24 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['checkRol']], function () {
-    Route::get('/usuarios', [UserController::class, 'index']);
-    Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
-    Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
-    Route::post('/usuarios/{id}/delete', [UserController::class, 'delete']);
-    Route::get('/usuario', [UserController::class, 'index']);
-    Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
-    Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
-    Route::get('/usuario/{id}', [UserController::class, 'getUser']);
-    Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
-    Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
-    Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
-    Route::get('/usuario/{id}', [UserController::class, 'getUser']);
-    Route::get('/usuarios', [UserController::class, 'index']);
-    Route::get('/usuario', [UserController::class, 'index']);
-    Route::get('/usuario/{id}', [UserController::class, 'getUser']);
-    Route::get('/crearUsuario', [RegistrationController::class, 'create']);
-    Route::post('crearUsuario', [RegistrationController::class, 'store']);
-    Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
+        Route::get('/usuarios', [UserController::class, 'index']);
+        Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
+        Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+        Route::post('/usuarios/{id}/delete', [UserController::class, 'delete']);
+        Route::get('/usuario', [UserController::class, 'index']);
+        Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
+        Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
+        Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+        Route::get('/usuario/{id}/editar', [UserController::class, 'editForm']);
+        Route::post('editarUsuario/{id}', [UserController::class, 'editUser']);
+        Route::delete('/usuarios/{id}', [UserController::class, 'delete']);
+        Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+        Route::get('/usuarios', [UserController::class, 'index']);
+        Route::get('/usuario', [UserController::class, 'index']);
+        Route::get('/usuario/{id}', [UserController::class, 'getUser']);
+        Route::get('/crearUsuario', [RegistrationController::class, 'create']);
+        Route::post('crearUsuario', [RegistrationController::class, 'store']);
+        Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
     });
 
     Route::get('/beneficiarios', ListBeneficiary::class);
@@ -79,7 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
     Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
     Route::post('/diagnosticos/crear', CreateDiagnosis::class);
-    Route::get('/diagnosticos/{id}/edit',[UpdateDiagnosis::class, 'show']);
+    Route::get('/diagnosticos/{id}/edit', [UpdateDiagnosis::class, 'show']);
     Route::post('/diagnosticos/{id}/edit', UpdateDiagnosis::class);
 
     Route::get('/evaluaciones', ListEvaluation::class);
@@ -91,5 +93,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evaluaciones/{id}/delete', DeleteEvaluation::class);
     Route::get('/evaluaciones/formulario/{id}', FormEvaluation::class);
     Route::post('/evaluaciones/{id}/submit', SubmitEvaluation::class);
+    Route::get('/evaluaciones/{id}/pdf', IndexPDFEvaluation::class);
     Route::get('/evaluacion/{id}', ConsultEvaluation::class);
 });

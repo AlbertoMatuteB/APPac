@@ -38,4 +38,8 @@ class Beneficiary extends Model
     {
         return $this->hasOne(City::class, 'id', 'city_id');
     }
+    public function diagnostic()
+    {
+        return $this->hasManyThrough(Diagnosis::class, DiagnosisBeneficiary::class, 'beneficiary_id', 'id', 'id', 'diagnosis_id');
+    }
 }
