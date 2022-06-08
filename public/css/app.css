@@ -547,6 +547,33 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-ml-px {
   margin-left: -1px;
 }
+.mb-40 {
+  margin-bottom: 10rem;
+}
+.mb-72 {
+  margin-bottom: 18rem;
+}
+.mb-96 {
+  margin-bottom: 24rem;
+}
+.mt-20 {
+  margin-top: 5rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mt-40 {
+  margin-top: 10rem;
+}
+.mt-44 {
+  margin-top: 11rem;
+}
+.mt-48 {
+  margin-top: 12rem;
+}
+.mt-52 {
+  margin-top: 13rem;
+}
 .block {
   display: block;
 }
@@ -610,8 +637,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-40 {
   width: 10rem;
 }
-.w-3\/5 {
-  width: 60%;
+.w-1\/2 {
+  width: 50%;
 }
 .w-4 {
   width: 1rem;
@@ -619,11 +646,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-14 {
   width: 3.5rem;
 }
-.w-2\/5 {
-  width: 40%;
-}
-.w-1\/2 {
-  width: 50%;
+.w-3\/4 {
+  width: 75%;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -681,6 +705,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .content-center {
   align-content: center;
+}
+.items-start {
+  align-items: flex-start;
 }
 .items-center {
   align-items: center;

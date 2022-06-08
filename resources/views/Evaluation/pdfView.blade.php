@@ -19,116 +19,125 @@
 
     <script>
         async function generatePDF() {
-                let fileName = "{{$fileName}}";
-				// Choose the element that our invoice is rendered in.
-				const element = document.getElementById('page');
-				// Choose the element and save the PDF for our user.
-				await html2pdf().from(element).save(fileName);
-                setTimeout(() => {
-                    console.log('tab closes');
-                    window.close();
-                }, 000)
-				// html2pdf().from(element).save(fileName).then((onFulfilled) => {
+            let fileName = "{{$fileName}}";
+            let opt = {
+                jsPDF: {
+                    format: 'a4'
+                },
+            };
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById('page');
+            // Choose the element and save the PDF for our user.
+            await html2pdf().set(opt).from(element).save(fileName);
+            setTimeout(() => {
+                console.log('tab closes');
+                window.close();
+            }, 000)
+            // html2pdf().from(element).save(fileName).then((onFulfilled) => {
+            //     window.close()  
                 //     window.close()  
-                // });
-			}
-		</script>
+            //     window.close()  
+                //     window.close()  
+            //     window.close()  
+                //     window.close()  
+            //     window.close()  
+            // });
+        }
+
+    </script>
 
 </head>
 
-<body x-data="{isModalOpen:true}">
-    <div x-cloak
-        class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
+<body x-data="{isModalOpen:true, hasOverflow:true}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'">
+    <div x-cloak class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
         style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
         <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0">
             <h2 class=" text-2xl">¿Guardar evaluación como pdf?</h2>
             <div class="flex flex-row justify-end space-x-4 mt-8">
-                <button
-                    class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
-                    @click=" generatePDF() "
-                    type="button">Aceptar</button>
+                <button class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                    @click=" generatePDF() " type="button">Aceptar</button>
 
                 {{-- <form action="{{url('/evaluaciones/'.$evaluation->id . '/delete')}}"
                 method="post">
                 @csrf
-                <button
-                    class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                <button class="bg-blue-appac text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
                     @click="isModalOpen = false" type="submit">Aceptar</button>
                 </form> --}}
 
-                <button
-                    class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
+                <button class="bg-slate-400 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
                     @click=" window.close() ">Cancelar</button>
             </div>
         </div>
     </div>
     <div class="py-10 px-20 flex flex-col items-center justify-center w-full" id="page">
-        <div class="flex flex-row justify-start items-center w-full pb-4 border-b-2 border-black">
-            <img src="{{asset('img/logo_apac.jpeg')}}" class="w-40 relative" alt="Logo Apac">
-            {{-- <h1 class="text-center w-full text-4xl  align-middle inline-block">Valora</h1> --}}
+        <div class="mb-96">
+            <div class="flex flex-row justify-start items-center w-full pb-4 border-b-2 border-black">
+                <img src="{{asset('img/logo_apac.jpeg')}}" class="w-40 relative" alt="Logo Apac">
+                {{-- <h1 class="text-center w-full text-4xl  align-middle inline-block">Valora</h1> --}}
+            </div>
+            <h2 class="text-center w-full text-3xl my-10">Informe de Resultados</h2>
+            <table class="text-left w-full border-collapse">
+                <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+                <thead>
+                    <tr>
+                        <th
+                            class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
+                            Información del alumno</th>
+                        <th
+                            class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
+                            Información de la evaluacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-grey-lighter  border-grey-light">
+                        <td class="py-4 px-6 border">
+                            <div class="flex flex-col">
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Nombre:
+                                    </span><span>{{$evaluation->beneficiary->name}}</span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Fecha de nacimiento:
+                                    </span><span>{{$evaluation->beneficiary->birth_date}}</span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Diagnóstico: </span><span>
+                                        @foreach ($evaluation->beneficiary->diagnostic as $key => $diagnostic)
+                                        {{$diagnostic->name . ', '}}
+                                        @endforeach
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4 px-6 border">
+                            <div class="flex flex-col">
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Fecha de evaluación:
+                                    </span><span>{{$evaluation->date}}</span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Edad:
+                                    </span><span>{{$evaluation->beneficiary->age()}}</span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span class="font-bold mr-2">Centro:
+                                    </span><span>{{$evaluation->beneficiary->institution->name}}</span>
+                                </div>
+                                <div class="flex flex-row">
+                                    <span
+                                        class="font-bold mr-2">Evaluador:</span><span>{{$evaluation->evaluator->name . ' '. $evaluation->evaluator->last_name}}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <h2 class="text-center w-full text-3xl my-10">Informe de Resultados</h2>
-        <table class="text-left w-full border-collapse">
-            <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-            <thead>
-                <tr>
-                    <th
-                        class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
-                        Información del alumno</th>
-                    <th
-                        class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
-                        Información de la evaluacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="hover:bg-grey-lighter  border-grey-light">
-                    <td class="py-4 px-6 border">
-                        <div class="flex flex-col">
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Nombre:
-                                </span><span>{{$evaluation->beneficiary->name}}</span>
-                            </div>
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Fecha de nacimiento:
-                                </span><span>{{$evaluation->beneficiary->birth_date}}</span>
-                            </div>
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Diagnóstico: </span><span>
-                                    @foreach ($evaluation->beneficiary->diagnostic as $key => $diagnostic)
-                                    {{$diagnostic->name . ', '}}
-                                    @endforeach
-                                </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="py-4 px-6 border">
-                        <div class="flex flex-col">
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Fecha de evaluación:
-                                </span><span>{{$evaluation->date}}</span>
-                            </div>
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Edad:
-                                </span><span>{{$evaluation->beneficiary->age()}}</span>
-                            </div>
-                            <div class="flex flex-row">
-                                <span class="font-bold mr-2">Centro:
-                                </span><span>{{$evaluation->beneficiary->institution->name}}</span>
-                            </div>
-                            <div class="flex flex-row">
-                                <span
-                                    class="font-bold mr-2">Evaluador:</span><span>{{$evaluation->evaluator->name . ' '. $evaluation->evaluator->last_name}}</span>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="flex items-center justify-left my-4 w-full">
-            <div  class="w-1/2" ><canvas id="mainChart"></canvas></div>
+        <div class="flex items-start justify-start mt-52 mb-6 w-full ">
+            <div class="w-1/2"><canvas id="mainChart"></canvas></div>
         </div>
 
-          
+
         @foreach ($filteredAnswers as $area)
         <div class="w-full my-4">
             <h1 class="font-bold py-4 text-xl">{{$area->name}}</h1>
@@ -152,8 +161,8 @@
                         </th>
                     </tr>
                 </thead>
-                
-                
+
+
                 <tbody>
                     @foreach ($area->answers as $answer)
                     <tr class="border-y hover:bg-gray-50">
@@ -189,10 +198,9 @@
         </div>
         @endforeach
     </div>
-    {{-- {{dd($filteredAnswers)}}       --}}
+    {{-- {{dd($filteredAnswers)}} --}}
     <script> 
     
-
         let rLabels = { 0 : 'No lo logra',
         1 : 'No lo logra', 2 : 'En proceso', 3 : 'Lo logra',
         }
@@ -246,7 +254,6 @@
                     callbacks: {
                         label: function(context) {
                             let label = context.label || '';
-
                             if (label) {
                                 label += ': ';
                             }
@@ -289,7 +296,6 @@
             }
             }
         }
-
         
     });
     </script>
