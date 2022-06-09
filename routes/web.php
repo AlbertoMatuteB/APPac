@@ -64,6 +64,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/crearUsuario', [RegistrationController::class, 'create']);
         Route::post('crearUsuario', [RegistrationController::class, 'store']);
         Route::post('/buscarUsuarios', [UserController::class, 'getUserByRol']);
+
+        Route::get('/diagnosticos', ListDiagnosis::class);
+        Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
+        Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
+        Route::post('/diagnosticos/crear', CreateDiagnosis::class);
+        Route::get('/diagnosticos/{id}/edit', [UpdateDiagnosis::class, 'show']);
+        Route::post('/diagnosticos/{id}/edit', UpdateDiagnosis::class);
     });
 
     Route::get('/beneficiarios', ListBeneficiary::class);
@@ -76,13 +83,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/beneficiarios/search', SearchBeneficiary::class);
     Route::post('/beneficiarios/search/age', SearchBeneficiaryByAge::class);
     Route::post('/beneficiarios/search/diagnostic', SearchBeneficiaryByDiagnostic::class);
-
-    Route::get('/diagnosticos', ListDiagnosis::class);
-    Route::post('/diagnosticos/{id}/delete', DeleteDiagnosis::class);
-    Route::get('/diagnosticos/nuevo', NewDiagnosis::class);
-    Route::post('/diagnosticos/crear', CreateDiagnosis::class);
-    Route::get('/diagnosticos/{id}/edit', [UpdateDiagnosis::class, 'show']);
-    Route::post('/diagnosticos/{id}/edit', UpdateDiagnosis::class);
 
     Route::get('/evaluaciones', ListEvaluation::class);
     Route::get('/evaluaciones/nuevo', NewEvaluation::class);

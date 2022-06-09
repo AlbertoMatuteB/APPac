@@ -81,7 +81,7 @@
             <div class="w-full"><canvas id="c{{$area->id}}"></canvas></div>
         </div>
 
-<script> 
+        <script> 
     let yLabels{{$area->id}} = {
     1 : 'No lo logra', 2 : 'En proceso', 3 : 'Lo logra',
     }
@@ -104,7 +104,6 @@
                 
                 '#0061AA',
                 
-
             ],
             borderColor: [
                 'rgba(54, 162, 235, 1)',
@@ -123,7 +122,6 @@
                 callbacks: {
                     label: function(context) {
                         let label = context.dataset.label || '';
-
                         if (label) {
                             label += ': ';
                         }
@@ -153,55 +151,12 @@
                     return yLabels{{$area->id}}[value];
                     // 'junior-dev' will be returned instead and displayed on your chart
                 }
-                
-                let ctx{{$area->id}}  = document.getElementById('c{{$area->id}}');
-                let myChart{{$area->id}} = new Chart(ctx{{$area->id}}, {
-                type: 'bar',
-                data: {
-                    
-                    labels: [@foreach($answers as $answer) @if($answer -> activity -> area_id == $area->id  ) "{{$answer ->  activity -> name}}" , @endif @endforeach],
-                    datasets: [{
-                        label: 'Gráfica de actividades',
-                        
-                        @php
-                        $index = $area->id
-                        @endphp
-                        
-                        data: [@foreach ($answers as $answer) @if ($answer -> activity -> area_id == $area->id ){{$answer -> answer}}, @endif @endforeach],
-                        
-                        
-                        
-                        
-                        backgroundColor: [
-                            
-                            '#0061AA',
-                            
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    scales: {
-                    
-                        yAxes: {
-                            beginAtZero: true,
-                        ticks: {
-                            callback: function(value, index, values) {
-                                // for a value (tick) equals to 8
-                                return yLabels{{$area->id}}[value];
-                                // 'junior-dev' will be returned instead and displayed on your chart
-                            }
-                        }
-                    }
-                    }
-                }
-                
-            });
-        </script>
+            }
+        }
+       }
+    }
+       });
+    </script>
         @endif
     </div>
 
