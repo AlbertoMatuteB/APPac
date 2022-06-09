@@ -124,6 +124,11 @@
                                         </li>
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
+                                                href="{{url('/evaluaciones/'.$evaluation->id.'/pdf')}}" target="_blank">
+                                                Descargar</a>
+                                        </li>
+                                        <li class="z-10">
+                                            <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
                                                 @click=" isModalOpen = true, idEvaluation={{$evaluation->id}},hasOverflow=true">
                                                 Eliminar
                                             </a>
