@@ -48,7 +48,7 @@
 
 </head>
 
-<body x-data="{isModalOpen:true, hasOverflow:true}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'">
+<body x-data="{isModalOpen:true, hasOverflow:true}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'" class="max-w-screen-xl">
     <div x-cloak class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
         style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
         <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0">

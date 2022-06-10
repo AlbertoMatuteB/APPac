@@ -182,7 +182,7 @@
                                         <li class="z-10">
                                             <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap"
                                                 @click=" isModalOpen = true, idBeneficiary={{$beneficiary->id}},hasOverflow=true">
-                                                Elminiar
+                                                Eliminiar
                                             </a>
                                             {{-- <a class="z-10 bg-white border hover:bg-gray-200 font-light text-lg py-2 px-4 block whitespace-no-wrap">
                                                 <form action="{{url('/beneficiarios/'.$beneficiary->id . '/delete')}}"
