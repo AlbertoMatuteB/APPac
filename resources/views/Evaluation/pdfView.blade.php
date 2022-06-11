@@ -186,11 +186,9 @@
                             @endif>
                         </td>
                         <td class="px-4 h-full w-auto">
-                            <textarea rows="2" wrap="hard" name="{{'comment-'.$answer->activity_id}}"
+                            <p  name="{{'comment-'.$answer->activity_id}}"
                                 class="min-h-full hover:bg-gray-50 outline-none border-none focus:border-indigo-300 w-full"
-                                disabled>
-                                {{$answer->comments}}
-                            </textarea>
+                                disabled>{{$answer->comments}}</p>
                         </td>
                     </tr>
                     @endforeach
