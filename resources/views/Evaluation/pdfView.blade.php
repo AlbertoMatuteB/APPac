@@ -22,7 +22,8 @@
             let fileName = "{{$fileName}}";
             let opt = {
                 jsPDF: {
-                    format: 'a4'
+                    format: 'a4',
+                    orientation: 'landscape'
                 },
             };
             // Choose the element that our invoice is rendered in.
@@ -48,7 +49,7 @@
 
 </head>
 
-<body x-data="{isModalOpen:true, hasOverflow:true}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'">
+<body x-data="{isModalOpen:true, hasOverflow:true}" :class="hasOverflow? 'overflow-hidden':'overflow-visible'" class="max-w-screen-xl">
     <div x-cloak class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50"
         style="background-color: rgba(0,0,0,.5);" x-show="isModalOpen">
         <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0">
@@ -70,7 +71,7 @@
         </div>
     </div>
     <div class="py-10 px-20 flex flex-col items-center justify-center w-full" id="page">
-        <div class="mb-96">
+        <div class="mb-72">
             <div class="flex flex-row justify-start items-center w-full pb-4 border-b-2 border-black">
                 <img src="{{asset('img/logo_apac.jpeg')}}" class="w-40 relative" alt="Logo Apac">
                 {{-- <h1 class="text-center w-full text-4xl  align-middle inline-block">Valora</h1> --}}
@@ -85,7 +86,7 @@
                             Información del alumno</th>
                         <th
                             class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
-                            Información de la evaluacion</th>
+                            Información de la evaluación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,8 +134,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex items-start justify-start mt-52 mb-6 w-full ">
-            <div class="w-1/2"><canvas id="mainChart"></canvas></div>
+        <div class="flex items-center justify-start mb-6 w-full ">
+            <div class="w-5/6 "><canvas id="mainChart"></canvas></div>
         </div>
 
 
@@ -185,11 +186,9 @@
                             @endif>
                         </td>
                         <td class="px-4 h-full w-auto">
-                            <textarea rows="2" wrap="hard" name="{{'comment-'.$answer->activity_id}}"
+                            <p  name="{{'comment-'.$answer->activity_id}}"
                                 class="min-h-full hover:bg-gray-50 outline-none border-none focus:border-indigo-300 w-full"
-                                disabled>
-                                {{$answer->comments}}
-                            </textarea>
+                                disabled>{{$answer->comments}}</p>
                         </td>
                     </tr>
                     @endforeach
