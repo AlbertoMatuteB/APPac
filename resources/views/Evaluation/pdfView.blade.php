@@ -22,7 +22,8 @@
             let fileName = "{{$fileName}}";
             let opt = {
                 jsPDF: {
-                    format: 'a4'
+                    format: 'a4',
+                    orientation: 'landscape'
                 },
             };
             // Choose the element that our invoice is rendered in.
@@ -70,7 +71,7 @@
         </div>
     </div>
     <div class="py-10 px-20 flex flex-col items-center justify-center w-full" id="page">
-        <div class="mb-96">
+        <div class="mb-72">
             <div class="flex flex-row justify-start items-center w-full pb-4 border-b-2 border-black">
                 <img src="{{asset('img/logo_apac.jpeg')}}" class="w-40 relative" alt="Logo Apac">
                 {{-- <h1 class="text-center w-full text-4xl  align-middle inline-block">Valora</h1> --}}
@@ -133,8 +134,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex items-start justify-start mt-52 mb-6 w-full ">
-            <div class="w-1/2"><canvas id="mainChart"></canvas></div>
+        <div class="flex items-center justify-start mb-6 w-full ">
+            <div class="w-5/6 "><canvas id="mainChart"></canvas></div>
         </div>
 
 
