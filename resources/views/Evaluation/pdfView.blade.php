@@ -86,7 +86,7 @@
                             Información del alumno</th>
                         <th
                             class="py-4 px-6 bg-grey-lightest text-lg font-bold uppercase text-grey-dark border border-grey-light">
-                            Información de la evaluacion</th>
+                            Información de la evaluación</th>
                     </tr>
                 </thead>
                 <tbody>
